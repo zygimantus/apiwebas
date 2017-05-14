@@ -161,6 +161,12 @@
             <type>jar</type>
         </dependency>
         <dependency>
+            <groupId>com.swapi</groupId>
+            <artifactId>swapi</artifactId>
+            <version>1.0</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>

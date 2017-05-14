@@ -15,6 +15,11 @@ public abstract class ApiController<T> extends AController<T> {
     @ExceptionHandler(Exception.class)
     public final JsonResponse handleAllException(Exception ex) {
 
+        // debugging
+        LOGGER.error(ex);
+        
+        ex.printStackTrace();
+
         return new JsonResponse(HttpStatus.INTERNAL_SERVER_ERROR,
                 ex.getLocalizedMessage());
     }

@@ -5,6 +5,8 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.aeonbits.owner.ConfigFactory;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -12,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author Zygimantus
  */
 public abstract class WsConsumer {
+
+    protected final Logger LOGGER = LogManager.getLogger(this.getClass());
 
     @Autowired
     protected HttpServletRequest request;
