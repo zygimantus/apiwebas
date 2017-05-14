@@ -1,0 +1,113 @@
+<md-dialog aria-label="Mango (Fruit)">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>{{ data.name}} [{{ data.id }}]</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <section layout="row" flex>
+          <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+            <md-toolbar class="md-warn">
+              <div class="md-toolbar-tools">
+                <h1 class="md-display-4">{{ data.name }}</h1>
+              </div>
+            </md-toolbar>
+            <md-card>
+              <img alt="Thumbnail" src="{{ data.thumbnail.path }}.{{ data.thumbnail.extension }} ">
+              <md-card-content>
+                <h2 class="md-title">Description</h2>
+                <p>{{ data.description }}</p>
+              </md-card-content>
+              <md-card>
+          </md-sidenav>
+          <md-content layout="row">
+            <md-card flex>
+              <md-toolbar class="md-warn">
+                <div class="md-toolbar-tools">
+                  <h1 class="md-display-4">Comics</h1>
+                </div>
+              </md-toolbar>
+              <md-card-content>
+                <h2 class="md-title">Available: {{ data.comics.available }}</h2>
+                <h2 class="md-title">Returned: {{ data.comics.returned }}</h2>
+                <md-list>
+                  <md-list-item class="md-1-line" ng-repeat="item in data.comics.items">
+                    <p class="md-list-item-text">{{ item.name }}</p>
+                  </md-list-item>
+                </md-list>
+              </md-card-content>
+            </md-card>
+            <md-card flex>
+              <md-toolbar class="md-warn">
+                <div class="md-toolbar-tools">
+                  <h1 class="md-display-4">Stories</h1>
+                </div>
+              </md-toolbar>
+              <md-card-content>
+                <h2 class="md-title">Available: {{ data.stories.available }}</h2>
+                <h2 class="md-title">Returned: {{ data.stories.returned }}</h2>
+                <md-list>
+                  <md-list-item class="md-1-line" ng-repeat="item in data.stories.items">
+                    <p class="md-list-item-text">{{ item.name }}</p>
+                  </md-list-item>
+                </md-list>
+              </md-card-content>
+            </md-card>
+            <md-card flex>
+              <md-toolbar class="md-warn">
+                <div class="md-toolbar-tools">
+                  <h1 class="md-display-4">Events</h1>
+                </div>
+              </md-toolbar>
+              <md-card-content>
+                <h2 class="md-title">Available: {{ data.events.available }}</h2>
+                <h2 class="md-title">Returned: {{ data.events.returned }}</h2>
+                <md-list>
+                  <md-list-item class="md-1-line" ng-repeat="item in data.events.items">
+                    <p class="md-list-item-text">{{ item.name }}</p>
+                  </md-list-item>
+                </md-list>
+              </md-card-content>
+            </md-card>
+            <md-card flex>
+              <md-toolbar class="md-warn">
+                <div class="md-toolbar-tools">
+                  <h1 class="md-display-4">Series</h1>
+                </div>
+              </md-toolbar>
+              <md-card-content>
+                <h2 class="md-title">Available: {{ data.series.available }}</h2>
+                <h2 class="md-title">Returned: {{ data.series.returned }}</h2>
+                <md-list>
+                  <md-list-item class="md-1-line" ng-repeat="item in data.series.items">
+                    <p class="md-list-item-text">{{ item.name }}</p>
+                  </md-list-item>
+                </md-list>
+              </md-card-content>
+            </md-card>
+          </md-content>
+        </section>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <md-button href="http://en.wikipedia.org/wiki/{{ data.name }}" target="_blank" md-autofocus>
+        More on Wikipedia
+      </md-button>
+      <span flex></span>
+      <md-button ng-click="answer('not useful')">
+        Not Useful
+      </md-button>
+      <md-button ng-click="answer('useful')">
+        Useful
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

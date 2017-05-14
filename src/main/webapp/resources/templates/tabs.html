@@ -1,0 +1,96 @@
+<md-tabs md-dynamic-height md-border-bottom>
+  <md-tab label="Characters">
+    <md-content class="md-padding">
+      <h1 class="md-display-2">Characters</h1>
+      <div ng-controller="CharactersController as charContr">
+        <p class="text-danger">You clicked on: <strong>{{ charContr.message }}</strong></p>
+        <br>
+        <table id="characters" datatable="" dt-options="charContr.dtOptions" dt-columns="charContr.dtColumns" class="row-border hover" dt-instance="charContr.dtInstance"></table>
+      </div>
+    </md-content>
+  </md-tab>
+  <md-tab label="Comics">
+    <md-content class="md-padding">
+      <h1 class="md-display-2">Comics</h1>
+      <div ng-controller="ComicsController as comContr">
+        <p class="text-danger">You clicked on: <strong>{{ comContr.message }}</strong></p>
+        <br>
+        <table id="comics" class="datatable" datatable="" dt-options="comContr.dtOptions" dt-columns="comContr.dtColumns" class="row-border hover" dt-instance="comContr.dtInstance">
+          <tfoot>
+            <tr>
+              <th>Details</th>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Modified</th>
+              <th>Format</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </md-content>
+  </md-tab>
+  <md-tab label="Series">
+    <md-content class="md-padding">
+      <h1 class="md-display-2">Series</h1>
+      <div ng-controller="SeriesController as serContr">
+        <p class="text-danger">You clicked on: <strong>{{ serContr.message }}</strong></p>
+        <br>
+        <table id="series" class="datatable" datatable="" dt-options="serContr.dtOptions" dt-columns="serContr.dtColumns" class="row-border hover" dt-instance="serContr.dtInstance">
+          <tfoot>
+            <tr>
+              <th>Details</th>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Issue Number</th>
+              <th>Page Count</th>
+              <th>Modified</th>
+              <!-- <th>Type</th> -->
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </md-content>
+  </md-tab>
+  <md-tab label="search by id">
+    <md-content class="md-padding">
+      <h1 class="md-display-2">Search By Id</h1>
+      <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+        <div>
+          <form ng-submit="search(character.id)" name="searchForm">
+            <md-input-container>
+              <label>character_id</label>
+              <input ng-model="character.id">
+            </md-input-container>
+            <md-button ng-click="search()" class="md-primary btn btn-primary">search</md-button>
+          </form>
+        </div>
+      </md-content>
+      <pre ng-bind-html="data"></pre>
+    </md-content>
+  </md-tab>
+  <md-tab label="settings">
+    <md-content class="md-padding">
+      <h1 class="md-display-2">Settings</h1>
+      <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+        <div>
+          <form ng-submit="save()" name="settingsForm">
+            <md-input-container>
+              <label>public_key</label>
+              <input ng-model="key.public">
+            </md-input-container>
+            <md-input-container>
+              <label>private_key</label>
+              <input ng-model="key.private">
+            </md-input-container>
+            <div>
+              <md-button ng-click="save()" class="md-primary btn btn-primary">save</md-button>
+            </div>
+          </form>
+        </div>
+      </md-content>
+    </md-content>
+  </md-tab>
+  <md-tab label="logout" ng-click="logout()">
+  </md-tab>
+</md-tabs>
