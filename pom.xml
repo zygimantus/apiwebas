@@ -21,7 +21,20 @@
         <org.slf4j.version>1.7.25</org.slf4j.version>
     </properties>
     
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>bintray</name>
+            <url>http://jcenter.bintray.com</url>
+        </repository>
+    </repositories>    
+    
     <dependencies>
+        <dependency>
+            <groupId>me.sargunvohra.lib</groupId>
+            <artifactId>pokekotlin</artifactId>
+            <version>2.3.0</version>
+        </dependency>        
         <dependency>
             <groupId>com.karumi</groupId> 
             <artifactId>marvelapiclient</artifactId> 
