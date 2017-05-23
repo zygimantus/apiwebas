@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
+import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -49,7 +49,7 @@ public class ApiControllerTests extends AbstractContextControllerTests {
 
         String string = this.mockMvc.perform(get("/api/marvel/comics/formats"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(APPLICATION_JSON_UTF8))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andReturn().getResponse().getContentAsString();
 
         Format[] formats = MAPPER.readValue(string, Format[].class);
