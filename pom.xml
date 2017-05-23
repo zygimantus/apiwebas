@@ -14,9 +14,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <spring.version>4.3.7.RELEASE</spring.version>
+        <spring.version>4.3.8.RELEASE</spring.version>
         <spring.security.version>4.2.2.RELEASE</spring.security.version>
-        <fasterxml.version>2.8.7</fasterxml.version>
+        <fasterxml.version>2.8.8</fasterxml.version>
         <hibernate.version>5.2.10.Final</hibernate.version>
         <org.slf4j.version>1.7.25</org.slf4j.version>
     </properties>
@@ -152,38 +152,32 @@
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
-            <version>3.6.0</version>
-            <type>jar</type>
+            <version>3.8.0</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>logging-interceptor</artifactId>
-            <version>3.6.0</version>
-            <type>jar</type>
+            <version>3.8.0</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>retrofit</artifactId>
-            <version>2.2.0</version>
-            <type>jar</type>
+            <version>2.3.0</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>converter-gson</artifactId>
-            <version>2.2.0</version>
-            <type>jar</type>
+            <version>2.3.0</version>
         </dependency>
         <dependency>
             <groupId>com.swapi</groupId>
             <artifactId>swapi</artifactId>
             <version>1.0</version>
-            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.doeiqts</groupId>
             <artifactId>pokemon-tcg-sdk-java</artifactId>
             <version>0.0.1</version>
-            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
