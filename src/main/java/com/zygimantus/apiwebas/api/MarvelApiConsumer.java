@@ -69,7 +69,7 @@ public class MarvelApiConsumer extends WsConsumer {
         CharactersQuery charactersQuery = CharactersQuery.Builder.create()
                 .withLimit(dtr.getLength())
                 .withOffset(dtr.getStart())
-                .withNameStartWith(("".equals(dtr.getSearch().getValue())) ? null : dtr.getSearch().getValue())
+                .withNameStartWith("".equals(dtr.getSearch().getValue()) ? null : dtr.getSearch().getValue())
                 .withOrderBy(orderBy, "asc".equals(order.getDir()))
                 .build();
 
@@ -108,7 +108,7 @@ public class MarvelApiConsumer extends WsConsumer {
 
         builder.withLimit(dtr.getLength())
                 .withOffset(dtr.getStart())
-                .withTitleStartsWith(("".equals(dtr.getSearch().getValue())) ? null : dtr.getSearch().getValue())
+                .withTitleStartsWith("".equals(dtr.getSearch().getValue()) ? null : dtr.getSearch().getValue())
                 .withOrderBy(orderBy, "asc".equals(order.getDir()));
 
         // search by format
@@ -158,7 +158,7 @@ public class MarvelApiConsumer extends WsConsumer {
 
         builder.withLimit(dtr.getLength())
                 .withOffset(dtr.getStart())
-                .withTitleStartsWith(("".equals(dtr.getSearch().getValue())) ? null : dtr.getSearch().getValue())
+                .withTitleStartsWith("".equals(dtr.getSearch().getValue()) ? null : dtr.getSearch().getValue())
                 .withOrderBy(orderBy, "asc".equals(order.getDir()));
 
         // TODO search by type
