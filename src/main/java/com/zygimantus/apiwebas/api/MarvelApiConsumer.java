@@ -29,8 +29,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class MarvelApiConsumer extends WsConsumer {
 
-    private static String PUBLIC_KEY;
-    private static String PRIVATE_KEY;
+    private String PUBLIC_KEY;
+    private String PRIVATE_KEY;
 
     MarvelApiConfig marvelApiConfig;
 

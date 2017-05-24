@@ -17,7 +17,7 @@ public abstract class ApiController<T> extends AController<T> {
 
         // debugging
         LOGGER.error(ex);
-        
+
         // FIXME bad practise
         ex.printStackTrace();
 
