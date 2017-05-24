@@ -33,10 +33,8 @@ public abstract class AController<T> {
     @RequestMapping(value = "", method = RequestMethod.GET)
     protected abstract T page();
 
-    protected String getSessionAttribute(String key) {
-        String username = (String) request.getSession().getAttribute(key);
-
-        return username;
+    protected <T> T getSessionAttribute(String key, Class<T> cls) {
+        return (T) request.getSession().getAttribute(key);
     }
 
 }

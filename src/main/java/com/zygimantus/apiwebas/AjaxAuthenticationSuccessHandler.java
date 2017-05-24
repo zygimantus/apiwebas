@@ -19,7 +19,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
  */
 public class AjaxAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
-    private AuthenticationSuccessHandler defaultHandler;
+    private final AuthenticationSuccessHandler defaultHandler;
 
     public AjaxAuthenticationSuccessHandler(AuthenticationSuccessHandler defaultHandler) {
         this.defaultHandler = defaultHandler;

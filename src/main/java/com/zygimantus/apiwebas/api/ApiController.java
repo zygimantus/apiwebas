@@ -18,9 +18,6 @@ public abstract class ApiController<T> extends AController<T> {
         // debugging
         LOGGER.error(ex);
 
-        // FIXME bad practise
-        ex.printStackTrace();
-
         return new JsonResponse(HttpStatus.INTERNAL_SERVER_ERROR,
                 ex.getLocalizedMessage());
     }

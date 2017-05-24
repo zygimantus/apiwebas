@@ -29,17 +29,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class MarvelApiConsumer extends WsConsumer {
 
-    private String PUBLIC_KEY;
-    private String PRIVATE_KEY;
-
-    MarvelApiConfig marvelApiConfig;
+    private MarvelApiConfig marvelApiConfig;
 
     @Override
     protected void init() {
-        PUBLIC_KEY = appConfig.publicKey();
-        PRIVATE_KEY = appConfig.privateKey();
+        String publicKey = appConfig.publicKey();
+        String privateKey = appConfig.privateKey();
 
-        marvelApiConfig = new MarvelApiConfig.Builder(PUBLIC_KEY, PRIVATE_KEY).debug().build();
+        marvelApiConfig = new MarvelApiConfig.Builder(publicKey, privateKey).debug().build();
     }
 
     public void updateKeys(String publicKey, String privateKey) {
@@ -63,6 +60,7 @@ public class MarvelApiConsumer extends WsConsumer {
                 break;
             default:
                 orderBy = null;
+                break;
         }
 
         CharacterApiClient characterApiClient = new CharacterApiClient(marvelApiConfig);
@@ -92,6 +90,7 @@ public class MarvelApiConsumer extends WsConsumer {
                 break;
             default:
                 orderBy = null;
+                break;
         }
 
         // search by column values
@@ -142,6 +141,7 @@ public class MarvelApiConsumer extends WsConsumer {
                 break;
             default:
                 orderBy = null;
+                break;
         }
 
         // search by column values

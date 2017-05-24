@@ -21,9 +21,6 @@ public class JsonResponse<D extends JsonResponse.Data> {
     @JsonProperty("data")
     private D data;
 
-    public JsonResponse() {
-    }
-
     public JsonResponse(Integer code, String status) {
         this.code = code;
         this.status = status;
