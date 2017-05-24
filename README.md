@@ -1,1 +1,1 @@
-apiwebas
+apiwebas [![Build Status](https://travis-ci.org/zygimantus/apiwebas.svg?branch=develop)](https://travis-ci.org/zygimantus/apiwebas)
