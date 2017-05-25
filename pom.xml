@@ -27,6 +27,14 @@
             <name>bintray</name>
             <url>http://jcenter.bintray.com</url>
         </repository>
+        <repository>
+            <id>SWAPI-JAVA-mvn-repo</id>
+            <url>https://raw.github.com/zygimantus/SWAPI-JAVA/mvn-repo/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
     </repositories>    
     
     <dependencies>
