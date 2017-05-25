@@ -35,6 +35,14 @@
                 <updatePolicy>always</updatePolicy>
             </snapshots>
         </repository>
+        <repository>
+            <id>pokemon-tcg-sdk-java-mvn-repo</id>
+            <url>https://raw.github.com/zygimantus/pokemon-tcg-sdk-java/mvn-repo/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
     </repositories>    
     
     <dependencies>
