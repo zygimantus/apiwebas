@@ -6,10 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.aeonbits.owner.ConfigFactory;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -18,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author Zygimantus
  * @param <T>
  */
-public abstract class AController<T> implements ApplicationContextAware {
-
-    protected static ApplicationContext context;
+public abstract class AController<T> {
 
     protected final Logger LOGGER = LogManager.getLogger(this.getClass());
 
@@ -38,15 +33,8 @@ public abstract class AController<T> implements ApplicationContextAware {
     @RequestMapping(value = "", method = RequestMethod.GET)
     protected abstract T page();
 
-    @Override
-    public void setApplicationContext(ApplicationContext ac) throws BeansException {
-        AController.context = ac;
-    }
-
-    protected String getSessionAttribute(String key) {
-        String username = (String) request.getSession().getAttribute(key);
-
-        return username;
+    protected <T> T getSessionAttribute(String key, Class<T> cls) {
+        return (T) request.getSession().getAttribute(key);
     }
 
 }

@@ -29,17 +29,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class MarvelApiConsumer extends WsConsumer {
 
-    private static String PUBLIC_KEY;
-    private static String PRIVATE_KEY;
-
-    MarvelApiConfig marvelApiConfig;
+    private MarvelApiConfig marvelApiConfig;
 
     @Override
     protected void init() {
-        PUBLIC_KEY = appConfig.publicKey();
-        PRIVATE_KEY = appConfig.privateKey();
+        String publicKey = appConfig.publicKey();
+        String privateKey = appConfig.privateKey();
 
-        marvelApiConfig = new MarvelApiConfig.Builder(PUBLIC_KEY, PRIVATE_KEY).debug().build();
+        marvelApiConfig = new MarvelApiConfig.Builder(publicKey, privateKey).debug().build();
     }
 
     public void updateKeys(String publicKey, String privateKey) {
@@ -63,13 +60,14 @@ public class MarvelApiConsumer extends WsConsumer {
                 break;
             default:
                 orderBy = null;
+                break;
         }
 
         CharacterApiClient characterApiClient = new CharacterApiClient(marvelApiConfig);
         CharactersQuery charactersQuery = CharactersQuery.Builder.create()
                 .withLimit(dtr.getLength())
                 .withOffset(dtr.getStart())
-                .withNameStartWith(("".equals(dtr.getSearch().getValue())) ? null : dtr.getSearch().getValue())
+                .withNameStartWith("".equals(dtr.getSearch().getValue()) ? null : dtr.getSearch().getValue())
                 .withOrderBy(orderBy, "asc".equals(order.getDir()))
                 .build();
 
@@ -92,6 +90,7 @@ public class MarvelApiConsumer extends WsConsumer {
                 break;
             default:
                 orderBy = null;
+                break;
         }
 
         // search by column values
@@ -108,7 +107,7 @@ public class MarvelApiConsumer extends WsConsumer {
 
         builder.withLimit(dtr.getLength())
                 .withOffset(dtr.getStart())
-                .withTitleStartsWith(("".equals(dtr.getSearch().getValue())) ? null : dtr.getSearch().getValue())
+                .withTitleStartsWith("".equals(dtr.getSearch().getValue()) ? null : dtr.getSearch().getValue())
                 .withOrderBy(orderBy, "asc".equals(order.getDir()));
 
         // search by format
@@ -142,6 +141,7 @@ public class MarvelApiConsumer extends WsConsumer {
                 break;
             default:
                 orderBy = null;
+                break;
         }
 
         // search by column values
@@ -158,7 +158,7 @@ public class MarvelApiConsumer extends WsConsumer {
 
         builder.withLimit(dtr.getLength())
                 .withOffset(dtr.getStart())
-                .withTitleStartsWith(("".equals(dtr.getSearch().getValue())) ? null : dtr.getSearch().getValue())
+                .withTitleStartsWith("".equals(dtr.getSearch().getValue()) ? null : dtr.getSearch().getValue())
                 .withOrderBy(orderBy, "asc".equals(order.getDir()));
 
         // TODO search by type

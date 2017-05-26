@@ -4,7 +4,7 @@
 
     <groupId>com.zygimantus</groupId>
     <artifactId>apiwebas</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <packaging>war</packaging>
 
     <name>apiwebas</name>
@@ -21,7 +21,36 @@
         <org.slf4j.version>1.7.25</org.slf4j.version>
     </properties>
     
+    <repositories>
+        <repository>
+            <id>bintray</id>
+            <name>bintray</name>
+            <url>http://jcenter.bintray.com</url>
+        </repository>
+        <repository>
+            <id>SWAPI-JAVA-mvn-repo</id>
+            <url>https://raw.github.com/zygimantus/SWAPI-JAVA/mvn-repo/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>pokemon-tcg-sdk-java-mvn-repo</id>
+            <url>https://raw.github.com/zygimantus/pokemon-tcg-sdk-java/mvn-repo/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>    
+    
     <dependencies>
+        <dependency>
+            <groupId>me.sargunvohra.lib</groupId>
+            <artifactId>pokekotlin</artifactId>
+            <version>2.3.0</version>
+        </dependency>        
         <dependency>
             <groupId>com.karumi</groupId> 
             <artifactId>marvelapiclient</artifactId> 
@@ -139,37 +168,55 @@
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
-            <version>3.6.0</version>
-            <type>jar</type>
+            <version>3.8.0</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>logging-interceptor</artifactId>
-            <version>3.6.0</version>
-            <type>jar</type>
+            <version>3.8.0</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>retrofit</artifactId>
-            <version>2.2.0</version>
-            <type>jar</type>
+            <version>2.3.0</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>converter-gson</artifactId>
-            <version>2.2.0</version>
-            <type>jar</type>
+            <version>2.3.0</version>
         </dependency>
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>7.0</version>
-            <scope>provided</scope>
+            <groupId>com.swapi</groupId>
+            <artifactId>swapi</artifactId>
+            <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.doeiqts</groupId>
+            <artifactId>pokemon-tcg-sdk-java</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>            
+        </dependency>        
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
+        </dependency>        
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -255,5 +302,81 @@
             </plugin>
         </plugins>
     </build>
+    
+    <reporting>
+        <plugins>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+                </configuration>
+            </plugin>            
+            
+            <!-- checks the test coverage -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>2.7</version>
+            </plugin>
+
+            <!-- checks the code statically for any issues -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.8</version>
+                <configuration>
+                    <sourceEncoding>utf-8</sourceEncoding>
+                    <language>java</language>
+                    <verbose>true</verbose>
+                    <targetJdk>1.8</targetJdk>
+                </configuration>            
+            </plugin>
+
+            <!-- checks the compiled bytecode for any issues -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>3.0.4</version>
+                <configuration>
+                    <!--a FindBugs plugin-->
+                    <plugins>
+                        <plugin>
+                            <groupId>com.mebigfatguy.fb-contrib</groupId>
+                            <artifactId>fb-contrib</artifactId>
+                            <version>7.0.1</version>
+                        </plugin>
+                    </plugins>
+                </configuration>                
+            </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>2.5</version>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>2.20</version>
+            </plugin>            
+            
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jdepend-maven-plugin</artifactId>
+                <version>2.0</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.7.9</version>
+            </plugin>
+            
+        </plugins>
+    </reporting>
 
 </project>

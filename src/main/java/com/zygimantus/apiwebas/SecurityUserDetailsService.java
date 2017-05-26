@@ -32,13 +32,13 @@ public class SecurityUserDetailsService implements UserDetailsService {
 
         if (user == null) {
             String message = "Username not found" + username;
-//            LOGGER.info(message);
+            LOGGER.info(message);
             throw new UsernameNotFoundException(message);
         }
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
-//        LOGGER.info("Found user in database: " + user);
+        LOGGER.info("Found user in database: " + user);
         return new org.springframework.security.core.userdetails.User(username, user.getPasswordDigest(), authorities);
     }
 }

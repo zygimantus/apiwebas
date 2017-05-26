@@ -75,16 +75,12 @@ public class AbstractEntity {
 
         AbstractEntity that = (AbstractEntity) o;
 
-        if (getUuid() != null ? !getUuid().equals(that.getUuid()) : that.getUuid() != null) {
-            return false;
-        }
-
-        return true;
+        return getUuid().equals(that.getUuid());
     }
 
     @Override
     public int hashCode() {
-        return getUuid() != null ? getUuid().hashCode() : 0;
+        return getUuid().hashCode();
     }
 
     public Long getVersion() {
