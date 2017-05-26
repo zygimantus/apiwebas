@@ -1,6 +1,7 @@
 angular.module("marvelisApp", ['ngMaterial', 'datatables', 'frontendServices', 'spring-security-csrf-token-interceptor'])
   .service("worldsService", [MyDataService])
   .controller('MarvelController', MarvelController)
+  .controller('SwapiController', SwapiController)
   .controller('CharactersController', CharactersController)
   .controller('ComicsController', ComicsController)
   .controller('SeriesController', SeriesController)
@@ -45,6 +46,32 @@ function MarvelController($scope, $templateRequest, $sce, $compile, $http, UserS
     UserService.logout();
   }
 
+}
+
+function SwapiController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBuilder, DTColumnBuilder, UtilService) {
+  var vm = this;
+  vm.dtOptions = DTOptionsBuilder.newOptions()
+    .withOption('ajax', {
+      url: '/api/swapi/films',
+      type: 'get',
+    })
+    .withDataProp(function(json) {
+      json.recordsTotal = json.count;
+      json.recordsFiltered = json.count;
+      return json.results;
+    })
+    .withOption('processing', true)
+    .withOption('serverSide', true)
+    .withOption('saveState', true)
+    .withPaginationType('full_numbers')
+    .withOption('order', [1, 'asc'])
+    .withDisplayLength(10);
+  vm.dtColumns = [
+    DTColumnBuilder.newColumn(null).withOption('defaultContent', ''),
+    DTColumnBuilder.newColumn('title').withTitle('Title'),
+    DTColumnBuilder.newColumn('director').withTitle('Director'),
+    DTColumnBuilder.newColumn('openingCrawl').withTitle('openingCrawl').withOption('sWidth', '50%')
+  ];
 }
 
 function CharactersController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBuilder, DTColumnBuilder, UtilService) {
