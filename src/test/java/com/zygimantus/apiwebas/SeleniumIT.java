@@ -9,7 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
  *
  * @author Zygimantus
  */
-public class SeleniumTest {
+public class SeleniumIT {
 
     @Test
     public void testSimple() throws Exception {
