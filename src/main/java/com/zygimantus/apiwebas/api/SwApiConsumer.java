@@ -23,7 +23,7 @@ public class SwApiConsumer extends WsConsumer {
         api = StarWarsApi.getApi();
     }
 
-    public SWModelList<Film> getFilms() throws InterruptedException, IOException {
+    public SWModelList<Film> getFilmsList() throws InterruptedException, IOException {
 
         Call<SWModelList<Film>> films = api.getAllFilms(1);
 

@@ -31,9 +31,9 @@ public class SwApiController extends ApiController<SWModelList> {
     @RequestMapping(value = "films", method = GET)
     protected SWModelList<Film> films() throws InterruptedException, IOException {
 
-        SWModelList<Film> films = swApiConsumer.getFilms();
+        SWModelList<Film> modelList = swApiConsumer.getFilmsList();
 
-        return films;
+        return modelList;
     }
 
 }
