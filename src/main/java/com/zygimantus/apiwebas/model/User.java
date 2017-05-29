@@ -26,6 +26,9 @@ public class User extends AbstractEntity {
     private String passwordDigest;
     private String email;
 
+    public User() {
+    }
+
     public User(String username, String passwordDigest, String email) {
         this.username = username;
         this.passwordDigest = passwordDigest;

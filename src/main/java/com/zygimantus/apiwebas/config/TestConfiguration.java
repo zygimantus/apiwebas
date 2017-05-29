@@ -1,14 +1,11 @@
 package com.zygimantus.apiwebas.config;
 
 import com.zygimantus.apiwebas.TestDataInitializer;
-import java.util.HashMap;
-import java.util.Map;
+import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
@@ -40,29 +37,24 @@ public class TestConfiguration {
     public DriverManagerDataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(org.hsqldb.jdbcDriver.class.getName());
-        dataSource.setUrl("jdbc:hsqldb:mem:mydb");
-        dataSource.setUsername("sa");
-        dataSource.setPassword("jdbc:hsqldb:mem:mydb");
+        dataSource.setUrl("jdbc:hsqldb:mem:apiwebas");
+        dataSource.setUsername("admin");
+        dataSource.setPassword("apiwebasAdmin");
         return dataSource;
     }
 
     @Bean(name = "entityManagerFactory")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DriverManagerDataSource dataSource) {
+    public LocalSessionFactoryBean sessionFactory(DataSource dataSource) {
+        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 
-        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
-        entityManagerFactoryBean.setDataSource(dataSource);
-        entityManagerFactoryBean.setPackagesToScan(new String[]{"com.zygimantus.apiwebas.model"});
-        entityManagerFactoryBean.setLoadTimeWeaver(new InstrumentationLoadTimeWeaver());
-        entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+        sessionFactory.setDataSource(dataSource);
+        sessionFactory.setPackagesToScan("com.zygimantus.apiwebas.model");
 
-        Map<String, Object> jpaProperties = new HashMap<>();
-        jpaProperties.put("hibernate.hbm2ddl.auto", "create");
-        jpaProperties.put("hibernate.show_sql", "true");
-        jpaProperties.put("hibernate.format_sql", "true");
-        jpaProperties.put("hibernate.use_sql_comments", "true");
-        entityManagerFactoryBean.setJpaPropertyMap(jpaProperties);
+        sessionFactory.setMappingResources(new String[]{"Film.hbm.xml"});
 
-        return entityManagerFactoryBean;
+        sessionFactory.getHibernateProperties().put("hibernate.show_sql", "true");
+        sessionFactory.getHibernateProperties().put("hibernate.hbm2ddl.auto", "create");
+        return sessionFactory;
     }
 
 }
