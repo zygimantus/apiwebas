@@ -3,8 +3,8 @@ package com.zygimantus.apiwebas.api;
 import com.swapi.models.Film;
 import com.swapi.models.SWModelList;
 import com.zygimantus.apiwebas.ApiwebasRepository;
-import com.zygimantus.apiwebas.model.Api;
 import com.zygimantus.apiwebas.model.Apiwebas;
+import com.zygimantus.apiwebas.model.Resource;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,8 +50,8 @@ public class SwApiController extends ApiController<SWModelList> {
         Transaction transaction = session.beginTransaction();
 
 //        List<Apiwebas> apiwebases = session.createNamedQuery("findApiwebasByCategory", Apiwebas.class)
-        List<Apiwebas> apiwebases = session.createQuery("FROM Apiwebas WHERE category = :category", Apiwebas.class)
-                .setParameter("category", "films")
+        List<Apiwebas> apiwebases = session.createQuery("FROM Apiwebas WHERE resource = :resource", Apiwebas.class)
+                .setParameter("resource", Resource.SWAPI_FILMS)
                 .getResultList();
 
         transaction.commit();
@@ -69,7 +69,7 @@ public class SwApiController extends ApiController<SWModelList> {
 
             films = session.createQuery("FROM Film").getResultList();
         }
-        
+
         SWModelList sWModelList = new SWModelList();
         sWModelList.count = films.size();
         sWModelList.results = (ArrayList) films;
@@ -95,11 +95,7 @@ public class SwApiController extends ApiController<SWModelList> {
 
         transaction.commit();
 
-        Apiwebas apiwebas = new Apiwebas();
-        apiwebas.setApi(Api.SWAPI);
-        // TODO also use enum here.
-        apiwebas.setCategory("films");
-        apiwebas.setLoaded(true);
+        Apiwebas apiwebas = new Apiwebas(Resource.SWAPI_FILMS, true);
 
         apiwebasRepository.save(apiwebas);
 

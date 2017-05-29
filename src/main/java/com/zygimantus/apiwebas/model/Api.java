@@ -6,7 +6,23 @@ package com.zygimantus.apiwebas.model;
  */
 public enum Api {
 
-    MARVEL,
-    SWAPI,
+    MARVEL {
+        @Override
+        public Resource[] getResources() {
+            return new Resource[]{
+                Resource.MARVEL_CHARACTERS
+            };
+        }
+    },
+    SWAPI {
+        @Override
+        public Resource[] getResources() {
+            return new Resource[]{
+                Resource.SWAPI_FILMS, Resource.SWAPI_PEOPLE
+            };
+        }
+    };
 
+    // using enum polymorphism technique
+    public abstract Resource[] getResources();
 }

@@ -26,7 +26,8 @@ public class Apiwebas implements Serializable {
     private String title;
     @Enumerated(EnumType.STRING)
     private Api api;
-    private String category;
+    @Enumerated(EnumType.STRING)
+    private Resource resource;
     private boolean loaded;
 
     @CreationTimestamp
@@ -38,6 +39,16 @@ public class Apiwebas implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modify_date")
     private Date modifyDate;
+
+    public Apiwebas() {
+    }
+
+    public Apiwebas(Resource resource, boolean loaded) {
+//        this.title = title;
+        this.api = resource.getApi();
+        this.resource = resource;
+        this.loaded = loaded;
+    }
 
     public int getId() {
         return id;
@@ -63,12 +74,12 @@ public class Apiwebas implements Serializable {
         this.api = api;
     }
 
-    public String getCategory() {
-        return category;
+    public Resource getResource() {
+        return resource;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setResource(Resource resource) {
+        this.resource = resource;
     }
 
     public boolean isLoaded() {
