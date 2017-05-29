@@ -24,6 +24,10 @@
     
     <repositories>
         <repository>
+            <id>jboss</id>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+        </repository>
+        <repository>
             <id>bintray</id>
             <name>bintray</name>
             <url>http://jcenter.bintray.com</url>

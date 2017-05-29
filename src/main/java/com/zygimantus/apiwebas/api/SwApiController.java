@@ -11,7 +11,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -36,7 +36,7 @@ public class SwApiController extends ApiController<SWModelList> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @RequestMapping(value = "films", method = GET)
+    @RequestMapping(value = "films", method = RequestMethod.GET)
     protected SWModelList<Film> films() throws InterruptedException, IOException {
 
         SWModelList<Film> modelList = swApiConsumer.getFilmsList();
@@ -57,18 +57,25 @@ public class SwApiController extends ApiController<SWModelList> {
         return modelList;
     }
 
-    @RequestMapping(value = "load", method = GET)
-    protected List<Film> load() throws InterruptedException, IOException {
+    @RequestMapping(value = "films", method = RequestMethod.PUT)
+    protected List<Film> storeFilms() throws InterruptedException, IOException {
+
+        SWModelList<Film> modelList = swApiConsumer.getFilmsList();
+
+        ArrayList<Film> films = modelList.results;
 
         SessionFactory sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
 
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        List<Film> films = session.createQuery("FROM Film").getResultList();
+        films.forEach((film) -> {
+            session.merge(film);
+        });
 
         transaction.commit();
 
+        // store status
         return films;
     }
 
