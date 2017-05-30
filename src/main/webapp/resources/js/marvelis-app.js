@@ -53,7 +53,12 @@ function SwapiController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBuil
   vm.dtOptions = DTOptionsBuilder.newOptions()
     .withOption('ajax', {
       url: '/api/swapi/films',
-      type: 'get',
+      type: 'post',
+      data: function(data) {
+        return JSON.stringify(data);
+      },
+      dataType: "json",
+      contentType: 'application/json;charset=UTF-8'
     })
     .withDataProp(function(json) {
       json.recordsTotal = json.count;
@@ -64,12 +69,15 @@ function SwapiController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBuil
     .withOption('serverSide', true)
     .withOption('saveState', true)
     .withPaginationType('full_numbers')
-    .withOption('order', [1, 'asc'])
+    .withOption('order', [])
     .withDisplayLength(10);
   vm.dtColumns = [
     DTColumnBuilder.newColumn(null).withOption('defaultContent', ''),
+    DTColumnBuilder.newColumn('episodeId').withTitle('Episode ID'),
     DTColumnBuilder.newColumn('title').withTitle('Title'),
     DTColumnBuilder.newColumn('director').withTitle('Director'),
+    DTColumnBuilder.newColumn('producer').withTitle('Producer'),
+    DTColumnBuilder.newColumn('release_date').withTitle('Release Date'),
     DTColumnBuilder.newColumn('openingCrawl').withTitle('openingCrawl').withOption('sWidth', '50%')
   ];
 }

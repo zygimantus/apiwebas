@@ -4,6 +4,7 @@ import com.swapi.models.Film;
 import com.swapi.models.SWModelList;
 import com.zygimantus.apiwebas.ApiwebasRepository;
 import com.zygimantus.apiwebas.model.Apiwebas;
+import com.zygimantus.apiwebas.model.DataTablesRequest;
 import com.zygimantus.apiwebas.model.Resource;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,8 +43,8 @@ public class SwApiController extends ApiController<SWModelList> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @RequestMapping(value = "films", method = RequestMethod.GET)
-    protected SWModelList<Film> films() throws InterruptedException, IOException {
+    @RequestMapping(value = "films", method = {RequestMethod.GET, RequestMethod.POST})
+    protected SWModelList<Film> films(@RequestBody DataTablesRequest dtr) throws InterruptedException, IOException {
 
         SessionFactory sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
 
