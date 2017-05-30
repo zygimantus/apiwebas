@@ -72,14 +72,36 @@ function SwapiController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBuil
     .withOption('order', [])
     .withDisplayLength(10);
   vm.dtColumns = [
-    DTColumnBuilder.newColumn(null).withOption('defaultContent', ''),
+    DTColumnBuilder.newColumn(null).withClass('details-control').withOption('defaultContent', ''),
     DTColumnBuilder.newColumn('episodeId').withTitle('Episode ID'),
     DTColumnBuilder.newColumn('title').withTitle('Title'),
     DTColumnBuilder.newColumn('director').withTitle('Director'),
     DTColumnBuilder.newColumn('producer').withTitle('Producer'),
-    DTColumnBuilder.newColumn('release_date').withTitle('Release Date'),
-    DTColumnBuilder.newColumn('openingCrawl').withTitle('openingCrawl').withOption('sWidth', '50%')
+    DTColumnBuilder.newColumn('release_date').withTitle('Release Date')
   ];
+
+  vm.dtInstance = {};
+  vm.dtInstanceCallback = dtInstanceCallback;
+
+  function dtInstanceCallback(dtInstance) {
+    vm.dtInstance = dtInstance;
+  }
+
+  $('#swapi').on('click', 'td.details-control', function() {
+    var tr = $(this).closest('tr');
+    var row = vm.dtInstance.DataTable.row(tr);
+
+    if (row.child.isShown()) {
+      // This row is already open - close it
+      row.child.hide();
+      tr.removeClass('shown');
+    } else {
+      // Open this row
+      row.child(row.data().openingCrawl).show();
+      tr.addClass('shown');
+    }
+    // modification after creation
+  });
 }
 
 function CharactersController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBuilder, DTColumnBuilder, UtilService) {
@@ -119,26 +141,26 @@ function CharactersController($scope, $compile, $http, $sce, $mdDialog, DTOption
     DTColumnBuilder.newColumn('modified').withTitle('Modified')
   ];
 
-    showCharInfo = function(ev, id) {
-      var characterId = id;
-      var data;
-      $http.get('/api/marvel/characters/' + characterId).then(function(response) {
-        data = response.data.response;
+  showCharInfo = function(ev, id) {
+    var characterId = id;
+    var data;
+    $http.get('/api/marvel/characters/' + characterId).then(function(response) {
+      data = response.data.response;
 
-        $mdDialog.show({
-            controller: DialogController,
-            templateUrl: 'templates/dialogChar.html',
-            parent: angular.element(document.body),
-            // targetEvent: ev,
-            clickOutsideToClose: true,
-            fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-          })
-          .then(function(answer) {
-            $scope.status = 'You said the information was "' + answer + '".';
-          }, function() {
-            $scope.status = 'You cancelled the dialog.';
-          });
-      });
+      $mdDialog.show({
+          controller: DialogController,
+          templateUrl: 'templates/dialogChar.html',
+          parent: angular.element(document.body),
+          // targetEvent: ev,
+          clickOutsideToClose: true,
+          fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+        })
+        .then(function(answer) {
+          $scope.status = 'You said the information was "' + answer + '".';
+        }, function() {
+          $scope.status = 'You cancelled the dialog.';
+        });
+    });
 
     function DialogController($scope, $mdDialog) {
       $scope.data = data;
@@ -155,8 +177,8 @@ function CharactersController($scope, $compile, $http, $sce, $mdDialog, DTOption
   }
 
   function createdRow(row, data, dataIndex) {
-      // Recompiling so we can bind Angular directive to the DT
-      $compile(angular.element(row).contents())($scope);
+    // Recompiling so we can bind Angular directive to the DT
+    $compile(angular.element(row).contents())($scope);
   }
 
   function actionsHtml(data, type, full, meta) {
@@ -221,26 +243,26 @@ function ComicsController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBui
     DTColumnBuilder.newColumn('format').withTitle('Format')
   ];
 
-    showComicInfo = function(ev, id) {
-      var comicId = id;
-      var data;
-      $http.get('/api/marvel/comics/' + comicId).then(function(response) {
-        data = response.data.response;
+  showComicInfo = function(ev, id) {
+    var comicId = id;
+    var data;
+    $http.get('/api/marvel/comics/' + comicId).then(function(response) {
+      data = response.data.response;
 
-        $mdDialog.show({
-            controller: DialogController,
-            templateUrl: 'templates/dialogChar.html',
-            parent: angular.element(document.body),
-            // targetEvent: ev,
-            clickOutsideToClose: true,
-            fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-          })
-          .then(function(answer) {
-            $scope.status = 'You said the information was "' + answer + '".';
-          }, function() {
-            $scope.status = 'You cancelled the dialog.';
-          });
-      });
+      $mdDialog.show({
+          controller: DialogController,
+          templateUrl: 'templates/dialogChar.html',
+          parent: angular.element(document.body),
+          // targetEvent: ev,
+          clickOutsideToClose: true,
+          fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+        })
+        .then(function(answer) {
+          $scope.status = 'You said the information was "' + answer + '".';
+        }, function() {
+          $scope.status = 'You cancelled the dialog.';
+        });
+    });
 
     function DialogController($scope, $mdDialog) {
       $scope.data = data;
@@ -257,8 +279,8 @@ function ComicsController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBui
   }
 
   function createdRow(row, data, dataIndex) {
-      // Recompiling so we can bind Angular directive to the DT
-      $compile(angular.element(row).contents())($scope);
+    // Recompiling so we can bind Angular directive to the DT
+    $compile(angular.element(row).contents())($scope);
   }
 
   function actionsHtml(data, type, full, meta) {
