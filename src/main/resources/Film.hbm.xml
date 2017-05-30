@@ -10,6 +10,13 @@
         <property name="producer" column="PRODUCER" access="field" type="string"></property>        
         <property name="release_date" column="RELEASE_DATE" access="field" type="string"></property>        
         <property name="created" column="CREATED" access="field" type="string"></property>        
-        <property name="edited" column="EDITED" access="field" type="string"></property>        
+        <property name="edited" column="EDITED" access="field" type="string"></property>
+        <list name="speciesUrls" access="field" table="SWAPI_SPECIES">
+            <!--cascade="all" inverse="false" lazy="true">-->
+            <!--TODO user foreign key here-->
+            <key column="episodeId"></key>  
+            <index column="type"></index>  
+            <element column="SPECIES_URL" type="string"/>
+        </list>
     </class>
 </hibernate-mapping>
