@@ -2,6 +2,7 @@ package com.zygimantus.apiwebas.api;
 
 import com.swapi.models.Film;
 import com.swapi.models.SWModelList;
+import com.swapi.models.Species;
 import com.swapi.sw.StarWars;
 import com.swapi.sw.StarWarsApi;
 import java.io.IOException;
@@ -28,6 +29,15 @@ public class SwApiConsumer extends WsConsumer {
         Call<SWModelList<Film>> films = api.getAllFilms(1);
 
         SWModelList<Film> resp = films.execute().body();
+
+        return resp;
+    }
+
+    public SWModelList<Species> getSpeciesList() throws InterruptedException, IOException {
+
+        Call<SWModelList<Species>> films = api.getAllSpecies(1);
+
+        SWModelList<Species> resp = films.execute().body();
 
         return resp;
     }

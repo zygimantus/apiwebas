@@ -99,8 +99,26 @@ function SwapiController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBuil
       // Open this row
       row.child(row.data().openingCrawl).show();
       tr.addClass('shown');
+
+      // add table with links
+      row.child(createTable(row.data().speciesUrls)).show();      
     }
-    // modification after creation
+    function createTable(data) {
+      var table = $('<table class="table"></table>');
+      $.each(data, function(i, list) {
+        /* filling table */
+        var $tr = $('<tr id="' + i + '">');
+        $tr.append($('<td>').text(i));
+
+        if (typeof list == 'string' || typeof list == 'number') {
+          $tr.append($('<td>').text(list));
+        } else {
+          $tr.append($('<td>').append(createTable(list)));
+        }
+        table.append($tr);
+      });
+      return table;
+    }
   });
 }
 

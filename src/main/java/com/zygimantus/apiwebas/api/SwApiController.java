@@ -2,6 +2,7 @@ package com.zygimantus.apiwebas.api;
 
 import com.swapi.models.Film;
 import com.swapi.models.SWModelList;
+import com.swapi.models.Species;
 import com.zygimantus.apiwebas.ApiwebasRepository;
 import com.zygimantus.apiwebas.model.Apiwebas;
 import com.zygimantus.apiwebas.model.DataTablesRequest;
@@ -102,6 +103,31 @@ public class SwApiController extends ApiController<SWModelList> {
         apiwebasRepository.save(apiwebas);
 
         return films;
+    }
+
+    @RequestMapping(value = "species", method = RequestMethod.PUT)
+    protected ArrayList<Species> storeSpecies() throws InterruptedException, IOException {
+
+        SWModelList<Species> modelList = swApiConsumer.getSpeciesList();
+
+        ArrayList<Species> species = modelList.results;
+
+        SessionFactory sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
+
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        species.forEach((film) -> {
+            session.merge(film);
+        });
+
+        transaction.commit();
+
+        Apiwebas apiwebas = new Apiwebas(Resource.SWAPI_SPECIES, true);
+
+        apiwebasRepository.save(apiwebas);
+
+        return species;
     }
 
 }
