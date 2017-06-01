@@ -188,7 +188,7 @@
         <dependency>
             <groupId>com.swapi</groupId>
             <artifactId>swapi</artifactId>
-            <version>1.0</version>
+            <version>1.1</version>
         </dependency>
         <dependency>
             <groupId>com.doeiqts</groupId>

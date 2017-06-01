@@ -72,7 +72,7 @@ function SwapiController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBuil
     .withOption('order', [])
     .withDisplayLength(10);
   vm.dtColumns = [
-    DTColumnBuilder.newColumn(null).withClass('details-control').withOption('defaultContent', ''),
+    DTColumnBuilder.newColumn(null).notSortable().withClass('details-control').withOption('defaultContent', ''),
     DTColumnBuilder.newColumn('episodeId').withTitle('Episode ID'),
     DTColumnBuilder.newColumn('title').withTitle('Title'),
     DTColumnBuilder.newColumn('director').withTitle('Director'),
@@ -103,6 +103,7 @@ function SwapiController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBuil
       // add table with links
       row.child(createTable(row.data().speciesUrls)).show();
     }
+
     function createTable(data) {
       var table = $('<table class="table"></table>');
       $.each(data, function(i, list) {

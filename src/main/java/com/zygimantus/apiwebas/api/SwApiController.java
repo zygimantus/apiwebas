@@ -70,7 +70,29 @@ public class SwApiController extends ApiController<SWModelList> {
 
             LOGGER.debug("was not empty");
 
-            films = session.createQuery("FROM Film").getResultList();
+            int columnId = dtr.getOrders().get(0).getColumn();
+            String columnString = "";
+            switch (columnId) {
+                case 1:
+                    columnString = "FILM_ID";
+                    break;
+                case 2:
+                    columnString = "TITLE";
+                    break;
+                case 3:
+                    columnString = "DIRECTOR";
+                    break;
+                case 4:
+                    columnString = "PRODUCER";
+                    break;
+                case 5:
+                    columnString = "RELEASE_DATE";
+                    break;
+            }
+            String sortOrder = dtr.getOrders().get(0).getDir();
+            String string = String.format("FROM Film ORDER by %s %s", columnString, sortOrder);
+
+            films = session.createQuery(string).getResultList();
         }
 
         SWModelList sWModelList = new SWModelList();

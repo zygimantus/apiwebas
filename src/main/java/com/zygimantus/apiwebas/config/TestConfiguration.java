@@ -50,7 +50,7 @@ public class TestConfiguration {
         sessionFactory.setDataSource(dataSource);
         sessionFactory.setPackagesToScan("com.zygimantus.apiwebas.model");
 
-        sessionFactory.setMappingResources(new String[]{"Film.hbm.xml"});
+        sessionFactory.setMappingResources(new String[]{"Swapi.hbm.xml"});
 
         sessionFactory.getHibernateProperties().put("hibernate.show_sql", "true");
         sessionFactory.getHibernateProperties().put("hibernate.hbm2ddl.auto", "create");
