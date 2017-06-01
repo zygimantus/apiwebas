@@ -101,7 +101,7 @@ function SwapiController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBuil
       tr.addClass('shown');
 
       // add table with links
-      row.child(createTable(row.data().speciesUrls)).show();      
+      row.child(createTable(row.data().speciesUrls)).show();
     }
     function createTable(data) {
       var table = $('<table class="table"></table>');
@@ -111,7 +111,11 @@ function SwapiController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBuil
         $tr.append($('<td>').text(i));
 
         if (typeof list == 'string' || typeof list == 'number') {
-          $tr.append($('<td>').text(list));
+          var a = $('<a />');
+          a.attr('href', list);
+          a.text(list);
+
+          $tr.append($('<td>').append(a));
         } else {
           $tr.append($('<td>').append(createTable(list)));
         }
