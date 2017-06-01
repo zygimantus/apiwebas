@@ -115,6 +115,64 @@ function SwapiController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBuil
           var a = $('<a />');
           a.attr('href', list);
           a.text(list);
+          a.click(function(ev) {
+
+            ev.preventDefault();
+            var speciesId = this.href.replace(/\D+/g, '');
+            $http.get('/api/swapi/species/' + speciesId).then(function(response) {
+
+              data = response;
+
+              $mdDialog.show({
+                  controller: DialogController,
+                  templateUrl: 'templates/dialogSpecies.html',
+                  parent: angular.element(document.body),
+                  // targetEvent: ev,
+                  clickOutsideToClose: true,
+                  fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                })
+                .then(function(answer) {
+                  $scope.status = 'You said the information was "' + answer + '".';
+                }, function() {
+                  $scope.status = 'You cancelled the dialog.';
+                });
+
+            });
+
+            function DialogController($scope, $mdDialog) {
+              $scope.data = data;
+              // $('#speciesInfo').append(syntaxHighlight(JSON.stringify(data)));
+              $scope.hide = function() {
+                $mdDialog.hide();
+              };
+              $scope.cancel = function() {
+                $mdDialog.cancel();
+              };
+              $scope.answer = function(answer) {
+                $mdDialog.hide(answer);
+              };
+            }
+
+            function syntaxHighlight(json) {
+              json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+              return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(match) {
+                var cls = 'number';
+                if (/^"/.test(match)) {
+                  if (/:$/.test(match)) {
+                    cls = 'key';
+                  } else {
+                    cls = 'string';
+                  }
+                } else if (/true|false/.test(match)) {
+                  cls = 'boolean';
+                } else if (/null/.test(match)) {
+                  cls = 'null';
+                }
+                return '<span class="' + cls + '">' + match + '</span>';
+              });
+            }
+
+          });
 
           $tr.append($('<td>').append(a));
         } else {

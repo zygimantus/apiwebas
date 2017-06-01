@@ -15,6 +15,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -70,27 +71,30 @@ public class SwApiController extends ApiController<SWModelList> {
 
             LOGGER.debug("was not empty");
 
-            int columnId = dtr.getOrders().get(0).getColumn();
-            String columnString = "";
-            switch (columnId) {
-                case 1:
-                    columnString = "FILM_ID";
-                    break;
-                case 2:
-                    columnString = "TITLE";
-                    break;
-                case 3:
-                    columnString = "DIRECTOR";
-                    break;
-                case 4:
-                    columnString = "PRODUCER";
-                    break;
-                case 5:
-                    columnString = "RELEASE_DATE";
-                    break;
+            String string = "FROM Film";
+            if (!dtr.getOrders().isEmpty()) {
+                int columnId = dtr.getOrders().get(0).getColumn();
+                String columnString = "";
+                switch (columnId) {
+                    case 1:
+                        columnString = "FILM_ID";
+                        break;
+                    case 2:
+                        columnString = "TITLE";
+                        break;
+                    case 3:
+                        columnString = "DIRECTOR";
+                        break;
+                    case 4:
+                        columnString = "PRODUCER";
+                        break;
+                    case 5:
+                        columnString = "RELEASE_DATE";
+                        break;
+                }
+                String sortOrder = dtr.getOrders().get(0).getDir();
+                string = String.format("FROM Film ORDER by %s %s", columnString, sortOrder);
             }
-            String sortOrder = dtr.getOrders().get(0).getDir();
-            String string = String.format("FROM Film ORDER by %s %s", columnString, sortOrder);
 
             films = session.createQuery(string).getResultList();
         }
@@ -149,6 +153,26 @@ public class SwApiController extends ApiController<SWModelList> {
 
         apiwebasRepository.save(apiwebas);
 
+        return species;
+    }
+
+    @RequestMapping(value = "species/{speciesId}", method = RequestMethod.GET)
+    protected Species storeSpecies(@PathVariable int speciesId) throws InterruptedException, IOException {
+
+        Species species = swApiConsumer.getSpecies(speciesId);
+
+//        SessionFactory sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
+//
+//        Session session = sessionFactory.openSession();
+//        Transaction transaction = session.beginTransaction();
+//
+//        species.forEach((film) -> {
+//            session.merge(film);
+//        });
+//
+//        transaction.commit();
+//        Apiwebas apiwebas = new Apiwebas(Resource.SWAPI_SPECIES, true);
+//        apiwebasRepository.save(apiwebas);
         return species;
     }
 

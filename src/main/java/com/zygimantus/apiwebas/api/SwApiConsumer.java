@@ -42,4 +42,13 @@ public class SwApiConsumer extends WsConsumer {
         return resp;
     }
 
+    public Species getSpecies(int speciesId) throws InterruptedException, IOException {
+
+        Call<Species> call = api.getSpecies(speciesId);
+
+        Species species = call.execute().body();
+
+        return species;
+    }
+
 }
