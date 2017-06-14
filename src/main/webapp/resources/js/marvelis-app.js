@@ -136,11 +136,11 @@ function SwapiController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBuil
                 }, function() {
                   $scope.status = 'You cancelled the dialog.';
                 });
-
             });
 
-            function DialogController($scope, $mdDialog) {
-              $scope.data = data;
+            function DialogController($scope, $mdDialog, $sce) {
+              // $scope.data = data;
+              $scope.data = $sce.trustAsHtml(syntaxHighlight(JSON.stringify(data)));
               // $('#speciesInfo').append(syntaxHighlight(JSON.stringify(data)));
               $scope.hide = function() {
                 $mdDialog.hide();
