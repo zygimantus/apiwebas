@@ -11,10 +11,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class PokeTcgApiConsumer extends WsConsumer {
 
-    CardFactory cardFactory = new CardFactory();
+    private CardFactory cardFactory;
 
     @Override
     protected void init() {
+        cardFactory = new CardFactory();
     }
 
     public Card getCard(String id) {
