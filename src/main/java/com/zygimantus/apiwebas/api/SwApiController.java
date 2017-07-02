@@ -100,8 +100,8 @@ public class SwApiController extends ApiController<SWModelList> {
         }
 
         SWModelList sWModelList = new SWModelList();
-        sWModelList.count = films.size();
-        sWModelList.results = (ArrayList) films;
+        sWModelList.setCount(films.size());
+        sWModelList.setResults((ArrayList) films);
 
         return sWModelList;
     }
@@ -111,7 +111,7 @@ public class SwApiController extends ApiController<SWModelList> {
 
         SWModelList<Film> modelList = swApiConsumer.getFilmsList();
 
-        ArrayList<Film> films = modelList.results;
+        ArrayList<Film> films = modelList.getResults();
 
         SessionFactory sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
 
@@ -136,7 +136,7 @@ public class SwApiController extends ApiController<SWModelList> {
 
         SWModelList<Species> modelList = swApiConsumer.getSpeciesList();
 
-        ArrayList<Species> species = modelList.results;
+        ArrayList<Species> species = modelList.getResults();
 
         SessionFactory sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
 
