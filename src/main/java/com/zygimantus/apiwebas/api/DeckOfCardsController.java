@@ -1,6 +1,6 @@
 package com.zygimantus.apiwebas.api;
 
-import com.zygimantus.deckofcardsapi.DeckResponse;
+import com.deckofcards.DeckResponse;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

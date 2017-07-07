@@ -1,8 +1,8 @@
 package com.zygimantus.apiwebas.api;
 
-import com.zygimantus.deckofcardsapi.DeckOfCards;
-import com.zygimantus.deckofcardsapi.DeckOfCardsApi;
-import com.zygimantus.deckofcardsapi.DeckResponse;
+import com.deckofcards.DeckOfCards;
+import com.deckofcards.DeckOfCardsApi;
+import com.deckofcards.DeckResponse;
 import java.io.IOException;
 import org.springframework.stereotype.Service;
 import retrofit2.Call;
