@@ -32,4 +32,13 @@ public class DeckOfCardsConsumer extends WsConsumer {
         return resp.body();
     }
 
+    public DeckResponse drawCard(String deckId, int count) throws InterruptedException, IOException {
+
+        Call<DeckResponse> newDeck = api.drawCard(deckId, count);
+
+        Response<DeckResponse> resp = newDeck.execute();
+
+        return resp.body();
+    }
+
 }

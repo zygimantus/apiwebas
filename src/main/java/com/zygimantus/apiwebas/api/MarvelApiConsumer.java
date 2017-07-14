@@ -39,6 +39,10 @@ public class MarvelApiConsumer extends WsConsumer {
         marvelApiConfig = new MarvelApiConfig.Builder(publicKey, privateKey).debug().build();
     }
 
+    public String[] getKeys() {
+        return new String[]{appConfig.publicKey(), appConfig.privateKey()};
+    }
+
     public void updateKeys(String publicKey, String privateKey) {
         appConfig.setProperty("publicKey", publicKey);
         appConfig.setProperty("privateKey", privateKey);

@@ -9,6 +9,20 @@
       </div>
     </md-content>
   </md-tab>
+  <md-tab label="Deck">
+    <md-content class="md-padding">
+      <h1 class="md-display-2 text-center">DECK</h1>
+      <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+        <div>
+          <form ng-submit="generate()" name="generateForm">
+            <md-button ng-click="generate()" class="md-primary btn btn-primary">generate</md-button>
+            <md-button id="btnDrawCards" ng-click="drawCards()" class="md-primary btn btn-primary hidden">draw cards</md-button>
+          </form>
+        </div>
+      </md-content>
+      <pre ng-bind-html="data"></pre>
+    </md-content>
+  </md-tab>
   <md-tab label="Characters">
     <md-content class="md-padding">
       <h1 class="md-display-2">Characters</h1>
@@ -82,23 +96,25 @@
   <md-tab label="settings">
     <md-content class="md-padding">
       <h1 class="md-display-2">Settings</h1>
-      <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
-        <div>
-          <form ng-submit="save()" name="settingsForm">
-            <md-input-container>
-              <label>public_key</label>
-              <input ng-model="key.public">
-            </md-input-container>
-            <md-input-container>
-              <label>private_key</label>
-              <input ng-model="key.private">
-            </md-input-container>
-            <div>
-              <md-button ng-click="save()" class="md-primary btn btn-primary">save</md-button>
-            </div>
-          </form>
-        </div>
-      </md-content>
+      <div ng-controller="SettingsController as setContr">
+        <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+          <div>
+            <form ng-submit="save()" name="settingsForm">
+              <md-input-container>
+                <label>public_key</label>
+                <input ng-model="key.public">
+              </md-input-container>
+              <md-input-container>
+                <label>private_key</label>
+                <input ng-model="key.private">
+              </md-input-container>
+              <div>
+                <md-button ng-click="save()" class="md-primary btn btn-primary">save</md-button>
+              </div>
+            </form>
+          </div>
+        </md-content>
+      </div>
     </md-content>
   </md-tab>
   <md-tab label="logout" ng-click="logout()">

@@ -5,6 +5,7 @@ angular.module("marvelisApp", ['ngMaterial', 'datatables', 'frontendServices', '
   .controller('CharactersController', CharactersController)
   .controller('ComicsController', ComicsController)
   .controller('SeriesController', SeriesController)
+  .controller('SettingsController', SettingsController)
   .config(function($mdThemingProvider) {
     $mdThemingProvider.theme('docs-dark')
       .primaryPalette('brown')
@@ -24,15 +25,46 @@ function MarvelController($scope, $templateRequest, $sce, $compile, $http, UserS
       id: ''
     };
 
+    var deckId = '';
+
+    $http.get('/api/marvel/settings/').then(function(response) {
+      $scope.key = {
+        public: response.data[0],
+        private: response.data[1]
+      };
+    });
+
     // TODO validation of keys...
+    $scope.generate = function() {
+      $http.get('/api/cards/deck').then(function(response) {
+
+        deckId = response.data.deckId;
+
+        var str = JSON.stringify(response, undefined, 4);
+        $scope.data = $sce.trustAsHtml(syntaxHighlight(str));
+
+        $('#btnDrawCards').removeClass('hidden');
+      });
+    };
+
+    $scope.drawCards = function() {
+      $http.get('/api/cards/card/' + deckId + '/1').then(function(response) {
+
+        var str = JSON.stringify(response, undefined, 4);
+        $scope.data = $sce.trustAsHtml(syntaxHighlight(str));
+
+        $('#btnDrawCards').removeClass('hidden');
+      });
+    };
+
     $scope.save = function() {
       $http.get('/api/marvel/settings/' + $scope.key.public + '/' + $scope.key.private).then(function(response) {
         alert(response);
       });
     };
 
-    $scope.search = function(characterId) {
-      $http.get('/api/marvel/characters/' + characterId).then(function(response) {
+    $scope.search = function() {
+      $http.get('/api/marvel/characters/' + $scope.character.id).then(function(response) {
         var str = JSON.stringify(response.data, undefined, 4);
         $scope.data = $sce.trustAsHtml(syntaxHighlight(str));
       });
@@ -45,6 +77,15 @@ function MarvelController($scope, $templateRequest, $sce, $compile, $http, UserS
   $scope.logout = function() {
     UserService.logout();
   }
+
+}
+
+function SettingsController($scope, $templateRequest, $sce, $compile, $http, UserService) {
+
+  $http.get('/api/marvel/settings/').then(function(response) {
+    $scope.key.public = response.data[0];
+    $scope.key.private = response.data[1];
+  });
 
 }
 

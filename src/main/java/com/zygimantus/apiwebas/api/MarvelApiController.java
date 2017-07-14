@@ -37,6 +37,14 @@ public class MarvelApiController extends ApiController<MarvelResponse> {
         return new MarvelResponse();
     }
 
+    @RequestMapping("settings")
+    public String[] settings() {
+
+        String[] keys = marvelApiConsumer.getKeys();
+
+        return keys;
+    }
+
     @RequestMapping("settings/{public}/{private}")
     public JsonResponse settings(@PathVariable("public") String publicKey, @PathVariable("private") String privateKey) {
 
