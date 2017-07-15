@@ -28,4 +28,14 @@ public class TheMovieDBConsumer extends WsConsumer {
         return movie;
     }
 
+    public String[] getKeys() {
+        return new String[]{appConfig.tmdbMoviesApiKey()};
+    }
+
+    public void updateKeys(String key) {
+        appConfig.setProperty("tmdbMoviesApiKey", key);
+
+        init();
+    }
+
 }
