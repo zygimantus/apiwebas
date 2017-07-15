@@ -43,6 +43,7 @@ function MarvelController($scope, $templateRequest, $sce, $compile, $http, UserS
         var str = JSON.stringify(response, undefined, 4);
         $scope.data = $sce.trustAsHtml(syntaxHighlight(str));
 
+        $('#deckInfo').removeClass('hidden');
         $('#btnDrawCards').removeClass('hidden');
       });
     };
@@ -50,10 +51,16 @@ function MarvelController($scope, $templateRequest, $sce, $compile, $http, UserS
     $scope.drawCards = function() {
       $http.get('/api/cards/card/' + deckId + '/1').then(function(response) {
 
-        var str = JSON.stringify(response, undefined, 4);
-        $scope.data = $sce.trustAsHtml(syntaxHighlight(str));
+        $('#deckInfo').addClass('hidden');
+        $('#card').removeClass('hidden');
 
-        $('#btnDrawCards').removeClass('hidden');
+        Object.keys(response.data.cards).forEach(function(key) {
+
+          $('<img />', {
+            src: response.data.cards[key].image
+          }).appendTo($('#card'));
+
+        });
       });
     };
 
