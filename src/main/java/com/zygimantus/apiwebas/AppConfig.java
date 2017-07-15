@@ -18,4 +18,7 @@ public interface AppConfig extends Mutable {
     @DefaultValue("")
     String privateKey();
 
+    @DefaultValue("")
+    String tmdbMoviesApiKey();
+
 }
