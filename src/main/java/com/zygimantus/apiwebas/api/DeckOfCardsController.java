@@ -14,10 +14,20 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("api/cards")
-public class DeckOfCardsController {
+public class DeckOfCardsController extends ApiController<DeckResponse> {
 
     @Autowired
     private DeckOfCardsConsumer deckOfCardsConsumer;
+
+    @Override
+    protected void init() {
+    }
+
+    @Override
+    protected DeckResponse page() {
+
+        return new DeckResponse();
+    }
 
     /**
      *
