@@ -15,8 +15,11 @@
       <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
         <div>
           <form ng-submit="generate()" name="generateForm">
-            <md-button ng-click="generate()" class="md-primary btn btn-primary">generate</md-button>
-            <md-button id="btnDrawCards" ng-click="drawCards()" class="md-primary btn btn-primary hidden">draw cards</md-button>
+            <div layout-gt-sm="row">
+              <md-button ng-click="generate()" class="md-primary btn btn-primary" flex-gt-sm>generate</md-button>
+              <md-button id="btnDrawCards" ng-click="drawCards()" class="md-primary btn btn-primary hidden" flex-gt-sm>draw cards</md-button>
+              <input ng-model="numberOfCards" type="number" step="1">
+            </div>
           </form>
         </div>
       </md-content>

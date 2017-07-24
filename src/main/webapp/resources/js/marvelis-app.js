@@ -49,7 +49,7 @@ function MarvelController($scope, $templateRequest, $sce, $compile, $http, UserS
     };
 
     $scope.drawCards = function() {
-      $http.get('/api/cards/card/' + deckId + '/1').then(function(response) {
+      $http.get('/api/cards/card/' + deckId + '/' + $scope.numberOfCards).then(function(response) {
 
         $('#deckInfo').addClass('hidden');
         $('#card').removeClass('hidden');
