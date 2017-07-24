@@ -37,9 +37,9 @@ public class TestConfiguration {
     public DriverManagerDataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(org.hsqldb.jdbcDriver.class.getName());
-        dataSource.setUrl("jdbc:hsqldb:hsql://localhost:9001/xdb");
-        dataSource.setUsername("SA");
-//        dataSource.setPassword("apiwebasAdmin");
+        dataSource.setUrl("jdbc:hsqldb:mem:apiwebas");
+        dataSource.setUsername("admin");
+        dataSource.setPassword("apiwebasAdmin");
         return dataSource;
     }
 
