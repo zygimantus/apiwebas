@@ -1,27 +1,46 @@
 angular.module('frontendServices', [])
-  // .service("worldsService", [MyDataService])
   .service("UtilService", function($http) {
-    this.fillRow = function(getPath, row) {
-      function createTable(data) {
-        var table = $('<table class="table"></table>');
-        $.each(data, function(i, list) {
-          /* filling table */
-          var $tr = $('<tr id="' + i + '">');
-          $tr.append($('<td>').text(i));
-
-          if (typeof list == 'string' || typeof list == 'number') {
-            $tr.append($('<td>').text(list));
-          } else {
-            $tr.append($('<td>').append(createTable(list)));
+    return {
+      syntaxHighlight: function(json) {
+        json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(match) {
+          var cls = 'number';
+          if (/^"/.test(match)) {
+            if (/:$/.test(match)) {
+              cls = 'key';
+            } else {
+              cls = 'string';
+            }
+          } else if (/true|false/.test(match)) {
+            cls = 'boolean';
+          } else if (/null/.test(match)) {
+            cls = 'null';
           }
-          table.append($tr);
+          return '<span class="' + cls + '">' + match + '</span>';
         });
-        return table;
-      }
+      },
+      fillRow: function(getPath, row) {
+        function createTable(data) {
+          var table = $('<table class="table"></table>');
+          $.each(data, function(i, list) {
+            /* filling table */
+            var $tr = $('<tr id="' + i + '">');
+            $tr.append($('<td>').text(i));
 
-      $http.get('/api/marvel/' + getPath + '/' + row.data().id).then(function(data) {
-        row.child(createTable(data.data.response)).show();
-      });
+            if (typeof list == 'string' || typeof list == 'number') {
+              $tr.append($('<td>').text(list));
+            } else {
+              $tr.append($('<td>').append(createTable(list)));
+            }
+            table.append($tr);
+          });
+          return table;
+        }
+
+        $http.get('/api/marvel/' + getPath + '/' + row.data().id).then(function(data) {
+          row.child(createTable(data.data.response)).show();
+        });
+      }
     }
   })
   .service('ComicsService', function($http, $q, DTOptionsBuilder, DTColumnBuilder) {

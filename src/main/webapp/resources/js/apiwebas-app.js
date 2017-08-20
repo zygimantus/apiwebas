@@ -1,5 +1,4 @@
-angular.module("apiwebasApp", ['ngMaterial', 'datatables', 'frontendServices', 'spring-security-csrf-token-interceptor'])
-  .service("worldsService", [MyDataService])
+var app = angular.module("apiwebasApp", ['ngMaterial', 'datatables', 'frontendServices', 'spring-security-csrf-token-interceptor'])
   .controller('ApiwebasController', ApiwebasController)
   .controller('SwapiController', SwapiController)
   .controller('CharactersController', CharactersController)
@@ -11,11 +10,9 @@ angular.module("apiwebasApp", ['ngMaterial', 'datatables', 'frontendServices', '
       .primaryPalette('brown')
       .accentPalette('red');
     // .dark();
-    console.log('configuring application');
-  })
-  .run(["$rootScope", "$window", startup]);
+  });
 
-function ApiwebasController($scope, $templateRequest, $sce, $compile, $http, UserService) {
+function ApiwebasController($scope, $templateRequest, $sce, $compile, $http, UtilService, UserService) {
   var templateUrl = $sce.getTrustedResourceUrl('templates/tabs.html');
 
   $templateRequest(templateUrl).then(function(template) {
@@ -41,7 +38,7 @@ function ApiwebasController($scope, $templateRequest, $sce, $compile, $http, Use
         deckId = response.data.deckId;
 
         var str = JSON.stringify(response, undefined, 4);
-        $scope.data = $sce.trustAsHtml(syntaxHighlight(str));
+        $scope.data = $sce.trustAsHtml(UtilService.syntaxHighlight(str));
 
         $('#deckInfo').removeClass('hidden');
         $('#btnDrawCards').removeClass('hidden');
@@ -73,14 +70,14 @@ function ApiwebasController($scope, $templateRequest, $sce, $compile, $http, Use
     $scope.search = function() {
       $http.get('/api/marvel/characters/' + $scope.character.id).then(function(response) {
         var str = JSON.stringify(response.data, undefined, 4);
-        $scope.data = $sce.trustAsHtml(syntaxHighlight(str));
+        $scope.data = $sce.trustAsHtml(UtilService.syntaxHighlight(str));
       });
     };
 
     $scope.searchMovie = function() {
         $http.get('/api/tmdb/movie/' + $scope.movie.id).then(function(response) {
         var str = JSON.stringify(response.data, undefined, 4);
-        $scope.data = $sce.trustAsHtml(syntaxHighlight(str));
+        $scope.data = $sce.trustAsHtml(UtilService.syntaxHighlight(str));
       });
     };
 
@@ -195,8 +192,7 @@ function SwapiController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBuil
 
             function DialogController($scope, $mdDialog, $sce) {
               // $scope.data = data;
-              $scope.data = $sce.trustAsHtml(syntaxHighlight(JSON.stringify(data)));
-              // $('#speciesInfo').append(syntaxHighlight(JSON.stringify(data)));
+              $scope.data = $sce.trustAsHtml(UtilService.syntaxHighlight(JSON.stringify(data)));
               $scope.hide = function() {
                 $mdDialog.hide();
               };
@@ -206,25 +202,6 @@ function SwapiController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBuil
               $scope.answer = function(answer) {
                 $mdDialog.hide(answer);
               };
-            }
-
-            function syntaxHighlight(json) {
-              json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-              return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(match) {
-                var cls = 'number';
-                if (/^"/.test(match)) {
-                  if (/:$/.test(match)) {
-                    cls = 'key';
-                  } else {
-                    cls = 'string';
-                  }
-                } else if (/true|false/.test(match)) {
-                  cls = 'boolean';
-                } else if (/null/.test(match)) {
-                  cls = 'null';
-                }
-                return '<span class="' + cls + '">' + match + '</span>';
-              });
             }
 
           });
@@ -582,4 +559,8 @@ $(document).ready(function() {
       }
     });
   });
+});
+
+app.run(function($rootScope) {
+  // ...
 });
