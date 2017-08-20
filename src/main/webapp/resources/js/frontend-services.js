@@ -43,6 +43,47 @@ angular.module('frontendServices', [])
       }
     }
   })
+  .service("DatatablesService", function($http) {
+    return {
+      initDatatablesOptions: function(DTOptionsBuilder, pUrl, orderArray) {
+        return DTOptionsBuilder.newOptions()
+          .withOption('ajax', {
+            url: pUrl,
+            type: 'post',
+            data: function(data) {
+              return JSON.stringify(data);
+            },
+            dataType: "json",
+            contentType: 'application/json;charset=UTF-8'
+          })
+          .withDataProp(function(json) {
+            if (pUrl.includes('swapi')) {
+              json.recordsTotal = json.count;
+              json.recordsFiltered = json.count;
+              return json.results;
+            } else if (pUrl.includes('/marvel/characters')) {
+              json.recordsTotal = json.response.total;
+              json.recordsFiltered = json.response.total;
+              return json.response.characters;
+            } else if (pUrl.includes('/marvel/comics')) {
+              json.recordsTotal = json.response.total;
+              json.recordsFiltered = json.response.total;
+              return json.response.comics;
+            } else if (pUrl.includes('/marvel/series')) {
+              json.recordsTotal = json.response.total;
+              json.recordsFiltered = json.response.total;
+              return json.response.series;
+            }
+          })
+          .withOption('processing', true)
+          .withOption('serverSide', true)
+          .withOption('saveState', true)
+          .withPaginationType('full_numbers')
+          .withOption('order', orderArray)
+          .withDisplayLength(10);
+      }
+    }
+  })
   .service('ComicsService', function($http, $q, DTOptionsBuilder, DTColumnBuilder) {
     this.init = function() {
 

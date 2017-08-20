@@ -100,29 +100,11 @@ function SettingsController($scope, $templateRequest, $sce, $compile, $http, Use
 
 }
 
-function SwapiController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBuilder, DTColumnBuilder, UtilService) {
+function SwapiController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBuilder, DTColumnBuilder, DatatablesService, UtilService) {
   var vm = this;
-  vm.dtOptions = DTOptionsBuilder.newOptions()
-    .withOption('ajax', {
-      url: '/api/swapi/films',
-      type: 'post',
-      data: function(data) {
-        return JSON.stringify(data);
-      },
-      dataType: "json",
-      contentType: 'application/json;charset=UTF-8'
-    })
-    .withDataProp(function(json) {
-      json.recordsTotal = json.count;
-      json.recordsFiltered = json.count;
-      return json.results;
-    })
-    .withOption('processing', true)
-    .withOption('serverSide', true)
-    .withOption('saveState', true)
-    .withPaginationType('full_numbers')
-    .withOption('order', [])
-    .withDisplayLength(10);
+
+  vm.dtOptions = DatatablesService.initDatatablesOptions(DTOptionsBuilder, '/api/swapi/films', []);
+
   vm.dtColumns = [
     DTColumnBuilder.newColumn(null).notSortable().withClass('details-control').withOption('defaultContent', ''),
     DTColumnBuilder.newColumn('episodeId').withTitle('Episode ID'),
@@ -217,35 +199,14 @@ function SwapiController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBuil
   });
 }
 
-function CharactersController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBuilder, DTColumnBuilder, UtilService) {
+function CharactersController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBuilder, DTColumnBuilder, DatatablesService, UtilService) {
   var vm = this;
   vm.message = '';
   vm.someClickHandler = someClickHandler;
   // FIXME still try to use csrf later...
-  vm.dtOptions = DTOptionsBuilder.newOptions()
-    .withOption('ajax', {
-      url: '/api/marvel/characters',
-      type: 'post',
-      data: function(data) {
-        return JSON.stringify(data);
-      },
-      dataType: "json",
-      contentType: 'application/json;charset=UTF-8'
-    })
-    .withDataProp(function(json) {
-      json.recordsTotal = json.response.total;
-      json.recordsFiltered = json.response.total;
-      return json.response.characters;
-    })
-    .withOption('processing', true)
-    .withOption('serverSide', true)
-    .withOption('saveState', true)
-    .withPaginationType('full_numbers')
-    .withOption('order', [2, 'asc'])
-    .withOption('createdRow', createdRow)
-    .withOption('rowCallback', rowCallback)
-    // .withOption('drawCallback', )
-    .withDisplayLength(10);
+
+  vm.dtOptions = DatatablesService.initDatatablesOptions(DTOptionsBuilder, '/api/marvel/characters', [2, 'asc']);
+
   vm.dtColumns = [
     DTColumnBuilder.newColumn(null).withOption('defaultContent', '').renderWith(actionsHtml),
     DTColumnBuilder.newColumn('id').withTitle('ID'),
@@ -319,33 +280,14 @@ function CharactersController($scope, $compile, $http, $sce, $mdDialog, DTOption
   }
 }
 
-function ComicsController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBuilder, DTColumnBuilder, UtilService) {
+function ComicsController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBuilder, DTColumnBuilder, DatatablesService, UtilService) {
   var vm = this;
   vm.message = '';
   vm.someClickHandler = someClickHandler;
   // FIXME still try to use csrf later...
-  vm.dtOptions = DTOptionsBuilder.newOptions()
-    .withOption('ajax', {
-      url: '/api/marvel/comics',
-      type: 'post',
-      data: function(data) {
-        return JSON.stringify(data);
-      },
-      dataType: "json",
-      contentType: 'application/json;charset=UTF-8'
-    })
-    .withDataProp(function(json) {
-      json.recordsTotal = json.response.total;
-      json.recordsFiltered = json.response.total;
-      return json.response.comics;
-    })
-    .withOption('processing', true)
-    .withOption('serverSide', true)
-    .withOption('saveState', true)
-    .withPaginationType('full_numbers')
-    .withOption('rowCallback', rowCallback)
-    .withOption('order', [2, 'asc'])
-    .withDisplayLength(10);
+
+  vm.dtOptions = DatatablesService.initDatatablesOptions(DTOptionsBuilder, '/api/marvel/comics', [2, 'asc']);
+
   vm.dtColumns = [
     DTColumnBuilder.newColumn(null).withOption('defaultContent', '').renderWith(actionsHtml),
     DTColumnBuilder.newColumn('id').withTitle('ID'),
@@ -439,40 +381,21 @@ function ComicsController($scope, $compile, $http, $sce, $mdDialog, DTOptionsBui
   }
 }
 
-function SeriesController($scope, $http, DTOptionsBuilder, DTColumnBuilder, ComicsService, UtilService) {
+function SeriesController($scope, $http, DTOptionsBuilder, DTColumnBuilder, DatatablesService, UtilService) {
   var vm = this;
   vm.message = '';
   vm.someClickHandler = someClickHandler;
   // FIXME still try to use csrf later...
-  vm.dtOptions = DTOptionsBuilder.newOptions()
-    .withOption('ajax', {
-      url: '/api/marvel/series',
-      type: 'post',
-      data: function(data) {
-        return JSON.stringify(data);
-      },
-      dataType: "json",
-      contentType: 'application/json;charset=UTF-8'
-    })
-    .withDataProp(function(json) {
-      json.recordsTotal = json.response.total;
-      json.recordsFiltered = json.response.total;
-      return json.response.series;
-    })
-    .withOption('processing', true)
-    .withOption('serverSide', true)
-    .withOption('saveState', true)
-    .withPaginationType('full_numbers')
-    .withOption('rowCallback', rowCallback)
-    .withOption('order', [2, 'asc'])
-    .withDisplayLength(10);
+
+  vm.dtOptions = DatatablesService.initDatatablesOptions(DTOptionsBuilder, '/api/marvel/series', [2, 'asc']);
+
   vm.dtColumns = [
     DTColumnBuilder.newColumn(null).withClass('details-control').withOption('defaultContent', ''),
     DTColumnBuilder.newColumn('id').withTitle('ID'),
     DTColumnBuilder.newColumn('title').withTitle('Title'),
-    DTColumnBuilder.newColumn('description').withTitle('Description').withOption('sWidth', '50%'),
-    DTColumnBuilder.newColumn('modified').withTitle('Modified'),
-    // DTColumnBuilder.newColumn('type').withTitle('Type')
+    DTColumnBuilder.newColumn('startYear').withTitle('Start Year'),
+    DTColumnBuilder.newColumn('endYear').withTitle('End Year'),
+    DTColumnBuilder.newColumn('modified').withTitle('Modified')
   ];
 
   vm.dtInstance = {};

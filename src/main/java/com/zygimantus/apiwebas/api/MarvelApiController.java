@@ -12,8 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -37,7 +36,7 @@ public class MarvelApiController extends ApiController<MarvelResponse> {
         return new MarvelResponse();
     }
 
-    @RequestMapping("settings")
+    @RequestMapping(value = "settings", method = RequestMethod.GET)
     public String[] settings() {
 
         String[] keys = marvelApiConsumer.getKeys();
@@ -45,7 +44,7 @@ public class MarvelApiController extends ApiController<MarvelResponse> {
         return keys;
     }
 
-    @RequestMapping("settings/{public}/{private}")
+    @RequestMapping(value = "settings/{public}/{private}", method = RequestMethod.GET)
     public JsonResponse settings(@PathVariable("public") String publicKey, @PathVariable("private") String privateKey) {
 
         marvelApiConsumer.updateKeys(publicKey, privateKey);
@@ -55,7 +54,7 @@ public class MarvelApiController extends ApiController<MarvelResponse> {
         return jr;
     }
 
-    @RequestMapping(value = "characters", method = POST)
+    @RequestMapping(value = "characters", method = RequestMethod.POST)
     protected MarvelResponse characters(@RequestBody DataTablesRequest dtr) throws IOException, MarvelApiException {
 
         MarvelResponse marvelResponse = marvelApiConsumer.getCharacters(dtr);
@@ -63,7 +62,7 @@ public class MarvelApiController extends ApiController<MarvelResponse> {
         return marvelResponse;
     }
 
-    @RequestMapping(value = "comics", method = POST)
+    @RequestMapping(value = "comics", method = RequestMethod.POST)
     protected MarvelResponse comics(@RequestBody DataTablesRequest dtr) throws IOException, MarvelApiException {
 
         MarvelResponse marvelResponse = marvelApiConsumer.getComics(dtr);
@@ -71,7 +70,7 @@ public class MarvelApiController extends ApiController<MarvelResponse> {
         return marvelResponse;
     }
 
-    @RequestMapping(value = "series", method = POST)
+    @RequestMapping(value = "series", method = RequestMethod.POST)
     protected MarvelResponse series(@RequestBody DataTablesRequest dtr) throws IOException, MarvelApiException {
 
         MarvelResponse marvelResponse = marvelApiConsumer.getSeries(dtr);
@@ -79,7 +78,7 @@ public class MarvelApiController extends ApiController<MarvelResponse> {
         return marvelResponse;
     }
 
-    @RequestMapping("characters/{id}")
+    @RequestMapping(value = "characters/{id}", method = RequestMethod.GET)
     protected MarvelResponse character(@PathVariable("id") String id) throws IOException, MarvelApiException {
 
         MarvelResponse marvelResponse = marvelApiConsumer.getCharacter(id);
@@ -87,7 +86,7 @@ public class MarvelApiController extends ApiController<MarvelResponse> {
         return marvelResponse;
     }
 
-    @RequestMapping("comics/{id}")
+    @RequestMapping(value = "comics/{id}", method = RequestMethod.GET)
     protected MarvelResponse comic(@PathVariable("id") String id) throws IOException, MarvelApiException {
 
         MarvelResponse marvelResponse = marvelApiConsumer.getComics(id);
@@ -95,7 +94,7 @@ public class MarvelApiController extends ApiController<MarvelResponse> {
         return marvelResponse;
     }
 
-    @RequestMapping(value = "comics/formats", method = GET)
+    @RequestMapping(value = "comics/formats", method = RequestMethod.GET)
     protected Format[] comicsFormats() throws IOException, MarvelApiException {
 
         Format[] formats = Format.values();
@@ -103,7 +102,7 @@ public class MarvelApiController extends ApiController<MarvelResponse> {
         return formats;
     }
 
-    @RequestMapping(value = "series/types", method = GET)
+    @RequestMapping(value = "series/types", method = RequestMethod.GET)
     protected SeriesQuery.SeriesType[] seriesTypes() throws IOException, MarvelApiException {
 
         SeriesQuery.SeriesType[] formats = SeriesQuery.SeriesType.values();
