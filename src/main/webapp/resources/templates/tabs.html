@@ -27,6 +27,22 @@
       <div id="card" class="hidden"></div>
     </md-content>
   </md-tab>
+  <md-tab label="Movies">
+    <md-content class="md-padding">
+      <h1 class="md-display-2 text-center">MOVIES</h1>
+      <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+        <div>
+          <form ng-submit="searchMovie()" name="searchMovieForm">
+            <div layout-gt-sm="row">
+              <md-button ng-click="searchMovie()" class="md-primary btn btn-primary" flex-gt-sm>search_movie</md-button>
+              <input ng-model="movie.id" type="number" step="1">              
+            </div>
+          </form>
+        </div>
+      </md-content>
+      <pre id="movieInfo" ng-bind-html="data"></pre>
+    </md-content>
+  </md-tab>
   <md-tab label="Characters">
     <md-content class="md-padding">
       <h1 class="md-display-2">Characters</h1>

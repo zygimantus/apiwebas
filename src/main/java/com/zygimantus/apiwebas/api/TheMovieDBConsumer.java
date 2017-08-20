@@ -3,6 +3,7 @@ package com.zygimantus.apiwebas.api;
 import info.movito.themoviedbapi.TmdbApi;
 import info.movito.themoviedbapi.TmdbMovies;
 import info.movito.themoviedbapi.model.MovieDb;
+import info.movito.themoviedbapi.model.MovieImages;
 import org.springframework.stereotype.Service;
 
 /**
@@ -26,6 +27,13 @@ public class TheMovieDBConsumer extends WsConsumer {
         MovieDb movie = movies.getMovie(movieId, "en");
 
         return movie;
+    }
+
+    public MovieImages getMovieImages(int movieId) {
+        TmdbMovies movies = tmdbApi.getMovies();
+        MovieImages movieImages = movies.getImages(movieId, "en");
+
+        return movieImages;
     }
 
     public String[] getKeys() {

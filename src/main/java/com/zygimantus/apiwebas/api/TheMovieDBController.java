@@ -50,4 +50,9 @@ public class TheMovieDBController extends ApiController<IdElement> {
         return theMovieDBConsumer.getMovie(movieId);
     }
 
+    @RequestMapping(value = "movieImage/{movieId}", method = RequestMethod.GET)
+    protected IdElement movieImage(@PathVariable int movieId) {
+        return theMovieDBConsumer.getMovieImages(movieId);
+    }
+
 }

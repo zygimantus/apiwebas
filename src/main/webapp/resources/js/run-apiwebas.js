@@ -17,7 +17,7 @@ require.config({
         lodash: "../bower_components/lodash/dist/lodash",
         jQuery: "jquery.min",
         frontendServices: 'frontend-services',
-        marvelisApp: "marvelis-app"
+        apiwebasApp: "apiwebas-app"
     },
     shim: {
         jQuery: {
@@ -53,14 +53,14 @@ require.config({
         frontendServices: {
             deps: ['angular', 'lodash', 'csrfInterceptor', 'ngDatatables', 'datatables']
         },
-        marvelisApp: {
+        apiwebasApp: {
             deps: [ 'angular', 'jQuery', 'ngMessages', 'ngMaterial', 'frontendServices']
         }
     }
 });
 
-require(['marvelisApp'], function () {
+require(['apiwebasApp'], function () {
 
-    angular.bootstrap(document.getElementById('marvelisApp'), ['marvelisApp']);
+    angular.bootstrap(document.getElementById('apiwebasApp'), ['apiwebasApp']);
 
 });

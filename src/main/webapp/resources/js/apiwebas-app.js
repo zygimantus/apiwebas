@@ -1,6 +1,6 @@
-angular.module("marvelisApp", ['ngMaterial', 'datatables', 'frontendServices', 'spring-security-csrf-token-interceptor'])
+angular.module("apiwebasApp", ['ngMaterial', 'datatables', 'frontendServices', 'spring-security-csrf-token-interceptor'])
   .service("worldsService", [MyDataService])
-  .controller('MarvelController', MarvelController)
+  .controller('ApiwebasController', ApiwebasController)
   .controller('SwapiController', SwapiController)
   .controller('CharactersController', CharactersController)
   .controller('ComicsController', ComicsController)
@@ -15,7 +15,7 @@ angular.module("marvelisApp", ['ngMaterial', 'datatables', 'frontendServices', '
   })
   .run(["$rootScope", "$window", startup]);
 
-function MarvelController($scope, $templateRequest, $sce, $compile, $http, UserService) {
+function ApiwebasController($scope, $templateRequest, $sce, $compile, $http, UserService) {
   var templateUrl = $sce.getTrustedResourceUrl('templates/tabs.html');
 
   $templateRequest(templateUrl).then(function(template) {
@@ -72,6 +72,13 @@ function MarvelController($scope, $templateRequest, $sce, $compile, $http, UserS
 
     $scope.search = function() {
       $http.get('/api/marvel/characters/' + $scope.character.id).then(function(response) {
+        var str = JSON.stringify(response.data, undefined, 4);
+        $scope.data = $sce.trustAsHtml(syntaxHighlight(str));
+      });
+    };
+
+    $scope.searchMovie = function() {
+        $http.get('/api/tmdb/movie/' + $scope.movie.id).then(function(response) {
         var str = JSON.stringify(response.data, undefined, 4);
         $scope.data = $sce.trustAsHtml(syntaxHighlight(str));
       });
