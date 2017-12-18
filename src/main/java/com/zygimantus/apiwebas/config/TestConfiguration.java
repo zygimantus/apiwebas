@@ -4,6 +4,7 @@ import com.zygimantus.apiwebas.TestDataInitializer;
 import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -24,7 +25,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  *
  */
 @Configuration
-//@Profile("test")
 @EnableTransactionManagement
 public class TestConfiguration {
 
@@ -40,6 +40,16 @@ public class TestConfiguration {
         dataSource.setUrl("jdbc:hsqldb:mem:apiwebas");
         dataSource.setUsername("admin");
         dataSource.setPassword("apiwebasAdmin");
+        return dataSource;
+    }
+
+    @Profile("test")    
+    @Bean(name = "datasource")
+    public DriverManagerDataSource testDataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName(org.hsqldb.jdbcDriver.class.getName());
+        dataSource.setUrl("jdbc:hsqldb:hsql://localhost:9001/xdb");
+        dataSource.setUsername("SA");
         return dataSource;
     }
 

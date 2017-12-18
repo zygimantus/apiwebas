@@ -522,4 +522,35 @@
         </plugins>
     </reporting>
 
+    <profiles>
+        <profile>
+            <id>prod</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <spring.profiles.active>prod</spring.profiles.active>
+                <log4j.level>DEBUG</log4j.level>
+            </properties>
+        </profile>    
+        <profile>
+            <id>test</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <spring.profiles.active>test</spring.profiles.active>
+                <log4j.level>DEBUG</log4j.level>
+            </properties>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources-test</directory>
+                        <!--<filtering>true</filtering>-->
+                    </resource>
+                </resources>
+            </build>
+        </profile>    
+    </profiles>
+
 </project>
