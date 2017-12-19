@@ -28,6 +28,11 @@
         
     <repositories>
         <repository>
+            <id>bintray</id>
+            <name>bintray</name>
+            <url>http://jcenter.bintray.com</url>
+        </repository>        
+        <repository>
             <id>SWAPI-JAVA-mvn-repo</id>
             <url>https://raw.github.com/zygimantus/SWAPI-JAVA/mvn-repo/</url>
             <snapshots>
@@ -37,6 +42,11 @@
         </repository>
     </repositories>        
     <dependencies>
+        <dependency>
+            <groupId>info.movito</groupId>
+            <artifactId>themoviedbapi</artifactId>
+            <version>1.4</version>
+        </dependency>        
         <dependency>
             <groupId>com.swapi</groupId>
             <artifactId>swapi</artifactId>

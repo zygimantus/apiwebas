@@ -12,6 +12,7 @@ import com.vaadin.spring.annotation.SpringViewDisplay;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import com.zygimantus.apiwebas.vaadin.api.TheMovieDBConsumer;
 
 /**
  * 
@@ -29,6 +30,8 @@ public class VaadinUI extends UI {
 
         @Autowired
         private SwApiConsumer swApiConsumer;
+        @Autowired
+        private TheMovieDBConsumer theMovieDBConsumer;
 
         private Navigator navigator;
 
@@ -45,12 +48,15 @@ public class VaadinUI extends UI {
 
                 setContent(mainLayout);
 
-                SwapiView mainView = new SwapiView(swApiConsumer);
+                SwapiView swapiView = new SwapiView(swApiConsumer);
+                MovieDBView movieDBView = new MovieDBView(theMovieDBConsumer);
 
                 navigator = new Navigator(this, mainLayout);
 
                 navigator.addView(LoginView.VIEW_NAME, loginView);
-                navigator.addView(SwapiView.VIEW_NAME, mainView);
+                navigator.addView(SwapiView.VIEW_NAME, swapiView);
+                navigator.addView(MovieDBView.VIEW_NAME, movieDBView);
+                
                 navigator.navigateTo(LoginView.VIEW_NAME);
 
         }

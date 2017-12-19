@@ -14,10 +14,12 @@ public final class Menu extends MenuBar {
                 addItem("Home", (MenuItem selectedItem) -> {
                         UI.getCurrent().getNavigator().navigateTo(SwapiView.VIEW_NAME);
                 });
-                MenuItem mainItem = addItem("Main", null);
-                mainItem.addItem("Test", (MenuItem selectedItem) -> {
+                MenuItem mainItem = addItem("Apis", null);
+                mainItem.addItem("Swapi", (MenuItem selectedItem) -> {
+                        UI.getCurrent().getNavigator().navigateTo(SwapiView.VIEW_NAME);                        
                 });
-                mainItem.addItem("Test", (MenuItem selectedItem) -> {
+                mainItem.addItem("MovieDB", (MenuItem selectedItem) -> {
+                        UI.getCurrent().getNavigator().navigateTo(MovieDBView.VIEW_NAME);                        
                 });
                 mainItem.addItem("Test", (MenuItem selectedItem) -> {
                 });
