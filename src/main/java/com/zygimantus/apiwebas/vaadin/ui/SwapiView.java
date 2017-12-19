@@ -28,6 +28,7 @@ public final class SwapiView extends VerticalLayout implements View {
         public SwapiView(SwApiConsumer swApiConsumer) {
                 Grid<Film> grid = new Grid<>(Film.class);
 
+                addComponent(new VerticalLayout(new Menu()));
                 addComponent(grid);
 
                 grid.setColumns("title", "episodeId", "director", "producer", "release_date");
