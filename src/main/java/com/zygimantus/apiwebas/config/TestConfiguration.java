@@ -33,8 +33,9 @@ public class TestConfiguration {
         return new TestDataInitializer();
     }
 
+    @Profile("prod")    
     @Bean(name = "datasource")
-    public DriverManagerDataSource dataSource() {
+    public DriverManagerDataSource prodDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(org.hsqldb.jdbcDriver.class.getName());
         dataSource.setUrl("jdbc:hsqldb:mem:apiwebas");
