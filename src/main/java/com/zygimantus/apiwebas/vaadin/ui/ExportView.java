@@ -32,7 +32,7 @@ public final class ExportView extends VerticalLayout implements View {
                 addComponent(new VerticalLayout(new Menu()));
                 addComponent(grid);
 
-                grid.setColumns("id", "api", "resource");
+                grid.setColumns("id", "api", "resource", "createDate");
                 grid.setWidth("100%");
                 
                 grid.setItems(apiwebasRepository.findAll());

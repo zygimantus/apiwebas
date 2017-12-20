@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -19,78 +21,37 @@ import org.hibernate.annotations.UpdateTimestamp;
  *
  * @author Zygimantus
  */
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "APIWEBAS")
 public class Apiwebas implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private String title;
-    @Enumerated(EnumType.STRING)
-    private Api api;
-    @Enumerated(EnumType.STRING)
-    private Resource resource;
-    private boolean loaded;
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        private int id;
+        private String title;
+        @Enumerated(EnumType.STRING)
+        private Api api;
+        @Enumerated(EnumType.STRING)
+        private Resource resource;
+        private boolean loaded;
 
-    @CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "create_date")
-    private Date createDate;
+        @CreationTimestamp
+        @Temporal(TemporalType.TIMESTAMP)
+        @Column(name = "create_date")
+        private Date createDate;
 
-    @UpdateTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "modify_date")
-    private Date modifyDate;
+        @UpdateTimestamp
+        @Temporal(TemporalType.TIMESTAMP)
+        @Column(name = "modify_date")
+        private Date modifyDate;
 
-    public Apiwebas() {
-    }
-
-    public Apiwebas(Resource resource, boolean loaded) {
+        public Apiwebas(Resource resource, boolean loaded) {
 //        this.title = title;
-        this.api = resource.getApi();
-        this.resource = resource;
-        this.loaded = loaded;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Api getApi() {
-        return api;
-    }
-
-    public void setApi(Api api) {
-        this.api = api;
-    }
-
-    public Resource getResource() {
-        return resource;
-    }
-
-    public void setResource(Resource resource) {
-        this.resource = resource;
-    }
-
-    public boolean isLoaded() {
-        return loaded;
-    }
-
-    public void setLoaded(boolean loaded) {
-        this.loaded = loaded;
-    }
+                this.api = resource.getApi();
+                this.resource = resource;
+                this.loaded = loaded;
+        }
 
 }
