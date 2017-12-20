@@ -23,7 +23,7 @@
         <java.version>1.8</java.version>
         <vaadin.version>8.0.5</vaadin.version>
         <war.plugin.version>3.1.0</war.plugin.version>        
-        <maven.test.skip>true</maven.test.skip>                
+        <!--<maven.test.skip>true</maven.test.skip>-->                
     </properties>
         
     <repositories>
