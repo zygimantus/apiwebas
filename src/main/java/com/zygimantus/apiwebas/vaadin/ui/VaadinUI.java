@@ -1,14 +1,13 @@
 package com.zygimantus.apiwebas.vaadin.ui;
 
 import com.vaadin.annotations.Theme;
-import com.zygimantus.apiwebas.vaadin.api.SwApiConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.zygimantus.apiwebas.vaadin.repo.UserRepository;
-import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.spring.annotation.SpringViewDisplay;
+import com.vaadin.spring.navigator.SpringNavigator;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
@@ -18,7 +17,7 @@ import java.util.List;
 import me.sargunvohra.lib.pokekotlin.model.NamedApiResource;
 
 /**
- * 
+ *
  * @author Zygimantus
  */
 @SpringUI
@@ -29,16 +28,14 @@ public class VaadinUI extends UI {
         private static final long serialVersionUID = 1L;
 
         @Autowired
-        private final UserRepository userRepository;
-
+        private SpringNavigator navigator;
         @Autowired
-        private SwApiConsumer swApiConsumer;
+        private UserRepository userRepository;
+
         @Autowired
         private TheMovieDBConsumer theMovieDBConsumer;
         @Autowired
         private PokeApiConsumer pokeApiConsumer;
-
-        private Navigator navigator;
 
         @Override
         protected void init(VaadinRequest request) {
@@ -53,23 +50,13 @@ public class VaadinUI extends UI {
 
                 setContent(mainLayout);
 
-                SwapiView swapiView = new SwapiView(swApiConsumer);
+//                SwapiView swapiView = new SwapiView(swApiConsumer);
                 MovieDBView movieDBView = new MovieDBView(theMovieDBConsumer);
 
-                navigator = new Navigator(this, mainLayout);
-                
                 List<NamedApiResource> list = pokeApiConsumer.getPokemonList(0, 10);
+                navigator.setErrorView(ErrorView.class);
 
-                navigator.addView(LoginView.VIEW_NAME, loginView);
-                navigator.addView(SwapiView.VIEW_NAME, swapiView);
-                navigator.addView(MovieDBView.VIEW_NAME, movieDBView);
-                
-                navigator.navigateTo(LoginView.VIEW_NAME);
-
+                navigator.navigateTo("login");
         }
 
-        @Autowired
-        public VaadinUI(UserRepository repo) {
-                this.userRepository = repo;
-        }
 }

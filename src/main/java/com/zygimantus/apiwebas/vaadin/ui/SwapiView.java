@@ -1,7 +1,6 @@
 package com.zygimantus.apiwebas.vaadin.ui;
 
 import com.zygimantus.apiwebas.vaadin.api.SwApiConsumer;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.swapi.models.Film;
 import com.vaadin.navigator.View;
@@ -17,10 +16,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityManagerFactory;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -34,7 +35,12 @@ public final class SwapiView extends VerticalLayout implements View {
         public static final String VIEW_NAME = "swapi";
 
         @Autowired
-        public SwapiView(SwApiConsumer swApiConsumer) {
+        private ApiwebasRepository apiwebasRepository;
+        @Autowired
+        private SwApiConsumer swApiConsumer;
+
+        @PostConstruct
+        public void init() {
                 Grid<Film> grid = new Grid<>(Film.class);
 
                 addComponent(new VerticalLayout(new Menu()));
@@ -46,7 +52,7 @@ public final class SwapiView extends VerticalLayout implements View {
                 try {
                         ArrayList<Film> films = swApiConsumer.getFilmsList().getResults();
                         grid.setItems(films);
-                        
+
                         EntityManagerFactory entityManagerFactory = BeanUtil.getBean(EntityManagerFactory.class);
 
                         SessionFactory sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
@@ -61,8 +67,6 @@ public final class SwapiView extends VerticalLayout implements View {
                         transaction.commit();
 
                         Apiwebas apiwebas = new Apiwebas(Resource.SWAPI_FILMS, true);
-                        
-                        ApiwebasRepository apiwebasRepository = BeanUtil.getBean(ApiwebasRepository.class);
 
                         apiwebasRepository.save(apiwebas);
 
