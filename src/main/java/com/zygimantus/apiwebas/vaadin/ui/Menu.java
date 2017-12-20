@@ -14,6 +14,7 @@ public final class Menu extends MenuBar {
                 addItem("Home", (MenuItem selectedItem) -> {
                         UI.getCurrent().getNavigator().navigateTo(SwapiView.VIEW_NAME);
                 });
+                //
                 MenuItem mainItem = addItem("Apis", null);
                 mainItem.addItem("Swapi", (MenuItem selectedItem) -> {
                         UI.getCurrent().getNavigator().navigateTo(SwapiView.VIEW_NAME);                        
@@ -24,6 +25,11 @@ public final class Menu extends MenuBar {
                 mainItem.addItem("Test", (MenuItem selectedItem) -> {
                 });
                 mainItem.addItem("Test", (MenuItem selectedItem) -> {
+                });
+                //
+                MenuItem toolsItem = addItem("Tools", null);
+                toolsItem.addItem("Export to CSV", (MenuItem selectedItem) -> {
+                        UI.getCurrent().getNavigator().navigateTo(ExportView.VIEW_NAME);                        
                 });
         }
 }

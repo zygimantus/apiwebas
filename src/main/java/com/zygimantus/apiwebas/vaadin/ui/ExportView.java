@@ -7,31 +7,35 @@ import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.VerticalLayout;
-import com.zygimantus.apiwebas.vaadin.api.TheMovieDBConsumer;
-import info.movito.themoviedbapi.model.MovieDb;
+import com.zygimantus.apiwebas.vaadin.model.Apiwebas;
+import com.zygimantus.apiwebas.vaadin.repo.ApiwebasRepository;
+import javax.annotation.PostConstruct;
 
 /**
  *
  * @author Zygimantus
  */
-@SpringView(name = MovieDBView.VIEW_NAME)
-public final class MovieDBView extends VerticalLayout implements View {
+@SpringView(name = ExportView.VIEW_NAME)
+public final class ExportView extends VerticalLayout implements View {
 
         private static final long serialVersionUID = 1L;
 
-        public static final String VIEW_NAME = "movieDB";
-
+        public static final String VIEW_NAME = "exportView";
+        
         @Autowired
-        public MovieDBView(TheMovieDBConsumer theMovieDBConsumer) {
-                Grid<MovieDb> grid = new Grid<>(MovieDb.class);
+        private ApiwebasRepository apiwebasRepository;        
+
+        @PostConstruct
+        public void init() {
+                Grid<Apiwebas> grid = new Grid<>(Apiwebas.class);
 
                 addComponent(new VerticalLayout(new Menu()));
                 addComponent(grid);
 
-                grid.setColumns("title", "popularity", "releaseDate", "budget");
+                grid.setColumns("id", "api", "resource");
                 grid.setWidth("100%");
-
-                grid.setItems(theMovieDBConsumer.getPopularMovies(1));
+                
+                grid.setItems(apiwebasRepository.findAll());
         }
 
         @Override
