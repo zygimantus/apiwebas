@@ -42,7 +42,7 @@
     <class name="com.swapi.models.Species" table="SWAPI_SPECIES">
         <id name="url" column="SPECIES_URL" type="string"></id>
         <property name="name" column="NAME" type="string"></property>        
-        <property name="classification" column="CLASSIFICATION" type="text"></property>        
+        <property name="classification" column="CLASSIFICATION" type="string"></property>        
         <property name="designation" column="DESIGNATION" type="string"></property>        
         <property name="averageHeight" column="AVERAGE_HEIGHT" type="string"></property>        
         <property name="averageLifespan" column="AVERAGE_LIFESPAN" type="string"></property>        
@@ -53,17 +53,46 @@
         <property name="language" column="LANGUAGE" type="string"></property>        
         <property name="created" column="CREATED" type="string"></property>        
         <property name="edited" column="EDITED" type="string"></property>
-        <!--<property name="url" column="URL" type="string"></property>-->
         <!--Collection of values-->
-        <list name="filmsUrls" table="SWAPI_SPECIES_FILM">
-            <key column="SPECIES_URL"/>
-            <index column="type"></index>            
-            <element type="string" column="FILM_URL"/>
-        </list>
         <list name="peopleUrls" table="SWAPI_SPECIES_PEOPLE">
             <key column="SPECIES_URL"/>
             <index column="type"></index>            
             <element type="string" column="PEOPLE_URL"/>
         </list>
+    </class>
+    <class name="com.swapi.models.Vehicle" table="SWAPI_VEHICLE">
+        <id name="url" column="VEHICLE_URL" type="string"></id>
+        <property name="name" column="NAME" type="string"></property>        
+        <property name="model" column="MODEL" type="string"></property>        
+        <property name="vehicleClass" column="VEHICLE_CLASS" type="string"></property>        
+        <property name="manufacturer" column="MANUFACTURER" type="string"></property>        
+        <property name="costInCredits" column="COST_IN_CREDITS" type="string"></property>        
+        <property name="length" column="LENGTH" type="string"></property>        
+        <property name="crew" column="CREW" type="string"></property>        
+        <property name="passengers" column="PASSENGERS" type="string"></property>        
+        <property name="maxAtmospheringSpeed" column="MAX_ATMOSPHERE_SPEED" type="string"></property>        
+        <property name="cargoCapacity" column="CARGO_CAPACITY" type="string"></property>        
+        <property name="consumables" column="CONSUMABLES" type="string"></property>        
+        <property name="created" column="CREATED" type="string"></property>        
+        <property name="edited" column="EDITED" type="string"></property>
+        <!--Collection of values-->        
+        <list name="pilotsUrls" table="SWAPI_PILOTS">
+            <key column="VEHICLE_URL"/>
+            <index column="type"></index>            
+            <element type="string" column="PILOT_URL"/>
+        </list>
+    </class>
+    <class name="com.swapi.models.People" table="SWAPI_PEOPLE">
+        <id name="url" column="PEOPLE_URL" type="string"></id>
+        <property name="name" column="NAME" type="string"></property>        
+        <property name="birthYear" column="BIRTH_YEAR" type="string"></property>        
+        <property name="gender" column="GENDER" type="string"></property>        
+        <property name="hairColor" column="HAIR_COLOR" type="string"></property>        
+        <property name="height" column="HEIGHT" type="string"></property>        
+        <property name="homeWorldUrl" column="HOME_WORLD_URL" type="string"></property>        
+        <property name="mass" column="MASS" type="string"></property>        
+        <property name="skinColor" column="SKIN_COLOR" type="string"></property>        
+        <property name="created" column="CREATED" type="string"></property>        
+        <property name="edited" column="EDITED" type="string"></property>
     </class>
 </hibernate-mapping>

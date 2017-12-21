@@ -18,8 +18,7 @@ public enum Api {
         @Override
         public Resource[] getResources() {
             return new Resource[]{
-                Resource.SWAPI_FILMS, Resource.SWAPI_PEOPLE
-            };
+                Resource.SWAPI_FILMS, Resource.SWAPI_SPECIES, Resource.SWAPI_VEHICLE, Resource.SWAPI_PEOPLE,};
         }
     };
 

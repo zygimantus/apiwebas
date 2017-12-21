@@ -3,6 +3,7 @@ package com.zygimantus.apiwebas.vaadin.model;
 import com.swapi.models.Film;
 import com.swapi.models.People;
 import com.swapi.models.Species;
+import com.swapi.models.Vehicle;
 
 /**
  *
@@ -12,6 +13,7 @@ public enum Resource {
 
     SWAPI_FILMS(Api.SWAPI, Film.class),
     SWAPI_SPECIES(Api.SWAPI, Species.class),
+    SWAPI_VEHICLE(Api.SWAPI, Vehicle.class),
     SWAPI_PEOPLE(Api.SWAPI, People.class);
 //    MARVEL_CHARACTERS(Api.MARVEL, CharacterDto.class);
 
