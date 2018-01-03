@@ -49,7 +49,7 @@
         <property name="eyeColors" column="EYE_COLORS" type="string"></property>        
         <property name="skinColors" column="SKIN_COLORS" type="string"></property>        
         <property name="hairColors" column="HAIR_COLORS" type="string"></property>        
-        <property name="homeWorld" column="HOMEWORD" type="string"></property>        
+        <property name="homeWorld" column="HOMEWORLD" type="string"></property>        
         <property name="language" column="LANGUAGE" type="string"></property>        
         <property name="created" column="CREATED" type="string"></property>        
         <property name="edited" column="EDITED" type="string"></property>
