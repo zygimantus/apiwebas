@@ -12,8 +12,8 @@ import org.springframework.web.client.RestTemplate;
  *
  * @author Zygimantus
  */
-@SpringView(name = CountriesView.VIEW_NAME)
-public final class CountriesView extends ApiView {
+@SpringView(name = RestCountriesView.VIEW_NAME)
+public final class RestCountriesView extends ApiView {
 
     private static final long serialVersionUID = 1L;
 

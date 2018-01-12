@@ -30,8 +30,8 @@ public final class Menu extends MenuBar {
                 mainItem.addItem("MovieDB", (MenuItem selectedItem) -> {
                         UI.getCurrent().getNavigator().navigateTo(MovieDBView.VIEW_NAME);
                 });
-                mainItem.addItem("Countries", (MenuItem selectedItem) -> {
-                        UI.getCurrent().getNavigator().navigateTo(CountriesView.VIEW_NAME);
+                mainItem.addItem("RestCountries", (MenuItem selectedItem) -> {
+                        UI.getCurrent().getNavigator().navigateTo(RestCountriesView.VIEW_NAME);
                 });
                 //
                 MenuItem toolsItem = addItem("Tools", null);
