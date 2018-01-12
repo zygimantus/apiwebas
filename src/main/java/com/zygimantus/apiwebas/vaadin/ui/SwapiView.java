@@ -1,6 +1,5 @@
 package com.zygimantus.apiwebas.vaadin.ui;
 
-import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.Component;
@@ -13,7 +12,6 @@ import com.zygimantus.apiwebas.vaadin.model.Apiwebas;
 import com.zygimantus.apiwebas.vaadin.model.Resource;
 import com.zygimantus.apiwebas.vaadin.repo.ApiwebasRepository;
 import java.util.ArrayList;
-import javax.annotation.PostConstruct;
 import javax.persistence.EntityManagerFactory;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -25,7 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author Zygimantus
  */
 @SpringView(name = SwapiView.VIEW_NAME)
-public final class SwapiView extends VerticalLayout implements View {
+public final class SwapiView extends ApiView {
 
     private static final long serialVersionUID = 1L;
 
@@ -40,10 +38,10 @@ public final class SwapiView extends VerticalLayout implements View {
 
     private TabSheet tabs;
 
-    @PostConstruct
+    @Override
     public void init() {
 
-        addComponent(new VerticalLayout(new Menu()));
+        super.init();
 
         tabs = new TabSheet();
 

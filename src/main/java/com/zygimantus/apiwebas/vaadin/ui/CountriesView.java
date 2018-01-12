@@ -1,13 +1,10 @@
 package com.zygimantus.apiwebas.vaadin.ui;
 
-import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.Grid;
-import com.vaadin.ui.VerticalLayout;
 import eu.fayder.restcountries.domain.BaseCountry;
 import java.util.Arrays;
-import javax.annotation.PostConstruct;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
@@ -16,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
  * @author Zygimantus
  */
 @SpringView(name = CountriesView.VIEW_NAME)
-public final class CountriesView extends VerticalLayout implements View {
+public final class CountriesView extends ApiView {
 
     private static final long serialVersionUID = 1L;
 
@@ -24,12 +21,13 @@ public final class CountriesView extends VerticalLayout implements View {
 
     public static final String VIEW_NAME = "countries";
 
-    @PostConstruct
+    @Override
     public void init() {
+        
+        super.init();
 
         Grid<BaseCountry> grid = new Grid<>(BaseCountry.class);
 
-        addComponent(new VerticalLayout(new Menu()));
         addComponent(grid);
 
         grid.setWidth("100%");
