@@ -31,7 +31,7 @@ public final class RestCountriesView extends ApiView {
     private static final String ALL_COUNTRIES_URL = "https://restcountries.eu/rest/v2/all";
     private static final String COUNTRIES_IN_REGIONAL_BLOCK_URL = "https://restcountries.eu/rest/v2/regionalbloc/{0}";
 
-    public static final String VIEW_NAME = "countries";
+    public static final String VIEW_NAME = "restCountries";
 
     private Grid<BaseCountry> grid;
 

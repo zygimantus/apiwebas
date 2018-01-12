@@ -1,9 +1,12 @@
 package com.zygimantus.apiwebas.vaadin.model;
 
+import lombok.Getter;
+
 /**
  *
  * @author Zygimantus
  */
+@Getter
 public enum Api {
 
 //    MARVEL {
@@ -14,20 +17,34 @@ public enum Api {
 //            };
 //        }
 //    },
-    SWAPI {
+    SWAPI("Swapi", "swapi") {
         @Override
         public Resource[] getResources() {
             return new Resource[]{
                 Resource.SWAPI_FILMS, Resource.SWAPI_SPECIES, Resource.SWAPI_VEHICLE, Resource.SWAPI_PEOPLE,};
         }
     },
-    REST_COUNTRIES {
+    MOVIEDB("MovieDB", "movieDB") {
+        @Override
+        public Resource[] getResources() {
+            return new Resource[]{};
+        }
+    },
+    REST_COUNTRIES("RestCountries", "restCountries") {
         @Override
         public Resource[] getResources() {
             return new Resource[]{
                 Resource.RC_COUNTRIES,};
         }
     };
+
+    private final String name;
+    private final String viewName;
+
+    private Api(String name, String viewName) {
+        this.name = name;
+        this.viewName = viewName;
+    }
 
     // using enum polymorphism technique
     public abstract Resource[] getResources();
