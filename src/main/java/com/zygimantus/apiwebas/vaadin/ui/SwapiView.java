@@ -8,14 +8,8 @@ import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.VerticalLayout;
 import com.zygimantus.apiwebas.vaadin.api.SwApiConsumer;
 import com.zygimantus.apiwebas.vaadin.model.Api;
-import com.zygimantus.apiwebas.vaadin.model.Apiwebas;
 import com.zygimantus.apiwebas.vaadin.model.Resource;
-import com.zygimantus.apiwebas.vaadin.repo.ApiwebasRepository;
 import java.util.ArrayList;
-import javax.persistence.EntityManagerFactory;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -29,10 +23,6 @@ public final class SwapiView extends ApiView {
 
     public static final String VIEW_NAME = "swapi";
 
-    @Autowired
-    private EntityManagerFactory entityManagerFactory;
-    @Autowired
-    private ApiwebasRepository apiwebasRepository;
     @Autowired
     private SwApiConsumer swApiConsumer;
 
@@ -57,7 +47,7 @@ public final class SwapiView extends ApiView {
             Component tab = e.getTabSheet().getSelectedTab();
             if (tab instanceof SwapiTab) {
                 SwapiTab st = (SwapiTab) tab;
-                st.save();
+                st.createGridAndSave();
             }
         });
 
@@ -77,7 +67,7 @@ public final class SwapiView extends ApiView {
             this.resource = resource;
         }
 
-        public void save() {
+        public void createGridAndSave() {
             ArrayList list = swApiConsumer.getFullList(resource);
             Grid grid = new Grid<>(resource.getAClass());
 
@@ -88,19 +78,7 @@ public final class SwapiView extends ApiView {
             grid.setWidth("100%");
             grid.setItems(list);
 
-            SessionFactory sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
-
-            Session session = sessionFactory.openSession();
-            Transaction transaction = session.beginTransaction();
-
-            list.forEach((film) -> {
-                session.merge(film);
-            });
-
-            transaction.commit();
-
-            Apiwebas apiwebas = new Apiwebas(resource, true);
-            apiwebasRepository.save(apiwebas);
+            save(list, resource);
 
             addComponent(grid);
         }

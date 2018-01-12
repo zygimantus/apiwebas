@@ -20,6 +20,13 @@ public enum Api {
             return new Resource[]{
                 Resource.SWAPI_FILMS, Resource.SWAPI_SPECIES, Resource.SWAPI_VEHICLE, Resource.SWAPI_PEOPLE,};
         }
+    },
+    REST_COUNTRIES {
+        @Override
+        public Resource[] getResources() {
+            return new Resource[]{
+                Resource.RC_COUNTRIES,};
+        }
     };
 
     // using enum polymorphism technique

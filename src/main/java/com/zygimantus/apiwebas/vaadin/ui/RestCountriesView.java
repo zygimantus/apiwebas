@@ -3,8 +3,10 @@ package com.zygimantus.apiwebas.vaadin.ui;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.Grid;
+import com.zygimantus.apiwebas.vaadin.model.Resource;
 import eu.fayder.restcountries.domain.BaseCountry;
 import java.util.Arrays;
+import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
@@ -23,7 +25,7 @@ public final class RestCountriesView extends ApiView {
 
     @Override
     public void init() {
-        
+
         super.init();
 
         Grid<BaseCountry> grid = new Grid<>(BaseCountry.class);
@@ -35,7 +37,11 @@ public final class RestCountriesView extends ApiView {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<BaseCountry[]> responseEntity = restTemplate.getForEntity(ALL_COUNTRIES_URL, BaseCountry[].class);
 
-        grid.setItems(Arrays.asList(responseEntity.getBody()));
+        List list = Arrays.asList(responseEntity.getBody());
+
+        grid.setItems(list);
+
+        save(list, Resource.RC_COUNTRIES);
     }
 
     @Override
