@@ -3,6 +3,7 @@ package com.zygimantus.apiwebas.vaadin.ui;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.spring.annotation.SpringView;
+import com.vaadin.ui.Component;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.VerticalLayout;
@@ -37,57 +38,75 @@ public final class SwapiView extends VerticalLayout implements View {
     @Autowired
     private SwApiConsumer swApiConsumer;
 
-    VerticalLayout vl;
+    private TabSheet tabs;
 
     @PostConstruct
     public void init() {
 
         addComponent(new VerticalLayout(new Menu()));
 
-        TabSheet tabs = new TabSheet();
+        tabs = new TabSheet();
 
         for (Resource resource : Api.SWAPI.getResources()) {
 
-            vl = new VerticalLayout();
+            SwapiTab swapiTab = new SwapiTab(resource);
 
-            save(resource, swApiConsumer.getFullList(resource));
-
-            TabSheet.Tab tab = tabs.addTab(vl);
+            TabSheet.Tab tab = tabs.addTab(swapiTab);
             tab.setCaption(resource.name());
         }
-        addComponent(tabs);
-    }
 
-    public void save(Resource resource, ArrayList<?> list) {
-        Grid grid = new Grid<>(resource.getAClass());
-
-        String[] colIds = resource.getColumnIds();
-        if (colIds.length != 1) {
-            grid.setColumns(colIds);
-        }
-        grid.setWidth("100%");
-        grid.setItems(list);
-
-        SessionFactory sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
-
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-
-        list.forEach((film) -> {
-            session.merge(film);
+        tabs.addSelectedTabChangeListener(e -> {
+            Component tab = e.getTabSheet().getSelectedTab();
+            if (tab instanceof SwapiTab) {
+                SwapiTab st = (SwapiTab) tab;
+                st.save();
+            }
         });
 
-        transaction.commit();
-
-        Apiwebas apiwebas = new Apiwebas(resource, true);
-        apiwebasRepository.save(apiwebas);
-
-        vl.addComponent(grid);
+        addComponent(tabs);
     }
 
     @Override
     public void enter(ViewChangeEvent event) {
         // TODO Auto-generated method stub
+    }
+
+    private class SwapiTab extends VerticalLayout {
+
+        private final Resource resource;
+
+        private SwapiTab(Resource resource) {
+            this.resource = resource;
+        }
+
+        public void save() {
+            ArrayList list = swApiConsumer.getFullList(resource);
+            Grid grid = new Grid<>(resource.getAClass());
+
+            String[] colIds = resource.getColumnIds();
+            if (colIds.length != 1) {
+                grid.setColumns(colIds);
+            }
+            grid.setWidth("100%");
+            grid.setItems(list);
+
+            SessionFactory sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
+
+            Session session = sessionFactory.openSession();
+            Transaction transaction = session.beginTransaction();
+
+            list.forEach((film) -> {
+                session.merge(film);
+            });
+
+            transaction.commit();
+
+            Apiwebas apiwebas = new Apiwebas(resource, true);
+            apiwebasRepository.save(apiwebas);
+
+            addComponent(grid);
+        }
+
     }
 
 }
