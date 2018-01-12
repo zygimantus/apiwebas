@@ -4,7 +4,6 @@ import com.swapi.models.Film;
 import com.swapi.models.People;
 import com.swapi.models.Species;
 import com.swapi.models.Vehicle;
-import eu.fayder.restcountries.domain.BaseCountry;
 import lombok.Getter;
 
 /**
