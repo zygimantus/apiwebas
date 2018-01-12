@@ -48,6 +48,17 @@
         
     <dependencies>
         <dependency>
+            <groupId>eu.fayder</groupId>
+            <artifactId>restcountries</artifactId>
+            <version>2.0.5</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>             
+        </dependency>        
+        <dependency>
             <groupId>me.sargunvohra.lib</groupId>
             <artifactId>pokekotlin</artifactId>
             <version>2.3.0</version>
