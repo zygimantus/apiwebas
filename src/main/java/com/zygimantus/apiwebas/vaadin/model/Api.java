@@ -43,6 +43,13 @@ public enum Api {
             return new Resource[]{
                 Resource.COUNTRYCITY,};
         }
+    },
+    FAVQS("FavQs", "favQs") {
+        @Override
+        public Resource[] getResources() {
+            return new Resource[]{
+                Resource.FAVQS,};
+        }
     };
 
     private final String name;
