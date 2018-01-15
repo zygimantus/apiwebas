@@ -17,7 +17,8 @@ public enum Resource {
     SWAPI_SPECIES(Api.SWAPI, Species.class, ""),
     SWAPI_VEHICLE(Api.SWAPI, Vehicle.class, ""),
     SWAPI_PEOPLE(Api.SWAPI, People.class, ""),
-    RC_COUNTRIES(Api.REST_COUNTRIES, BaseCountry.class, "");
+    RC_COUNTRIES(Api.REST_COUNTRIES, BaseCountry.class, ""),
+    COUNTRYCITY(Api.COUNTRYCITY, Countrycity.class, "country");
 //    MARVEL_CHARACTERS(Api.MARVEL, CharacterDto.class);
 
     private final Api api;

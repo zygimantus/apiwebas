@@ -995,7 +995,7 @@
       "Shangjiang",
       "Xingqiao",
       "Doujiang",
-      "Nyingchi County",
+      "Nyingchi country",
       "Yangxunqiao",
       "Tongmin",
       "Lianghu",
@@ -1055,7 +1055,7 @@
       "Nandu",
       "Jiexiu",
       "Zhaoyu",
-      "Pingyao County",
+      "Pingyao country",
       "Mingxing",
       "Lingshi",
       "Linjiang",
@@ -1856,7 +1856,7 @@
     ]
   },
   {
-    "county": "Japan",
+    "country": "Japan",
     "cities": [
       "Tokyo",
       "Hiroshima",
@@ -3090,7 +3090,7 @@
     ]
   },
   {
-    "county": "Thailand",
+    "country": "Thailand",
     "cities": [
       "Bangkok",
       "Chumphon",
@@ -3261,7 +3261,7 @@
     ]
   },
   {
-    "county": "United States",
+    "country": "United States",
     "cities": [
       "Mukilteo",
       "Fairfield",
@@ -12315,7 +12315,7 @@
       "Holliday",
       "Curryville",
       "Silex",
-      "Sandoval County",
+      "Sandoval country",
       "Savanna",
       "De Kalb",
       "Comer",
@@ -13729,7 +13729,7 @@
       "Thompson",
       "Rootstown",
       "Bakewell",
-      "Tulare County",
+      "Tulare country",
       "Clayton",
       "Moriah",
       "Redwood",
@@ -13773,7 +13773,7 @@
       "Delevan",
       "Cato",
       "Cuba",
-      "Pima County",
+      "Pima country",
       "Alberton",
       "Turner",
       "Crystal",
@@ -21823,7 +21823,7 @@
       "Beechgrove",
       "Likely",
       "Donnelsville",
-      "Riverside County",
+      "Riverside country",
       "Gambier",
       "Washington Grove",
       "Richmond",
@@ -22084,7 +22084,7 @@
       "Adams",
       "Pennellville",
       "Hannibal",
-      "San Bernardino County",
+      "San Bernardino country",
       "Adolphus",
       "Busy",
       "Vicco",
@@ -23261,7 +23261,7 @@
       "Melvin",
       "Cohasset",
       "Deer River",
-      "Monterey County",
+      "Monterey country",
       "Stratford",
       "Squaw Valley",
       "Mankato",
@@ -24234,7 +24234,7 @@
     ]
   },
   {
-    "county": "India",
+    "country": "India",
     "cities": [
       "Bhandup",
       "Mumbai",
@@ -25261,7 +25261,7 @@
     ]
   },
   {
-    "county": "Malaysia",
+    "country": "Malaysia",
     "cities": [
       "Pantai",
       "Kuala Lumpur",
@@ -25542,7 +25542,7 @@
     ]
   },
   {
-    "county": "Republic of Korea",
+    "country": "Republic of Korea",
     "cities": [
       "Seoul",
       "Incheon",
@@ -25644,7 +25644,7 @@
     ]
   },
   {
-    "county": "Hong Kong",
+    "country": "Hong Kong",
     "cities": [
       "Shuen Wan",
       "Central District",
@@ -25731,7 +25731,7 @@
     ]
   },
   {
-    "county": "Taiwan",
+    "country": "Taiwan",
     "cities": [
       "Taipei",
       "Taoyuan",
@@ -25744,7 +25744,7 @@
       "Taitung",
       "Tainan",
       "Keelung",
-      "Yunlin County",
+      "Yunlin country",
       "Lugang",
       "Puli",
       "Pingtung",
@@ -25805,7 +25805,7 @@
     ]
   },
   {
-    "county": "Philippines",
+    "country": "Philippines",
     "cities": [
       "Manila",
       "Ayala",
@@ -26211,7 +26211,7 @@
     ]
   },
   {
-    "county": "Australia",
+    "country": "Australia",
     "cities": [
       "East Gosford",
       "City of Parramatta",
@@ -28262,7 +28262,7 @@
     ]
   },
   {
-    "county": "Vietnam",
+    "country": "Vietnam",
     "cities": [
       "Hanoi",
       "Ho Chi Minh City",
@@ -28388,7 +28388,7 @@
     ]
   },
   {
-    "county": "Russia",
+    "country": "Russia",
     "cities": [
       "Moscow",
       "Omsk",
@@ -29562,7 +29562,7 @@
     ]
   },
   {
-    "county": "France",
+    "country": "France",
     "cities": [
       "Pont-Saint-Martin",
       "Luce",
@@ -42833,7 +42833,7 @@
     ]
   },
   {
-    "county": "Germany",
+    "country": "Germany",
     "cities": [
       "Langgons",
       "Holle",
@@ -50505,7 +50505,7 @@
     ]
   },
   {
-    "county": "Israel",
+    "country": "Israel",
     "cities": [
       "Lod",
       "Tel Aviv",
@@ -50668,7 +50668,7 @@
     ]
   },
   {
-    "county": "Sweden",
+    "country": "Sweden",
     "cities": [
       "Stockholm",
       "Uppsala",
@@ -51924,7 +51924,7 @@
     ]
   },
   {
-    "county": "Italy",
+    "country": "Italy",
     "cities": [
       "Ferrara",
       "Sarnano",
@@ -56610,7 +56610,7 @@
     ]
   },
   {
-    "county": "Netherlands",
+    "country": "Netherlands",
     "cities": [
       "Amsterdam",
       "The Hague",
@@ -58090,7 +58090,7 @@
     ]
   },
   {
-    "county": "Greece",
+    "country": "Greece",
     "cities": [
       "Athens",
       "Ekali",
@@ -58263,7 +58263,7 @@
     ]
   },
   {
-    "county": "Spain",
+    "country": "Spain",
     "cities": [
       "Valencia",
       "Riola",
@@ -60855,7 +60855,7 @@
     ]
   },
   {
-    "county": "Austria",
+    "country": "Austria",
     "cities": [
       "Vienna",
       "Kapfenberg",
@@ -62263,7 +62263,7 @@
     ]
   },
   {
-    "county": "United Kingdom",
+    "country": "United Kingdom",
     "cities": [
       "Pershore",
       "Rowley Regis",
@@ -65312,7 +65312,7 @@
     ]
   },
   {
-    "county": "Belgium",
+    "country": "Belgium",
     "cities": [
       "Mortsel",
       "Wilrijk",
@@ -66476,7 +66476,7 @@
     ]
   },
   {
-    "county": "United Arab Emirates",
+    "country": "United Arab Emirates",
     "cities": [
       "Abu Dhabi",
       "Sharjah",
@@ -66491,7 +66491,7 @@
     ]
   },
   {
-    "county": "Kazakhstan",
+    "country": "Kazakhstan",
     "cities": [
       "Almaty",
       "Oral",
@@ -66548,7 +66548,7 @@
     ]
   },
   {
-    "county": "Portugal",
+    "country": "Portugal",
     "cities": [
       "Amarante",
       "Sanfins do Douro",
@@ -67271,7 +67271,7 @@
     ]
   },
   {
-    "county": "Saudi Arabia",
+    "country": "Saudi Arabia",
     "cities": [
       "Riyadh",
       "Dammam",
@@ -67317,7 +67317,7 @@
     ]
   },
   {
-    "county": "Denmark",
+    "country": "Denmark",
     "cities": [
       "Copenhagen",
       "Frederiksberg",
@@ -67939,7 +67939,7 @@
     ]
   },
   {
-    "county": "Slovenia",
+    "country": "Slovenia",
     "cities": [
       "Velenje",
       "Ljubljana",
@@ -68113,7 +68113,7 @@
     ]
   },
   {
-    "county": "Iran",
+    "country": "Iran",
     "cities": [
       "Karaj",
       "Golestan",
@@ -68352,7 +68352,7 @@
     ]
   },
   {
-    "county": "Norway",
+    "country": "Norway",
     "cities": [
       "Jar",
       "Karlshus",
@@ -69285,7 +69285,7 @@
     ]
   },
   {
-    "county": "Mexico",
+    "country": "Mexico",
     "cities": [
       "Monterrey",
       "Mexico City",
@@ -70069,7 +70069,7 @@
     ]
   },
   {
-    "county": "Canada",
+    "country": "Canada",
     "cities": [
       "Toronto",
       "Montreal",
@@ -70435,7 +70435,7 @@
       "Glencoe",
       "Caledon",
       "Oakville",
-      "Norfolk County",
+      "Norfolk country",
       "Tillsonburg",
       "Orillia",
       "Millbrook",
@@ -72268,7 +72268,7 @@
     ]
   },
   {
-    "county": "Syria",
+    "country": "Syria",
     "cities": [
       "Damascus",
       "`Ara",
@@ -72277,7 +72277,7 @@
     ]
   },
   {
-    "county": "Ukraine",
+    "country": "Ukraine",
     "cities": [
       "Kiev",
       "Vyshhorod",
@@ -72553,7 +72553,7 @@
     ]
   },
   {
-    "county": "Cyprus",
+    "country": "Cyprus",
     "cities": [
       "Limassol",
       "Nicosia",
@@ -72583,7 +72583,7 @@
     ]
   },
   {
-    "county": "Czech Republic",
+    "country": "Czech Republic",
     "cities": [
       "Prague",
       "Chodov",
@@ -73582,7 +73582,7 @@
     ]
   },
   {
-    "county": "Switzerland",
+    "country": "Switzerland",
     "cities": [
       "Zurich",
       "Geneva",
@@ -74932,7 +74932,7 @@
     ]
   },
   {
-    "county": "Iraq",
+    "country": "Iraq",
     "cities": [
       "Baghdad",
       "Karkh",
@@ -74953,7 +74953,7 @@
     ]
   },
   {
-    "county": "Turkey",
+    "country": "Turkey",
     "cities": [
       "Izmir",
       "Ankara",
@@ -75268,7 +75268,7 @@
     ]
   },
   {
-    "county": "Romania",
+    "country": "Romania",
     "cities": [
       "Piteşti",
       "Bucharest",
@@ -75658,7 +75658,7 @@
     ]
   },
   {
-    "county": "Lebanon",
+    "country": "Lebanon",
     "cities": [
       "Beirut",
       "Zgharta",
@@ -75681,7 +75681,7 @@
     ]
   },
   {
-    "county": "Hungary",
+    "country": "Hungary",
     "cities": [
       "Dunaharaszti",
       "Budapest",
@@ -76447,7 +76447,7 @@
     ]
   },
   {
-    "county": "Georgia",
+    "country": "Georgia",
     "cities": [
       "Tbilisi",
       "Sukhumi",
@@ -76463,7 +76463,7 @@
     ]
   },
   {
-    "county": "Brazil",
+    "country": "Brazil",
     "cities": [
       "Sao Paulo",
       "Sorocaba",
@@ -78593,7 +78593,7 @@
     ]
   },
   {
-    "county": "Azerbaijan",
+    "country": "Azerbaijan",
     "cities": [
       "Baku",
       "Sumqayit",
@@ -78608,7 +78608,7 @@
     ]
   },
   {
-    "county": "Palestine",
+    "country": "Palestine",
     "cities": [
       "Gaza",
       "Ramallah",
@@ -78621,7 +78621,7 @@
     ]
   },
   {
-    "county": "Republic of Lithuania",
+    "country": "Republic of Lithuania",
     "cities": [
       "Vilnius",
       "Alytus",
@@ -78669,7 +78669,7 @@
     ]
   },
   {
-    "county": "Oman",
+    "country": "Oman",
     "cities": [
       "Muscat",
       "Salalah",
@@ -78682,7 +78682,7 @@
     ]
   },
   {
-    "county": "Slovakia",
+    "country": "Slovakia",
     "cities": [
       "Bratislava",
       "Vel'ke Canikovce",
@@ -78981,7 +78981,7 @@
     ]
   },
   {
-    "county": "Serbia",
+    "country": "Serbia",
     "cities": [
       "Belgrade",
       "Zemun Polje",
@@ -79086,7 +79086,7 @@
     ]
   },
   {
-    "county": "Finland",
+    "country": "Finland",
     "cities": [
       "Helsinki",
       "Hamina",
@@ -79635,7 +79635,7 @@
     ]
   },
   {
-    "county": "Iceland",
+    "country": "Iceland",
     "cities": [
       "Reykjavik",
       "Selfoss",
@@ -79659,7 +79659,7 @@
     ]
   },
   {
-    "county": "Republic of Moldova",
+    "country": "Republic of Moldova",
     "cities": [
       "Chişinău",
       "Tiraspol",
@@ -79687,7 +79687,7 @@
     ]
   },
   {
-    "county": "Bulgaria",
+    "country": "Bulgaria",
     "cities": [
       "Sofia",
       "Plovdiv",
@@ -79914,7 +79914,7 @@
     ]
   },
   {
-    "county": "Macedonia",
+    "country": "Macedonia",
     "cities": [
       "Lisice",
       "Skopje",
@@ -79950,7 +79950,7 @@
     ]
   },
   {
-    "county": "Liechtenstein",
+    "country": "Liechtenstein",
     "cities": [
       "Mauren",
       "Eschen",
@@ -79969,7 +79969,7 @@
     ]
   },
   {
-    "county": "Jersey",
+    "country": "Jersey",
     "cities": [
       "Saint Helier",
       "Saint Peter",
@@ -79977,7 +79977,7 @@
     ]
   },
   {
-    "county": "Poland",
+    "country": "Poland",
     "cities": [
       "Wrocław",
       "Warsaw",
@@ -81819,7 +81819,7 @@
     ]
   },
   {
-    "county": "Ireland",
+    "country": "Ireland",
     "cities": [
       "Roscommon",
       "Roscrea",
@@ -82038,7 +82038,7 @@
       "Coachford",
       "Clonee",
       "Kilmainham",
-      "County Wexford",
+      "country Wexford",
       "Balgriffin",
       "Kiltamagh",
       "Foxford",
@@ -82082,7 +82082,7 @@
       "Bantry",
       "Crookhaven",
       "Portumna",
-      "County Galway",
+      "country Galway",
       "Kilmore",
       "Leamlara",
       "Bagenalstown",
@@ -82117,7 +82117,7 @@
     ]
   },
   {
-    "county": "Croatia",
+    "country": "Croatia",
     "cities": [
       "Velika Gorica",
       "Zagreb",
@@ -82275,7 +82275,7 @@
     ]
   },
   {
-    "county": "Bosnia and Herzegovina",
+    "country": "Bosnia and Herzegovina",
     "cities": [
       "Sarajevo",
       "Zenica",
@@ -82322,7 +82322,7 @@
     ]
   },
   {
-    "county": "Estonia",
+    "country": "Estonia",
     "cities": [
       "Maardu",
       "Kuressaare",
@@ -82408,7 +82408,7 @@
     ]
   },
   {
-    "county": "Latvia",
+    "country": "Latvia",
     "cities": [
       "Riga",
       "Centrs",
@@ -82480,7 +82480,7 @@
     ]
   },
   {
-    "county": "Hashemite Kingdom of Jordan",
+    "country": "Hashemite Kingdom of Jordan",
     "cities": [
       "Amman",
       "Irbid",
@@ -82492,13 +82492,13 @@
     ]
   },
   {
-    "county": "Kyrgyzstan",
+    "country": "Kyrgyzstan",
     "cities": [
       "Bishkek"
     ]
   },
   {
-    "county": "Réunion",
+    "country": "Réunion",
     "cities": [
       "Saint-Joseph",
       "Le Tampon",
@@ -82527,7 +82527,7 @@
     ]
   },
   {
-    "county": "Isle of Man",
+    "country": "Isle of Man",
     "cities": [
       "Douglas",
       "Onchan",
@@ -82545,7 +82545,7 @@
     ]
   },
   {
-    "county": "Libya",
+    "country": "Libya",
     "cities": [
       "Tripoli",
       "Benghazi",
@@ -82555,7 +82555,7 @@
     ]
   },
   {
-    "county": "Luxembourg",
+    "country": "Luxembourg",
     "cities": [
       "Steinsel",
       "Bascharage",
@@ -82677,7 +82677,7 @@
     ]
   },
   {
-    "county": "Armenia",
+    "country": "Armenia",
     "cities": [
       "Aparan",
       "Yerevan",
@@ -82696,14 +82696,14 @@
     ]
   },
   {
-    "county": "British Virgin Islands",
+    "country": "British Virgin Islands",
     "cities": [
       "Road Town",
       "Tortola"
     ]
   },
   {
-    "county": "Yemen",
+    "country": "Yemen",
     "cities": [
       "Sana'",
       "Sanaa",
@@ -82711,7 +82711,7 @@
     ]
   },
   {
-    "county": "Belarus",
+    "country": "Belarus",
     "cities": [
       "Minsk",
       "Mogilev",
@@ -82741,13 +82741,13 @@
     ]
   },
   {
-    "county": "Gibraltar",
+    "country": "Gibraltar",
     "cities": [
       "Gibraltar"
     ]
   },
   {
-    "county": "Kenya",
+    "country": "Kenya",
     "cities": [
       "Nairobi",
       "Mombasa",
@@ -82775,7 +82775,7 @@
     ]
   },
   {
-    "county": "Chile",
+    "country": "Chile",
     "cities": [
       "Las Condes",
       "Santiago",
@@ -82907,7 +82907,7 @@
     ]
   },
   {
-    "county": "Qatar",
+    "country": "Qatar",
     "cities": [
       "Doha",
       "Al Wakrah",
@@ -82915,7 +82915,7 @@
     ]
   },
   {
-    "county": "Kuwait",
+    "country": "Kuwait",
     "cities": [
       "Kuwait City",
       "Bayan",
@@ -82936,7 +82936,7 @@
     ]
   },
   {
-    "county": "Guadeloupe",
+    "country": "Guadeloupe",
     "cities": [
       "Les Abymes",
       "Basse-Terre",
@@ -82971,7 +82971,7 @@
     ]
   },
   {
-    "county": "Martinique",
+    "country": "Martinique",
     "cities": [
       "Riviere-Salee",
       "Fort-de-France",
@@ -82995,7 +82995,7 @@
     ]
   },
   {
-    "county": "French Guiana",
+    "country": "French Guiana",
     "cities": [
       "Petit Cayenne",
       "Kourou",
@@ -83004,7 +83004,7 @@
     ]
   },
   {
-    "county": "Dominican Republic",
+    "country": "Dominican Republic",
     "cities": [
       "Santo Domingo",
       "Santiago de los Caballeros",
@@ -83037,7 +83037,7 @@
     ]
   },
   {
-    "county": "Guam",
+    "country": "Guam",
     "cities": [
       "Santa Rita",
       "Hagåtña",
@@ -83049,7 +83049,7 @@
     ]
   },
   {
-    "county": "U.S. Virgin Islands",
+    "country": "U.S. Virgin Islands",
     "cities": [
       "Frederiksted",
       "Charlotte Amalie",
@@ -83059,7 +83059,7 @@
     ]
   },
   {
-    "county": "Puerto Rico",
+    "country": "Puerto Rico",
     "cities": [
       "Bayamón",
       "Dorado",
@@ -83152,7 +83152,7 @@
     ]
   },
   {
-    "county": "Mongolia",
+    "country": "Mongolia",
     "cities": [
       "Ulan Bator",
       "Chihertey",
@@ -83180,7 +83180,7 @@
     ]
   },
   {
-    "county": "New Zealand",
+    "country": "New Zealand",
     "cities": [
       "Auckland",
       "Palmerston North",
@@ -83465,7 +83465,7 @@
     ]
   },
   {
-    "county": "Singapore",
+    "country": "Singapore",
     "cities": [
       "Singapore",
       "Yishun New Town",
@@ -83504,7 +83504,7 @@
     ]
   },
   {
-    "county": "Indonesia",
+    "country": "Indonesia",
     "cities": [
       "Bandung",
       "Jakarta",
@@ -83782,7 +83782,7 @@
     ]
   },
   {
-    "county": "Nepal",
+    "country": "Nepal",
     "cities": [
       "Patan",
       "Jawlakhel",
@@ -83793,7 +83793,7 @@
     ]
   },
   {
-    "county": "Papua New Guinea",
+    "country": "Papua New Guinea",
     "cities": [
       "Waigani",
       "Madang",
@@ -83825,7 +83825,7 @@
     ]
   },
   {
-    "county": "Pakistan",
+    "country": "Pakistan",
     "cities": [
       "Gulshan-e-Iqbal",
       "Habib Baihk",
@@ -83904,7 +83904,7 @@
     ]
   },
   {
-    "county": "Panama",
+    "country": "Panama",
     "cities": [
       "Panama City",
       "Santa Catalina",
@@ -83986,7 +83986,7 @@
     ]
   },
   {
-    "county": "Costa Rica",
+    "country": "Costa Rica",
     "cities": [
       "San José",
       "Alajuela",
@@ -84060,7 +84060,7 @@
     ]
   },
   {
-    "county": "Peru",
+    "country": "Peru",
     "cities": [
       "Lima",
       "Cerro de Pasco",
@@ -84151,7 +84151,7 @@
     ]
   },
   {
-    "county": "Belize",
+    "country": "Belize",
     "cities": [
       "Belize City",
       "Benque Viejo del Carmen",
@@ -84163,7 +84163,7 @@
     ]
   },
   {
-    "county": "Nigeria",
+    "country": "Nigeria",
     "cities": [
       "Ikeja",
       "Lagos",
@@ -84255,7 +84255,7 @@
     ]
   },
   {
-    "county": "Venezuela",
+    "country": "Venezuela",
     "cities": [
       "Puerto La Cruz",
       "Caracas",
@@ -84355,7 +84355,7 @@
     ]
   },
   {
-    "county": "Bahamas",
+    "country": "Bahamas",
     "cities": [
       "Nassau",
       "Freeport",
@@ -84368,7 +84368,7 @@
     ]
   },
   {
-    "county": "Morocco",
+    "country": "Morocco",
     "cities": [
       "Marrakesh",
       "Tangier",
@@ -84425,7 +84425,7 @@
     ]
   },
   {
-    "county": "Colombia",
+    "country": "Colombia",
     "cities": [
       "Medellín",
       "Bogotá",
@@ -84552,14 +84552,14 @@
     ]
   },
   {
-    "county": "Seychelles",
+    "country": "Seychelles",
     "cities": [
       "Victoria",
       "Takamaka"
     ]
   },
   {
-    "county": "Barbados",
+    "country": "Barbados",
     "cities": [
       "Warrens",
       "Bridgetown",
@@ -84587,7 +84587,7 @@
     ]
   },
   {
-    "county": "Egypt",
+    "country": "Egypt",
     "cities": [
       "Cairo",
       "New Cairo",
@@ -84631,7 +84631,7 @@
     ]
   },
   {
-    "county": "Argentina",
+    "country": "Argentina",
     "cities": [
       "Ingeniero Beaugey",
       "San Isidro",
@@ -85269,7 +85269,7 @@
     ]
   },
   {
-    "county": "Brunei",
+    "country": "Brunei",
     "cities": [
       "Bandar Seri Begawan",
       "Seria",
@@ -85282,7 +85282,7 @@
     ]
   },
   {
-    "county": "Bahrain",
+    "country": "Bahrain",
     "cities": [
       "Manama",
       "Barbar",
@@ -85304,7 +85304,7 @@
     ]
   },
   {
-    "county": "Aruba",
+    "country": "Aruba",
     "cities": [
       "Palm Beach",
       "Oranjestad",
@@ -85321,7 +85321,7 @@
     ]
   },
   {
-    "county": "Saint Lucia",
+    "country": "Saint Lucia",
     "cities": [
       "Castries",
       "Dauphin",
@@ -85332,7 +85332,7 @@
     ]
   },
   {
-    "county": "Bangladesh",
+    "country": "Bangladesh",
     "cities": [
       "Dhaka",
       "Tejgaon",
@@ -85354,13 +85354,13 @@
     ]
   },
   {
-    "county": "Tokelau",
+    "country": "Tokelau",
     "cities": [
       "Atafu Village"
     ]
   },
   {
-    "county": "Cambodia",
+    "country": "Cambodia",
     "cities": [
       "Phnom Penh",
       "Phumi Preah Haoh",
@@ -85379,21 +85379,21 @@
     ]
   },
   {
-    "county": "Macao",
+    "country": "Macao",
     "cities": [
       "Macao",
       "Taipa"
     ]
   },
   {
-    "county": "Maldives",
+    "country": "Maldives",
     "cities": [
       "Malé",
       "Naifaru"
     ]
   },
   {
-    "county": "Afghanistan",
+    "country": "Afghanistan",
     "cities": [
       "Kabul",
       "Wazir Akbar Khan",
@@ -85406,7 +85406,7 @@
     ]
   },
   {
-    "county": "New Caledonia",
+    "country": "New Caledonia",
     "cities": [
       "Nouville",
       "Noumea",
@@ -85416,7 +85416,7 @@
     ]
   },
   {
-    "county": "Fiji",
+    "country": "Fiji",
     "cities": [
       "Suva",
       "Lautoka",
@@ -85425,14 +85425,14 @@
     ]
   },
   {
-    "county": "Wallis and Futuna",
+    "country": "Wallis and Futuna",
     "cities": [
       "Vailala",
       "Mata-Utu"
     ]
   },
   {
-    "county": "Albania",
+    "country": "Albania",
     "cities": [
       "Tirana",
       "Pogradec",
@@ -85445,7 +85445,7 @@
     ]
   },
   {
-    "county": "Uzbekistan",
+    "country": "Uzbekistan",
     "cities": [
       "Tashkent",
       "Termez",
@@ -85454,7 +85454,7 @@
     ]
   },
   {
-    "county": "Montenegro",
+    "country": "Montenegro",
     "cities": [
       "Podgorica",
       "Pljevlja",
@@ -85470,26 +85470,26 @@
     ]
   },
   {
-    "county": "North Korea",
+    "country": "North Korea",
     "cities": [
       "Pyongyang",
       ""
     ]
   },
   {
-    "county": "Vatican City",
+    "country": "Vatican City",
     "cities": [
       ""
     ]
   },
   {
-    "county": "Antarctica",
+    "country": "Antarctica",
     "cities": [
       "Antarctica"
     ]
   },
   {
-    "county": "Bermuda",
+    "country": "Bermuda",
     "cities": [
       "Hamilton",
       "Saint George",
@@ -85497,7 +85497,7 @@
     ]
   },
   {
-    "county": "Curaçao",
+    "country": "Curaçao",
     "cities": [
       "Willemstad",
       "Vredeberg",
@@ -85505,7 +85505,7 @@
     ]
   },
   {
-    "county": "Ecuador",
+    "country": "Ecuador",
     "cities": [
       "Quito",
       "Pichincha",
@@ -85581,7 +85581,7 @@
     ]
   },
   {
-    "county": "South Africa",
+    "country": "South Africa",
     "cities": [
       "Johannesburg",
       "Sandton",
@@ -85916,7 +85916,7 @@
     ]
   },
   {
-    "county": "Saint Kitts and Nevis",
+    "country": "Saint Kitts and Nevis",
     "cities": [
       "Charlestown",
       "Basseterre",
@@ -85924,7 +85924,7 @@
     ]
   },
   {
-    "county": "Samoa",
+    "country": "Samoa",
     "cities": [
       "Apia",
       "Safotulafai",
@@ -85932,7 +85932,7 @@
     ]
   },
   {
-    "county": "Bolivia",
+    "country": "Bolivia",
     "cities": [
       "La Paz",
       "Santa Cruz",
@@ -85955,7 +85955,7 @@
     ]
   },
   {
-    "county": "Guernsey",
+    "country": "Guernsey",
     "cities": [
       "St Peter Port",
       "Torteval",
@@ -85963,7 +85963,7 @@
     ]
   },
   {
-    "county": "Malta",
+    "country": "Malta",
     "cities": [
       "Mellieha",
       "Hamrun",
@@ -86038,14 +86038,14 @@
     ]
   },
   {
-    "county": "Tajikistan",
+    "country": "Tajikistan",
     "cities": [
       "Dushanbe",
       "Khorugh"
     ]
   },
   {
-    "county": "Zimbabwe",
+    "country": "Zimbabwe",
     "cities": [
       "Harare",
       "Greendale",
@@ -86059,7 +86059,7 @@
     ]
   },
   {
-    "county": "Liberia",
+    "country": "Liberia",
     "cities": [
       "Monrovia",
       "Fish Town",
@@ -86067,7 +86067,7 @@
     ]
   },
   {
-    "county": "Ghana",
+    "country": "Ghana",
     "cities": [
       "Tema",
       "Accra",
@@ -86088,7 +86088,7 @@
     ]
   },
   {
-    "county": "Tanzania",
+    "country": "Tanzania",
     "cities": [
       "Dar es Salaam",
       "Arusha",
@@ -86103,7 +86103,7 @@
     ]
   },
   {
-    "county": "Zambia",
+    "country": "Zambia",
     "cities": [
       "Lusaka",
       "Mumbwa",
@@ -86117,7 +86117,7 @@
     ]
   },
   {
-    "county": "Madagascar",
+    "country": "Madagascar",
     "cities": [
       "Toamasina",
       "Antananarivo",
@@ -86129,7 +86129,7 @@
     ]
   },
   {
-    "county": "Angola",
+    "country": "Angola",
     "cities": [
       "Kuito",
       "Uíge",
@@ -86157,7 +86157,7 @@
     ]
   },
   {
-    "county": "Namibia",
+    "country": "Namibia",
     "cities": [
       "Windhoek",
       "Katima Mulilo",
@@ -86178,13 +86178,13 @@
     ]
   },
   {
-    "county": "Ivory Coast",
+    "country": "Ivory Coast",
     "cities": [
       "Abidjan"
     ]
   },
   {
-    "county": "Sudan",
+    "country": "Sudan",
     "cities": [
       "Kassala",
       "Khartoum",
@@ -86195,13 +86195,13 @@
     ]
   },
   {
-    "county": "Uganda",
+    "country": "Uganda",
     "cities": [
       "Kampala"
     ]
   },
   {
-    "county": "Cameroon",
+    "country": "Cameroon",
     "cities": [
       "Douala",
       "Yaoundé",
@@ -86217,7 +86217,7 @@
     ]
   },
   {
-    "county": "Malawi",
+    "country": "Malawi",
     "cities": [
       "Made",
       "Mzuzu",
@@ -86226,7 +86226,7 @@
     ]
   },
   {
-    "county": "Gabon",
+    "country": "Gabon",
     "cities": [
       "Libreville",
       "Moanda",
@@ -86237,21 +86237,21 @@
     ]
   },
   {
-    "county": "Mali",
+    "country": "Mali",
     "cities": [
       "Bamako",
       ""
     ]
   },
   {
-    "county": "Benin",
+    "country": "Benin",
     "cities": [
       "Cotonou",
       "Abomey-Calavi"
     ]
   },
   {
-    "county": "Chad",
+    "country": "Chad",
     "cities": [
       "Massaguet",
       "Abéché",
@@ -86260,7 +86260,7 @@
     ]
   },
   {
-    "county": "Botswana",
+    "country": "Botswana",
     "cities": [
       "Francistown",
       "Gaborone",
@@ -86270,27 +86270,27 @@
     ]
   },
   {
-    "county": "Cape Verde",
+    "country": "Cape Verde",
     "cities": [
       "Praia"
     ]
   },
   {
-    "county": "Rwanda",
+    "country": "Rwanda",
     "cities": [
       "Kigali",
       "Nyarugunga"
     ]
   },
   {
-    "county": "Republic of the Congo",
+    "country": "Republic of the Congo",
     "cities": [
       "Brazzaville",
       "Pointe Noire"
     ]
   },
   {
-    "county": "Mozambique",
+    "country": "Mozambique",
     "cities": [
       "Maputo",
       "Mozambique",
@@ -86303,20 +86303,20 @@
     ]
   },
   {
-    "county": "Gambia",
+    "country": "Gambia",
     "cities": [
       "Banjul"
     ]
   },
   {
-    "county": "Lesotho",
+    "country": "Lesotho",
     "cities": [
       "Maseru",
       "Roma"
     ]
   },
   {
-    "county": "Mauritius",
+    "country": "Mauritius",
     "cities": [
       "Port Louis",
       "Beau Bassin",
@@ -86334,7 +86334,7 @@
     ]
   },
   {
-    "county": "Algeria",
+    "country": "Algeria",
     "cities": [
       "Algiers",
       "Souk Ahras",
@@ -86375,7 +86375,7 @@
     ]
   },
   {
-    "county": "Guinea",
+    "country": "Guinea",
     "cities": [
       "Conakry",
       "Forécariah",
@@ -86392,7 +86392,7 @@
     ]
   },
   {
-    "county": "Congo",
+    "country": "Congo",
     "cities": [
       "Kinshasa",
       "Lubumbashi",
@@ -86402,7 +86402,7 @@
     ]
   },
   {
-    "county": "Swaziland",
+    "country": "Swaziland",
     "cities": [
       "Mbabane",
       "Piggs Peak",
@@ -86412,7 +86412,7 @@
     ]
   },
   {
-    "county": "Burkina Faso",
+    "country": "Burkina Faso",
     "cities": [
       "Ouagadougou",
       "Bobo-Dioulasso",
@@ -86420,58 +86420,58 @@
     ]
   },
   {
-    "county": "Sierra Leone",
+    "country": "Sierra Leone",
     "cities": [
       "Freetown"
     ]
   },
   {
-    "county": "Somalia",
+    "country": "Somalia",
     "cities": [
       "Hargeysa",
       "Mogadishu"
     ]
   },
   {
-    "county": "Niger",
+    "country": "Niger",
     "cities": [
       "Niamey"
     ]
   },
   {
-    "county": "Central African Republic",
+    "country": "Central African Republic",
     "cities": [
       "Bangui"
     ]
   },
   {
-    "county": "Togo",
+    "country": "Togo",
     "cities": [
       "Lomé",
       "Sansanne-Mango"
     ]
   },
   {
-    "county": "Burundi",
+    "country": "Burundi",
     "cities": [
       "Bujumbura",
       ""
     ]
   },
   {
-    "county": "Equatorial Guinea",
+    "country": "Equatorial Guinea",
     "cities": [
       "Malabo"
     ]
   },
   {
-    "county": "South Sudan",
+    "country": "South Sudan",
     "cities": [
       "Juba"
     ]
   },
   {
-    "county": "Senegal",
+    "country": "Senegal",
     "cities": [
       "Sama",
       "Dakar",
@@ -86488,26 +86488,26 @@
     ]
   },
   {
-    "county": "Mauritania",
+    "country": "Mauritania",
     "cities": [
       "Nouakchott"
     ]
   },
   {
-    "county": "Djibouti",
+    "country": "Djibouti",
     "cities": [
       "Djibouti"
     ]
   },
   {
-    "county": "Comoros",
+    "country": "Comoros",
     "cities": [
       "Moutsamoudou",
       "Moroni"
     ]
   },
   {
-    "county": "Tunisia",
+    "country": "Tunisia",
     "cities": [
       "Tunis",
       "Le Bardo",
@@ -86524,7 +86524,7 @@
     ]
   },
   {
-    "county": "Mayotte",
+    "country": "Mayotte",
     "cities": [
       "Koungou",
       "Mamoudzou",
@@ -86541,7 +86541,7 @@
     ]
   },
   {
-    "county": "Bhutan",
+    "country": "Bhutan",
     "cities": [
       "Thimphu",
       "Paro",
@@ -86550,7 +86550,7 @@
     ]
   },
   {
-    "county": "Greenland",
+    "country": "Greenland",
     "cities": [
       "Nuussuaq",
       "Kapisillit",
@@ -86572,7 +86572,7 @@
     ]
   },
   {
-    "county": "Kosovo",
+    "country": "Kosovo",
     "cities": [
       "Pristina",
       "Ferizaj",
@@ -86582,7 +86582,7 @@
     ]
   },
   {
-    "county": "Cayman Islands",
+    "country": "Cayman Islands",
     "cities": [
       "Coral Gables",
       "George Town",
@@ -86594,7 +86594,7 @@
     ]
   },
   {
-    "county": "Jamaica",
+    "country": "Jamaica",
     "cities": [
       "Runaway Bay",
       "Kingston",
@@ -86616,7 +86616,7 @@
     ]
   },
   {
-    "county": "Guatemala",
+    "country": "Guatemala",
     "cities": [
       "Huehuetenango",
       "Guatemala City",
@@ -86666,28 +86666,28 @@
     ]
   },
   {
-    "county": "Marshall Islands",
+    "country": "Marshall Islands",
     "cities": [
       "Majuro",
       ""
     ]
   },
   {
-    "county": "Monaco",
+    "country": "Monaco",
     "cities": [
       "Monaco",
       "Monte Carlo"
     ]
   },
   {
-    "county": "Anguilla",
+    "country": "Anguilla",
     "cities": [
       "The Valley",
       "George Hill"
     ]
   },
   {
-    "county": "Grenada",
+    "country": "Grenada",
     "cities": [
       "Sauteurs",
       "St. George's",
@@ -86695,7 +86695,7 @@
     ]
   },
   {
-    "county": "Paraguay",
+    "country": "Paraguay",
     "cities": [
       "Coronel Oviedo",
       "Yataity",
@@ -86731,14 +86731,14 @@
     ]
   },
   {
-    "county": "Montserrat",
+    "country": "Montserrat",
     "cities": [
       "Davy Hill",
       "Salem"
     ]
   },
   {
-    "county": "Turks and Caicos Islands",
+    "country": "Turks and Caicos Islands",
     "cities": [
       "Cockburn Harbour",
       "Over Back The Damp",
@@ -86746,7 +86746,7 @@
     ]
   },
   {
-    "county": "Antigua and Barbuda",
+    "country": "Antigua and Barbuda",
     "cities": [
       "St. John's",
       "Old Road",
@@ -86758,13 +86758,13 @@
     ]
   },
   {
-    "county": "Tuvalu",
+    "country": "Tuvalu",
     "cities": [
       "Funafuti"
     ]
   },
   {
-    "county": "French Polynesia",
+    "country": "French Polynesia",
     "cities": [
       "Papeete",
       "Mahina",
@@ -86776,14 +86776,14 @@
     ]
   },
   {
-    "county": "Solomon Islands",
+    "country": "Solomon Islands",
     "cities": [
       "Honiara",
       ""
     ]
   },
   {
-    "county": "Vanuatu",
+    "country": "Vanuatu",
     "cities": [
       "Port Vila",
       "Level",
@@ -86791,7 +86791,7 @@
     ]
   },
   {
-    "county": "Suriname",
+    "country": "Suriname",
     "cities": [
       "Friendship",
       "Paramaribo",
@@ -86805,61 +86805,61 @@
     ]
   },
   {
-    "county": "Cook Islands",
+    "country": "Cook Islands",
     "cities": [
       "Avarua",
       "Titikaveka"
     ]
   },
   {
-    "county": "Kiribati",
+    "country": "Kiribati",
     "cities": [
       "Umwa Village",
       ""
     ]
   },
   {
-    "county": "Niue",
+    "country": "Niue",
     "cities": [
       "Alofi",
       ""
     ]
   },
   {
-    "county": "Tonga",
+    "country": "Tonga",
     "cities": [
       "Neiafu",
       "Kanokupolu"
     ]
   },
   {
-    "county": "French Southern Territories",
+    "country": "French Southern Territories",
     "cities": [
       "Port-aux-Francais"
     ]
   },
   {
-    "county": "Norfolk Island",
+    "country": "Norfolk Island",
     "cities": [
       "Kingston",
       ""
     ]
   },
   {
-    "county": "Turkmenistan",
+    "country": "Turkmenistan",
     "cities": [
       "Darganata",
       "Ashgabat"
     ]
   },
   {
-    "county": "Pitcairn Islands",
+    "country": "Pitcairn Islands",
     "cities": [
       "Adamstown"
     ]
   },
   {
-    "county": "San Marino",
+    "country": "San Marino",
     "cities": [
       "Falciano",
       "Fiorentino",
@@ -86869,7 +86869,7 @@
     ]
   },
   {
-    "county": "Åland",
+    "country": "Åland",
     "cities": [
       "Mariehamn",
       "Eckerö",
@@ -86883,7 +86883,7 @@
     ]
   },
   {
-    "county": "Faroe Islands",
+    "country": "Faroe Islands",
     "cities": [
       "Strendur",
       "Tórshavn",
@@ -86899,44 +86899,44 @@
     ]
   },
   {
-    "county": "Svalbard and Jan Mayen",
+    "country": "Svalbard and Jan Mayen",
     "cities": [
       "Longyearbyen"
     ]
   },
   {
-    "county": "Cocos [Keeling] Islands",
+    "country": "Cocos [Keeling] Islands",
     "cities": [
       "West Island"
     ]
   },
   {
-    "county": "Nauru",
+    "country": "Nauru",
     "cities": [
       "Anabar"
     ]
   },
   {
-    "county": "South Georgia and the South Sandwich Islands",
+    "country": "South Georgia and the South Sandwich Islands",
     "cities": [
       "Grytviken"
     ]
   },
   {
-    "county": "U.S. Minor Outlying Islands",
+    "country": "U.S. Minor Outlying Islands",
     "cities": [
       ""
     ]
   },
   {
-    "county": "Sint Maarten",
+    "country": "Sint Maarten",
     "cities": [
       "Philipsburg",
       ""
     ]
   },
   {
-    "county": "Guinea-Bissau",
+    "country": "Guinea-Bissau",
     "cities": [
       "Cacheu",
       "Bissau",
@@ -86944,14 +86944,14 @@
     ]
   },
   {
-    "county": "Saint Martin",
+    "country": "Saint Martin",
     "cities": [
       "Marigot",
       "Anse Marcel"
     ]
   },
   {
-    "county": "Saint Vincent and the Grenadines",
+    "country": "Saint Vincent and the Grenadines",
     "cities": [
       "Kingstown",
       "Georgetown",
@@ -86960,13 +86960,13 @@
     ]
   },
   {
-    "county": "Saint Pierre and Miquelon",
+    "country": "Saint Pierre and Miquelon",
     "cities": [
       ""
     ]
   },
   {
-    "county": "Saint-Barthélemy",
+    "country": "Saint-Barthélemy",
     "cities": [
       "Grand Cul-de-Sac",
       "Gustavia",
@@ -86974,7 +86974,7 @@
     ]
   },
   {
-    "county": "Dominica",
+    "country": "Dominica",
     "cities": [
       "Berekua",
       "Roseau",
@@ -86982,7 +86982,7 @@
     ]
   },
   {
-    "county": "São Tomé and Príncipe",
+    "country": "São Tomé and Príncipe",
     "cities": [
       "Neves",
       "São Tomé",
@@ -86990,52 +86990,52 @@
     ]
   },
   {
-    "county": "Falkland Islands",
+    "country": "Falkland Islands",
     "cities": [
       "Stanley"
     ]
   },
   {
-    "county": "Northern Mariana Islands",
+    "country": "Northern Mariana Islands",
     "cities": [
       "Saipan"
     ]
   },
   {
-    "county": "East Timor",
+    "country": "East Timor",
     "cities": [
       "Dili",
       ""
     ]
   },
   {
-    "county": "Bonaire",
+    "country": "Bonaire",
     "cities": [
       "Kralendijk",
       "Dorp Nikiboko"
     ]
   },
   {
-    "county": "American Samoa",
+    "country": "American Samoa",
     "cities": [
       "American Samoa",
       "Pago Pago"
     ]
   },
   {
-    "county": "Federated States of Micronesia",
+    "country": "Federated States of Micronesia",
     "cities": [
       "Yap"
     ]
   },
   {
-    "county": "Palau",
+    "country": "Palau",
     "cities": [
       ""
     ]
   },
   {
-    "county": "Guyana",
+    "country": "Guyana",
     "cities": [
       "Georgetown",
       "New Amsterdam",
@@ -87043,7 +87043,7 @@
     ]
   },
   {
-    "county": "Honduras",
+    "country": "Honduras",
     "cities": [
       "Tegucigalpa",
       "San Pedro Sula",
@@ -87068,7 +87068,7 @@
     ]
   },
   {
-    "county": "Nicaragua",
+    "country": "Nicaragua",
     "cities": [
       "Managua",
       "León",
@@ -87087,7 +87087,7 @@
     ]
   },
   {
-    "county": "El Salvador",
+    "country": "El Salvador",
     "cities": [
       "San Salvador",
       "San Miguel",
@@ -87122,7 +87122,7 @@
     ]
   },
   {
-    "county": "Andorra",
+    "country": "Andorra",
     "cities": [
       "Andorra la Vella",
       "Sant Juliàde Lòria",
@@ -87139,7 +87139,7 @@
     ]
   },
   {
-    "county": "Myanmar [Burma]",
+    "country": "Myanmar [Burma]",
     "cities": [
       "Hlaing",
       "Yangon",
@@ -87150,7 +87150,7 @@
     ]
   },
   {
-    "county": "Sri Lanka",
+    "country": "Sri Lanka",
     "cities": [
       "Colombo",
       "Katubedda",
@@ -87192,7 +87192,7 @@
     ]
   },
   {
-    "county": "Haiti",
+    "country": "Haiti",
     "cities": [
       "Port-au-Prince",
       "Cap-Haïtien",
@@ -87208,7 +87208,7 @@
     ]
   },
   {
-    "county": "Trinidad and Tobago",
+    "country": "Trinidad and Tobago",
     "cities": [
       "Arima",
       "San Fernando",
@@ -87262,13 +87262,13 @@
     ]
   },
   {
-    "county": "Laos",
+    "country": "Laos",
     "cities": [
       "Vientiane"
     ]
   },
   {
-    "county": "Uruguay",
+    "country": "Uruguay",
     "cities": [
       "Montevideo",
       "La Floresta",
@@ -87291,14 +87291,14 @@
     ]
   },
   {
-    "county": "Eritrea",
+    "country": "Eritrea",
     "cities": [
       "Asmara",
       ""
     ]
   },
   {
-    "county": "Cuba",
+    "country": "Cuba",
     "cities": [
       "Havana",
       "Habana",
@@ -87319,20 +87319,20 @@
     ]
   },
   {
-    "county": "Saint Helena",
+    "country": "Saint Helena",
     "cities": [
       "Tristan Da Cunha",
       "Jamestown"
     ]
   },
   {
-    "county": "Christmas Island",
+    "country": "Christmas Island",
     "cities": [
       "Flying Fish Cove"
     ]
   },
   {
-    "county": "Ethiopia",
+    "country": "Ethiopia",
     "cities": [
       "Addis Ababa",
       "Awasa",
@@ -87340,7 +87340,7 @@
     ]
   },
   {
-    "county": "British Indian Ocean Territory",
+    "country": "British Indian Ocean Territory",
     "cities": [
       ""
     ]

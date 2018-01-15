@@ -36,6 +36,13 @@ public enum Api {
             return new Resource[]{
                 Resource.RC_COUNTRIES,};
         }
+    },
+    COUNTRYCITY("Countrycity", "countrycity") {
+        @Override
+        public Resource[] getResources() {
+            return new Resource[]{
+                Resource.COUNTRYCITY,};
+        }
     };
 
     private final String name;
