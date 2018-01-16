@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -49,7 +48,6 @@ public final class RestCountriesView extends ApiView {
         File file = new File(classLoader.getResource("data/regional_bloc.csv").getFile());
         String line;
         String cvsSplitBy = ",";
-        HashMap<String, String> map = new HashMap<>();
         List<RegionalBloc> listOfRb = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             while ((line = br.readLine()) != null) {

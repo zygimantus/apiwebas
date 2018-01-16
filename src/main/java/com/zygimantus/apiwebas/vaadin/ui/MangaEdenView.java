@@ -1,7 +1,5 @@
 package com.zygimantus.apiwebas.vaadin.ui;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.Button.ClickEvent;
@@ -9,11 +7,14 @@ import com.vaadin.ui.Component;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.Window;
-import com.zygimantus.apiwebas.vaadin.api.TheMovieDBConsumer;
-import info.movito.themoviedbapi.model.MovieDb;
+import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import net.faintedge.mangaedenclient.Manga;
+import net.faintedge.mangaedenclient.MangaDetails;
+import net.faintedge.mangaedenclient.MangaEdenClient;
 import org.vaadin.viritin.form.AbstractForm;
 import org.vaadin.viritin.layouts.MVerticalLayout;
 
@@ -21,59 +22,72 @@ import org.vaadin.viritin.layouts.MVerticalLayout;
  *
  * @author Zygimantus
  */
-@SpringView(name = MovieDBView.VIEW_NAME)
-public final class MovieDBView extends ApiView {
+@SpringView(name = MangaEdenView.VIEW_NAME)
+public final class MangaEdenView extends ApiView {
 
     private static final long serialVersionUID = 1L;
 
-    public static final String VIEW_NAME = "movieDB";
+    public static final String VIEW_NAME = "mangaEden";
 
-    @Autowired
-    private TheMovieDBConsumer theMovieDBConsumer;
+    private Grid<Manga> grid;
+
+    private final MangaEdenClient client = new MangaEdenClient();
 
     @Override
     public void init() {
-        
+
         super.init();
 
-        Grid<MovieDb> grid = new Grid<>(MovieDb.class);
+        grid = new Grid<>(Manga.class);
 
         addComponent(grid);
 
-//                grid.setColumns("title", "popularity", "releaseDate", "budget");
         grid.setWidth("100%");
 
-        grid.setItems(theMovieDBConsumer.getPopularMovies(1));
-
-        grid.addItemClickListener(e -> {
-            MovieDbForm form = new MovieDbForm();
-            form.setEntity(theMovieDBConsumer.getMovie(e.getItem().getId()));
-            form.open();
-        });
     }
 
     @Override
     public void enter(ViewChangeEvent event) {
-        // TODO Auto-generated method stub
+
+        try {
+
+            List<Manga> list = client.getMangaList();
+
+            grid.setItems(list);
+
+            grid.addItemClickListener(e -> {
+                MovieDbForm form = new MovieDbForm();
+                try {
+                    form.setEntity(client.getMangaDetails(e.getItem().getId()));
+                } catch (IOException ex) {
+                    Logger.getLogger(MangaEdenView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                form.open();
+            });
+
+            // very large set of data...
+//            save(list, Resource.MANGAEDEN);
+        } catch (IOException ex) {
+            Logger.getLogger(MangaEdenView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    private class MovieDbForm extends AbstractForm<MovieDb> {
+    private class MovieDbForm extends AbstractForm<MangaDetails> {
 
-        private TextField title;
+        private TextField alias;
 
         public MovieDbForm() {
-            super(MovieDb.class);
+            super(MangaDetails.class);
         }
 
         @Override
         protected Component createContent() {
             setEnabled(false);
+            
+            alias = new TextField("Alias");
 
-            title = new TextField("Title");
-
-            MVerticalLayout layout = new MVerticalLayout(title);
-            Field[] fields = MovieDb.class.getDeclaredFields();
-//            List<Component> comps = new ArrayList<>();
+            MVerticalLayout layout = new MVerticalLayout(alias);
+            Field[] fields = MangaDetails.class.getDeclaredFields();
             for (Field field : fields) {
                 field.setAccessible(true);
                 String name = field.getName();

@@ -11,9 +11,6 @@ import com.vaadin.spring.navigator.SpringNavigator;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
-import com.zygimantus.apiwebas.vaadin.api.PokeApiConsumer;
-import java.util.List;
-import me.sargunvohra.lib.pokekotlin.model.NamedApiResource;
 
 /**
  *
@@ -31,9 +28,6 @@ public class VaadinUI extends UI {
         @Autowired
         private UserRepository userRepository;
 
-        @Autowired
-        private PokeApiConsumer pokeApiConsumer;
-
         @Override
         protected void init(VaadinRequest request) {
 
@@ -47,10 +41,6 @@ public class VaadinUI extends UI {
 
                 setContent(mainLayout);
 
-//                SwapiView swapiView = new SwapiView(swApiConsumer);
-                MovieDBView movieDBView = new MovieDBView();
-
-                List<NamedApiResource> list = pokeApiConsumer.getPokemonList(0, 10);
                 navigator.setErrorView(ErrorView.class);
 
                 navigator.navigateTo("login");

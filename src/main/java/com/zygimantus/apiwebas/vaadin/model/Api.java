@@ -50,6 +50,13 @@ public enum Api {
             return new Resource[]{
                 Resource.FAVQS,};
         }
+    },
+    MANGAEDEN("MangaEden", "mangaEden") {
+        @Override
+        public Resource[] getResources() {
+            return new Resource[]{
+                Resource.MANGAEDEN,};
+        }
     };
 
     private final String name;

@@ -5,6 +5,7 @@ import com.swapi.models.People;
 import com.swapi.models.Species;
 import com.swapi.models.Vehicle;
 import lombok.Getter;
+import net.faintedge.mangaedenclient.Manga;
 
 /**
  *
@@ -19,7 +20,8 @@ public enum Resource {
     SWAPI_PEOPLE(Api.SWAPI, People.class, ""),
     RC_COUNTRIES(Api.REST_COUNTRIES, BaseCountry.class, ""),
     COUNTRYCITY(Api.COUNTRYCITY, Countrycity.class, "country"),
-    FAVQS(Api.FAVQS, ListQuotes.class, "");
+    FAVQS(Api.FAVQS, ListQuotes.class, ""),
+    MANGAEDEN(Api.MANGAEDEN, Manga.class, "");
 //    MARVEL_CHARACTERS(Api.MARVEL, CharacterDto.class);
 
     private final Api api;

@@ -41,6 +41,14 @@
             </snapshots>
         </repository>
         <repository>
+            <id>mangaeden-client-mvn-repo</id>
+            <url>https://raw.github.com/zygimantus/mangaeden-client/mvn-repo/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+        <repository>
             <id>vaadin-addons</id>
             <url>http://maven.vaadin.com/vaadin-addons</url>
         </repository>
@@ -48,9 +56,9 @@
         
     <dependencies>
         <dependency>
-            <groupId>me.sargunvohra.lib</groupId>
-            <artifactId>pokekotlin</artifactId>
-            <version>2.3.0</version>
+            <groupId>net.faintedge.mangaedenclient</groupId>
+            <artifactId>mangaeden-client</artifactId>
+            <version>0.1.1</version>
         </dependency>        
         <dependency>
             <groupId>info.movito</groupId>
