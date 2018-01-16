@@ -81,6 +81,11 @@
             <version>1.3</version>
         </dependency>
         <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>       
@@ -212,6 +217,29 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.jsonschema2pojo</groupId>
+                <artifactId>jsonschema2pojo-maven-plugin</artifactId>
+                <version>0.5.1</version>
+                <configuration>
+                    <sourceDirectory>${basedir}/src/main/resources/schema</sourceDirectory>
+                    <targetPackage>com.zygimantus.apiwebas.vaadin.model</targetPackage>
+                    <useLongIntegers>true</useLongIntegers>
+                    <targetVersion>1.8</targetVersion>
+                    <includeAdditionalProperties>false</includeAdditionalProperties>
+                    <includeAccessors>true</includeAccessors>
+                    <removeOldOutput>true</removeOldOutput>
+                    <includeToString>false</includeToString>
+                    <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
