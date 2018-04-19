@@ -83,7 +83,7 @@ public final class MangaEdenView extends ApiView {
         @Override
         protected Component createContent() {
             setEnabled(false);
-            
+
             alias = new TextField("Alias");
 
             MVerticalLayout layout = new MVerticalLayout(alias);

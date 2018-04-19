@@ -5,7 +5,7 @@
     <groupId>com.zygimantus</groupId>
     <artifactId>apiwebas</artifactId>
     <version>0.2.0</version>
-    <packaging>war</packaging>
+    <packaging>${packaging.type}</packaging>
 
     <name>apiwebas</name>
 
@@ -149,17 +149,9 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
-                <configuration>
-                    <mainClass>com.zygimantus.apiwebas.vaadin.SampleVaadinApplication</mainClass>
-                </configuration>                        
-            </plugin>            
-            <plugin>
                 <groupId>com.heroku.sdk</groupId>
                 <artifactId>heroku-maven-plugin</artifactId>
-                <version>1.2.0</version>
+                <version>2.0.4</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -175,16 +167,8 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>${war.plugin.version}</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.0.1</version>
+                <version>3.1.0</version>
                 <executions>
                     <execution>
                         <phase>validate</phase>
@@ -262,5 +246,50 @@
             </plugin>
         </plugins>
     </build>
+	
+    <profiles>
+        <profile>
+            <id>webapp</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <packaging.type>war</packaging.type>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>${war.plugin.version}</version>
+                        <configuration>
+                            <failOnMissingWebXml>false</failOnMissingWebXml>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>javaapp</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <packaging.type>jar</packaging.type>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.6.0</version>
+                        <configuration>
+                            <mainClass>com.zygimantus.apiwebas.vaadin.SampleVaadinApplication</mainClass>
+                        </configuration>                        
+                    </plugin>            
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>

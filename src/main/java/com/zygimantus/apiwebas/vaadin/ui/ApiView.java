@@ -35,8 +35,8 @@ public abstract class ApiView extends VerticalLayout implements View {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        list.forEach((film) -> {
-            session.merge(film);
+        list.forEach((t) -> {
+            session.merge(t);
         });
 
         transaction.commit();
