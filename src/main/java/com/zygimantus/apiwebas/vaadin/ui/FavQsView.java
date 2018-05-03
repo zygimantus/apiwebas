@@ -3,9 +3,11 @@ package com.zygimantus.apiwebas.vaadin.ui;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.Grid;
+import com.vaadin.ui.renderers.ButtonRenderer;
 import com.zygimantus.apiwebas.vaadin.HeaderRequestInterceptor;
 import com.zygimantus.apiwebas.vaadin.model.ListQuotes;
 import com.zygimantus.apiwebas.vaadin.model.Quote;
+import com.zygimantus.apiwebas.vaadin.model.Resource;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
@@ -44,6 +46,25 @@ public final class FavQsView extends ApiView {
 
         grid.setWidth("100%");
 
+        // customization
+//        column names:
+//        authorPermalink
+//        _private
+//        upvotesCount
+//        author
+//        dialogue
+//        downvotesCount
+//        id
+//        favoritesCount
+//        body
+//        url
+//        tags
+        ButtonRenderer br = new ButtonRenderer();
+        br.addClickListener((event) -> {
+            Quote quote = (Quote) event.getItem();
+            getUI().getPage().open(quote.getUrl(), "_blank");
+        });
+        grid.getColumn("url").setRenderer(br);
     }
 
     @Override
@@ -61,7 +82,7 @@ public final class FavQsView extends ApiView {
 
         grid.setItems(list);
 
-//        save(list, Resource.FAVQS);
+        save(list, Resource.FAVQS);
     }
 
 }
