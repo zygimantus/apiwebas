@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.zygimantus.apiwebas.vaadin.model.Quote" table="FQ_QUOTE">
-        <id column="ID" name="id" type="string" access="field"/>
+        <id column="ID" name="id" type="integer" access="field"/>
         <property column="AUTHOR" name="author" type="string" access="field"/>
         <property column="BODY" name="body" type="string" access="field"/>
     </class>
