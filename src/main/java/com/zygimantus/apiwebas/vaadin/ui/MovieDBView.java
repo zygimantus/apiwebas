@@ -1,6 +1,12 @@
 package com.zygimantus.apiwebas.vaadin.ui;
 
+import java.lang.reflect.Field;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.vaadin.viritin.form.AbstractForm;
+import org.vaadin.viritin.layouts.MVerticalLayout;
 
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.spring.annotation.SpringView;
@@ -10,12 +16,8 @@ import com.vaadin.ui.Grid;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.Window;
 import com.zygimantus.apiwebas.vaadin.api.TheMovieDBConsumer;
+
 import info.movito.themoviedbapi.model.MovieDb;
-import java.lang.reflect.Field;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.vaadin.viritin.form.AbstractForm;
-import org.vaadin.viritin.layouts.MVerticalLayout;
 
 /**
  *
@@ -24,81 +26,101 @@ import org.vaadin.viritin.layouts.MVerticalLayout;
 @SpringView(name = MovieDBView.VIEW_NAME)
 public final class MovieDBView extends ApiView {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    public static final String VIEW_NAME = "movieDB";
+	public static final String VIEW_NAME = "movieDB";
 
-    @Autowired
-    private TheMovieDBConsumer theMovieDBConsumer;
+	@Autowired
+	private TheMovieDBConsumer theMovieDBConsumer;
 
-    @Override
-    public void init() {
-        
-        super.init();
+	@Override
+	public void init() {
 
-        Grid<MovieDb> grid = new Grid<>(MovieDb.class);
+		super.init();
 
-        addComponent(grid);
+		Grid<MovieDb> grid = new Grid<>(MovieDb.class);
 
-//                grid.setColumns("title", "popularity", "releaseDate", "budget");
-        grid.setWidth("100%");
+		addComponent(grid);
 
-        grid.setItems(theMovieDBConsumer.getPopularMovies(1));
+		// grid.setColumns("title", "popularity", "releaseDate", "budget");
+		grid.setWidth("100%");
 
-        grid.addItemClickListener(e -> {
-            MovieDbForm form = new MovieDbForm();
-            form.setEntity(theMovieDBConsumer.getMovie(e.getItem().getId()));
-            form.open();
-        });
-    }
+		grid.setItems(theMovieDBConsumer.getPopularMovies(1));
 
-    @Override
-    public void enter(ViewChangeEvent event) {
-        // TODO Auto-generated method stub
-    }
+		grid.addItemClickListener(e -> {
+			MovieDbForm form = new MovieDbForm();
+			form.setEntity(theMovieDBConsumer.getMovie(e.getItem().getId()));
+			form.open();
+		});
+	}
 
-    private class MovieDbForm extends AbstractForm<MovieDb> {
+	@Override
+	public void enter(ViewChangeEvent event) {
+		// TODO Auto-generated method stub
+	}
 
-        private TextField title;
+	private class MovieDbForm extends AbstractForm<MovieDb> {
 
-        public MovieDbForm() {
-            super(MovieDb.class);
-        }
+		private static final long serialVersionUID = 1L;
 
-        @Override
-        protected Component createContent() {
-            setEnabled(false);
+		private TextField title;
 
-            title = new TextField("Title");
+		public MovieDbForm() {
+			super(MovieDb.class);
+		}
 
-            MVerticalLayout layout = new MVerticalLayout(title);
-            Field[] fields = MovieDb.class.getDeclaredFields();
-//            List<Component> comps = new ArrayList<>();
-            for (Field field : fields) {
-                field.setAccessible(true);
-                String name = field.getName();
-                TextField tf = new TextField(name);
-                try {
-                    tf.setValue(field.get(getEntity()).toString());
-                } catch (IllegalArgumentException | IllegalAccessException | ClassCastException | NullPointerException ex) {
-                    Logger.getLogger(MovieDBView.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                layout.add(tf);
-            }
+		@Override
+		protected Component createContent() {
+			setEnabled(false);
 
-            return layout;
-        }
+			title = new TextField("Title");
 
-        @Override
-        protected void save(ClickEvent e) {
-        }
+			MVerticalLayout layout = new MVerticalLayout(title);
+			Field[] fields = MovieDb.class.getDeclaredFields();
+			// List<Component> comps = new ArrayList<>();
+			for (Field field : fields) {
+				field.setAccessible(true);
+				String name = field.getName();
+				TextField tf = new TextField(name);
+				Class<?> clazz = field.getType();
+				try {
+					Object entity = field.get(getEntity());
+					if (entity != null) {
+						if (clazz.isAssignableFrom(String.class)) {
+							tf.setValue(field.get(getEntity()).toString());
+						// currently always these are null
+//						} else if (clazz.isAssignableFrom(Credits.class)) {
+//							Credits cred = (Credits) entity;
+//							tf.setValue(cred.getCast().stream().map(i -> i.getCharacter() + ": " + i.getName())
+//									.collect(Collectors.joining(",")));
+//						} else if (clazz.isAssignableFrom(MoviesAlternativeTitles.class)) {
+//							MoviesAlternativeTitles mat = (MoviesAlternativeTitles) entity;
+//							tf.setValue(mat.getTitles().stream().map(i -> i.getCountry() + ": " + i.getTitle())
+//									.collect(Collectors.joining(",")));
+						}
+					} else {
+						tf.setValue("-");
+					}
+				} catch (IllegalArgumentException | IllegalAccessException | ClassCastException
+						| NullPointerException ex) {
+					Logger.getLogger(MovieDBView.class.getName()).log(Level.SEVERE, null, ex);
+				}
+				layout.add(tf);
+			}
 
-        public Window open() {
-            final Window window = super.openInModalPopup();
-            window.setWidth("50%");
-            window.setCaption("");
+			return layout;
+		}
 
-            return window;
-        }
-    }
+		@Override
+		protected void save(ClickEvent e) {
+		}
+
+		public Window open() {
+			final Window window = super.openInModalPopup();
+			window.setWidth("50%");
+			window.setCaption("");
+
+			return window;
+		}
+	}
 }
