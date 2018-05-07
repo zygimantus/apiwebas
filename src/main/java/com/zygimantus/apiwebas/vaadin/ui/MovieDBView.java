@@ -1,6 +1,7 @@
 package com.zygimantus.apiwebas.vaadin.ui;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,9 +14,14 @@ import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Grid;
+import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 import com.zygimantus.apiwebas.vaadin.api.TheMovieDBConsumer;
+import com.zygimantus.apiwebas.vaadin.model.Api;
+import com.zygimantus.apiwebas.vaadin.model.Consts;
+import com.zygimantus.apiwebas.vaadin.model.Resource;
 
 import info.movito.themoviedbapi.model.MovieDb;
 
@@ -33,25 +39,32 @@ public final class MovieDBView extends ApiView {
 	@Autowired
 	private TheMovieDBConsumer theMovieDBConsumer;
 
+	private TabSheet tabs;
+
 	@Override
 	public void init() {
 
 		super.init();
 
-		Grid<MovieDb> grid = new Grid<>(MovieDb.class);
+		tabs = new TabSheet();
 
-		addComponent(grid);
+		for (String string : Consts.MOVIE_TYPES) {
 
-		// grid.setColumns("title", "popularity", "releaseDate", "budget");
-		grid.setWidth("100%");
+			MovieTab swapiTab = new MovieTab(string);
 
-		grid.setItems(theMovieDBConsumer.getPopularMovies(1));
+			TabSheet.Tab tab = tabs.addTab(swapiTab);
+			tab.setCaption(string);
+		}
 
-		grid.addItemClickListener(e -> {
-			MovieDbForm form = new MovieDbForm();
-			form.setEntity(theMovieDBConsumer.getMovie(e.getItem().getId()));
-			form.open();
+		tabs.addSelectedTabChangeListener(e -> {
+			Component tab = e.getTabSheet().getSelectedTab();
+			if (tab instanceof MovieTab) {
+				MovieTab st = (MovieTab) tab;
+				st.createGridAndSave();
+			}
 		});
+
+		addComponent(tabs);
 	}
 
 	@Override
@@ -123,4 +136,46 @@ public final class MovieDBView extends ApiView {
 			return window;
 		}
 	}
+
+	private class MovieTab extends VerticalLayout {
+
+		private static final long serialVersionUID = 1L;
+		private final String type;
+
+		private MovieTab(String type) {
+			this.type = type;
+		}
+
+		public void createGridAndSave() {
+
+			Grid<MovieDb> grid = new Grid<>(MovieDb.class);
+			switch (type) {
+			case "popular":
+			default:
+				grid.setItems(theMovieDBConsumer.getPopularMovies(1));
+				break;
+			case "top":
+				grid.setItems(theMovieDBConsumer.getTopMovies(1));				
+				break;
+			case "now":
+				grid.setItems(theMovieDBConsumer.getNowMovies(1));				
+				break;
+			}
+
+			grid.setWidth("100%");
+
+			// save(list, resource);
+
+			addComponent(grid);
+
+			grid.addItemClickListener(e -> {
+				MovieDbForm form = new MovieDbForm();
+				form.setEntity(theMovieDBConsumer.getMovie(e.getItem().getId()));
+				form.open();
+			});
+
+		}
+
+	}
+
 }

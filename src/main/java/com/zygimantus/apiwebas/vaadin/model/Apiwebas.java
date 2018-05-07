@@ -27,7 +27,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Table(name = "APIWEBAS")
 public class Apiwebas implements Serializable {
 
-        @Id
+		private static final long serialVersionUID = 1L;
+		
+		@Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         private int id;
         private String title;

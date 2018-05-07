@@ -77,10 +77,10 @@ public class SwApiConsumer extends WsConsumer {
         return species;
     }
 
-    public ArrayList getFullList(Resource resource) {
+    public ArrayList<Object> getFullList(Resource resource) {
         int page = 1;
         SWModelList<?> list;
-        ArrayList resultList = new ArrayList<>();
+        ArrayList<Object> resultList = new ArrayList<>();
 
         try {
             do {

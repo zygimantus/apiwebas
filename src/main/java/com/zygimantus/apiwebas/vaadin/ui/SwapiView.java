@@ -61,7 +61,8 @@ public final class SwapiView extends ApiView {
 
     private class SwapiTab extends VerticalLayout {
 
-        private final Resource resource;
+		private static final long serialVersionUID = 1L;
+		private final Resource resource;
 
         private SwapiTab(Resource resource) {
             this.resource = resource;

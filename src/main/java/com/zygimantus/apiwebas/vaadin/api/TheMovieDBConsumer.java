@@ -26,10 +26,24 @@ public class TheMovieDBConsumer extends WsConsumer {
 
                 tmdbApi = new TmdbApi(tmdbMoviesApiKey);
         }
-
+        
+        public List<MovieDb> getNowMovies(int page) {
+        	TmdbMovies movies = tmdbApi.getMovies();
+        	MovieResultsPage resultsPage = movies.getNowPlayingMovies("en", page);
+        	
+        	return resultsPage.getResults();
+        }
+        
         public List<MovieDb> getPopularMovies(int page) {
+        	TmdbMovies movies = tmdbApi.getMovies();
+        	MovieResultsPage resultsPage = movies.getPopularMovies("en", page);
+        	
+        	return resultsPage.getResults();
+        }
+
+        public List<MovieDb> getTopMovies(int page) {
                 TmdbMovies movies = tmdbApi.getMovies();
-                MovieResultsPage resultsPage = movies.getPopularMovies("en", page);
+                MovieResultsPage resultsPage = movies.getTopRatedMovies("en", page);
 
                 return resultsPage.getResults();
         }
