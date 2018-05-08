@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.zygimantus.apiwebas.vaadin.model.BaseCountry" table="RC_COUNTRIES">
-        <id column="ALPHA3_CODE" name="alpha3Code" type="string"/>
-        <property column="NAME" name="name" type="string"/>
-    </class>
+	<class name="com.zygimantus.apiwebas.vaadin.model.Countrycity"
+		table="CC_COUNTRY">
+		<id column="COUNTRY_ID" name="id" type="integer">
+			<generator class="increment" />
+		</id>
+		<property column="COUNTRY" name="country" type="string" />
+        <list name="cities" table="CC_CITY">
+            <key column="COUNTRY_ID"/>
+            <index column="CITY_ID"/>            
+            <element type="string" column="CITY"/>
+        </list>		
+	</class>
 </hibernate-mapping>

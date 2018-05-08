@@ -223,7 +223,7 @@
                 <configuration>
                     <sourceDirectory>${basedir}/src/main/resources/schema</sourceDirectory>
                     <targetPackage>com.zygimantus.apiwebas.vaadin.model</targetPackage>
-                    <useLongIntegers>true</useLongIntegers>
+                    <useLongIntegers>false</useLongIntegers>
                     <targetVersion>1.8</targetVersion>
                     <includeAdditionalProperties>false</includeAdditionalProperties>
                     <includeAccessors>true</includeAccessors>

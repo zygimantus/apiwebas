@@ -55,8 +55,6 @@ public final class CountrycityView extends ApiView {
             //convert json string to object
             Countrycity[] emp = objectMapper.readValue(jsonData, Countrycity[].class);
 
-            System.out.println("Employee Object\n" + emp);
-
             List list = Arrays.asList(emp);
 
             grid.setItems(list);
