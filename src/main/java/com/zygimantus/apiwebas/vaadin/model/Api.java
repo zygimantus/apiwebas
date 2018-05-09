@@ -51,6 +51,13 @@ public enum Api {
                 Resource.FAVQS,};
         }
     },
+    SPORTDEER("SportDeer", "sportDeer") {
+        @Override
+        public Resource[] getResources() {
+            return new Resource[]{
+                Resource.FOOTBALL_COUNTRIES,};
+        }
+    },
     MANGAEDEN("MangaEden", "mangaEden") {
         @Override
         public Resource[] getResources() {
