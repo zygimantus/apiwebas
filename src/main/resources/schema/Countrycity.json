@@ -1,15 +1,18 @@
 {
-    "title": "Countrycity",
-    "type": "object",
-    "properties": {
-        "id": {
-            "type": "integer"
-        },
-        "country": {
-            "type": "string"
-        },
-        "cities": {
-            "type": "array"
-        }
-    }
+	"title": "Countrycity",
+	"type": "object",
+	"properties": {
+		"id": {
+			"type": "integer"
+		},
+		"country": {
+			"type": "string"
+		},
+		"cities": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		}
+	}
 }

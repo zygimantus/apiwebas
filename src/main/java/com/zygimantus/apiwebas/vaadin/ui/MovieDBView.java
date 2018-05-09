@@ -1,7 +1,6 @@
 package com.zygimantus.apiwebas.vaadin.ui;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,9 +18,7 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 import com.zygimantus.apiwebas.vaadin.api.TheMovieDBConsumer;
-import com.zygimantus.apiwebas.vaadin.model.Api;
 import com.zygimantus.apiwebas.vaadin.model.Consts;
-import com.zygimantus.apiwebas.vaadin.model.Resource;
 
 import info.movito.themoviedbapi.model.MovieDb;
 

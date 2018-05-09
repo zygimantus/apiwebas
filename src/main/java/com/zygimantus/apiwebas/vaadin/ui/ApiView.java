@@ -19,10 +19,12 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public abstract class ApiView extends VerticalLayout implements View {
 
-    @Autowired
+	private static final long serialVersionUID = 1L;
+	
+	@Autowired
     private EntityManagerFactory entityManagerFactory;
     @Autowired
-    private ApiwebasRepository apiwebasRepository;
+    protected ApiwebasRepository apiwebasRepository;
 
     @PostConstruct
     public void init() {
