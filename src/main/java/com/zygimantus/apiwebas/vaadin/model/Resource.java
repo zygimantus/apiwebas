@@ -4,6 +4,7 @@ import com.swapi.models.Film;
 import com.swapi.models.People;
 import com.swapi.models.Species;
 import com.swapi.models.Vehicle;
+import com.zygimantus.sportdeerclient.SportDeerCountries;
 import lombok.Getter;
 import net.faintedge.mangaedenclient.Manga;
 
@@ -21,7 +22,7 @@ public enum Resource {
     RC_COUNTRIES(Api.REST_COUNTRIES, BaseCountry.class, ""),
     COUNTRYCITY(Api.COUNTRYCITY, Countrycity.class, "country"),
     FAVQS(Api.FAVQS, ListQuotes.class, ""),
-    FOOTBALL_COUNTRIES(Api.SPORTDEER, FootballCountries.class, ""),
+    FOOTBALL_COUNTRIES(Api.SPORTDEER, SportDeerCountries.class, ""),
     MANGAEDEN(Api.MANGAEDEN, Manga.class, "");
 //    MARVEL_CHARACTERS(Api.MARVEL, CharacterDto.class);
 

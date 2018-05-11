@@ -29,6 +29,10 @@
         
     <repositories>
         <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+        <repository>
             <id>bintray</id>
             <name>bintray</name>
             <url>http://jcenter.bintray.com</url>
@@ -56,6 +60,11 @@
     </repositories>    
         
     <dependencies>
+        <dependency>
+            <groupId>com.github.zygimantus</groupId>
+            <artifactId>SportDeerClient</artifactId>
+            <version>-SNAPSHOT</version>
+        </dependency>        
         <dependency>
             <groupId>info.movito</groupId>
             <artifactId>themoviedbapi</artifactId>
