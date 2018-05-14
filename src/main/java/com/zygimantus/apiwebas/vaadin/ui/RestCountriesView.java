@@ -94,4 +94,16 @@ public final class RestCountriesView extends ApiView {
         save(list, Resource.RC_COUNTRIES);
     }
 
+	@Override
+	protected void initTabs() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected ArrayList<?> getResourceData(Resource resource) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

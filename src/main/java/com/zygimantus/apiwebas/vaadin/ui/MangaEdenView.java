@@ -7,8 +7,11 @@ import com.vaadin.ui.Component;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.Window;
+import com.zygimantus.apiwebas.vaadin.model.Resource;
+
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -115,4 +118,16 @@ public final class MangaEdenView extends ApiView {
             return window;
         }
     }
+
+	@Override
+	protected void initTabs() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected ArrayList<?> getResourceData(Resource resource) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

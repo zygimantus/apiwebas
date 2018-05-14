@@ -85,4 +85,16 @@ public final class FavQsView extends ApiView {
         save(list, Resource.FAVQS);
     }
 
+	@Override
+	protected void initTabs() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected ArrayList<?> getResourceData(Resource resource) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

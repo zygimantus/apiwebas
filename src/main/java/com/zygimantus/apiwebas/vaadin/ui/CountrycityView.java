@@ -1,6 +1,7 @@
 package com.zygimantus.apiwebas.vaadin.ui;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
@@ -124,6 +125,18 @@ public final class CountrycityView extends ApiView {
 
 			return window;
 		}
+	}
+
+	@Override
+	protected void initTabs() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected ArrayList<?> getResourceData(Resource resource) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

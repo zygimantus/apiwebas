@@ -1,22 +1,26 @@
 package com.zygimantus.apiwebas.vaadin.ui;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Value;
+
 import com.vaadin.addon.pagination.Pagination;
 import com.vaadin.addon.pagination.PaginationResource;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.Grid;
-import com.zygimantus.sportdeerclient.Doc;
-import com.zygimantus.sportdeerclient.Doc_;
+import com.vaadin.ui.TabSheet;
+import com.zygimantus.apiwebas.vaadin.model.Api;
+import com.zygimantus.apiwebas.vaadin.model.Resource;
 import com.zygimantus.sportdeerclient.SportDeer;
 import com.zygimantus.sportdeerclient.SportDeerApi;
 import com.zygimantus.sportdeerclient.SportDeerCountries;
+import com.zygimantus.sportdeerclient.SportDeerDocLeagues;
 import com.zygimantus.sportdeerclient.SportDeerFixtures;
+import com.zygimantus.sportdeerclient.SportDeerLeagues;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.springframework.beans.factory.annotation.Value;
 import retrofit2.Response;
 
 /**
@@ -30,19 +34,28 @@ public final class SportDeerView extends ApiView {
 
 	public static final String VIEW_NAME = "sportDeer";
 
-	private Grid<Doc_> grid;
+	private Grid<SportDeerDocLeagues> grid;
 
 	@Value("${sportDeerRefreshToken}")
 	private String sportDeerRefreshToken;
 
+	private Pagination pagination;
 	private int currentPage = 1;
 
 	@Override
 	public void init() {
 
+		pagination = createPagination(1000, currentPage, 10);
+		pagination.addPageChangeListener(e -> {
+
+			pagination.setTotalCount(listData(e.page()));
+
+			currentPage = e.page();
+		});
+
 		super.init();
 
-		grid = new Grid<>(Doc_.class);
+		grid = new Grid<>(SportDeerDocLeagues.class);
 
 		addComponent(grid);
 
@@ -52,14 +65,6 @@ public final class SportDeerView extends ApiView {
 
 	@Override
 	public void enter(ViewChangeEvent event) {
-
-		final Pagination pagination = createPagination(1000, currentPage, 10);
-		pagination.addPageChangeListener(e -> {
-
-			pagination.setTotalCount(listData(e.page()));
-
-			currentPage = e.page();
-		});
 
 		addComponent(pagination);
 
@@ -77,8 +82,8 @@ public final class SportDeerView extends ApiView {
 		try {
 			response = api.getAccessToken(sportDeerRefreshToken).execute();
 
-			Response<SportDeerFixtures> response1;
-			response1 = api.getFixtures(null, null, response.body().getNewAccessToken(), page).execute();
+			Response<SportDeerLeagues> response1;
+			response1 = api.getLeagues(response.body().getNewAccessToken(), page).execute();
 			List list = response1.body().getDocs();
 
 			grid.setItems(list);
@@ -100,6 +105,63 @@ public final class SportDeerView extends ApiView {
 		// TODO make constant in SportDeerClient
 		pagination.setItemsPerPage(30);
 		return pagination;
+	}
+
+	@Override
+	protected void initTabs() {
+		for (Resource resource : Api.SPORTDEER.getResources()) {
+
+			ResourceTab st = new ResourceTab(resource);
+
+			TabSheet.Tab tab = tabs.addTab(st);
+			tab.setCaption(resource.name());
+		}
+	}
+
+	@Override
+	protected List<?> getResourceData(Resource resource) {
+
+		SportDeerApi.init();
+		SportDeer api = SportDeerApi.getApi();
+
+		Response<com.zygimantus.sportdeerclient.SportDeerAccessToken> response;
+		try {
+			response = api.getAccessToken(sportDeerRefreshToken).execute();
+
+			List<?> list = null;
+
+			switch (resource) {
+			case SPORTDEER_COUNTRIES:
+				Response<SportDeerCountries> response1;
+				response1 = api.getCountries(response.body().getNewAccessToken()).execute();
+				list = response1.body().getDocs();
+				break;
+			case SPORTDEER_FIXTURES:
+				Response<SportDeerFixtures> response2;
+				response2 = api.getFixtures(null, null, response.body().getNewAccessToken(), 1).execute();
+				list = response2.body().getDocs();
+				break;
+			case SPORTDEER_LEAGUES:
+				Response<SportDeerLeagues> response3;
+				response3 = api.getLeagues(response.body().getNewAccessToken(), 1).execute();
+				list = response3.body().getDocs();
+				break;
+			default:
+				break;
+			}
+
+			// grid.setItems(list);
+
+			// return response1.body().getPagination().getTotal();
+
+			return list;
+
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		return null;
 	}
 
 }
