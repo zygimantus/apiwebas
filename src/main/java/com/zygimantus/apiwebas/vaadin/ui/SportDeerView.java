@@ -1,23 +1,18 @@
 package com.zygimantus.apiwebas.vaadin.ui;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
 
-import com.vaadin.addon.pagination.Pagination;
-import com.vaadin.addon.pagination.PaginationResource;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.spring.annotation.SpringView;
-import com.vaadin.ui.Grid;
 import com.vaadin.ui.TabSheet;
 import com.zygimantus.apiwebas.vaadin.model.Api;
 import com.zygimantus.apiwebas.vaadin.model.Resource;
 import com.zygimantus.sportdeerclient.SportDeer;
 import com.zygimantus.sportdeerclient.SportDeerApi;
 import com.zygimantus.sportdeerclient.SportDeerCountries;
-import com.zygimantus.sportdeerclient.SportDeerDocLeagues;
 import com.zygimantus.sportdeerclient.SportDeerFixtures;
 import com.zygimantus.sportdeerclient.SportDeerLeagues;
 
@@ -34,77 +29,17 @@ public final class SportDeerView extends ApiView {
 
 	public static final String VIEW_NAME = "sportDeer";
 
-	private Grid<SportDeerDocLeagues> grid;
-
 	@Value("${sportDeerRefreshToken}")
 	private String sportDeerRefreshToken;
-
-	private Pagination pagination;
-	private int currentPage = 1;
 
 	@Override
 	public void init() {
 
-		pagination = createPagination(1000, currentPage, 10);
-		pagination.addPageChangeListener(e -> {
-
-			pagination.setTotalCount(listData(e.page()));
-
-			currentPage = e.page();
-		});
-
 		super.init();
-
-		grid = new Grid<>(SportDeerDocLeagues.class);
-
-		addComponent(grid);
-
-		grid.setWidth("100%");
-
 	}
 
 	@Override
 	public void enter(ViewChangeEvent event) {
-
-		addComponent(pagination);
-
-		listData(currentPage);
-
-		// save(list, Resource.FOOTBALL_COUNTRIES);
-	}
-
-	private int listData(int page) {
-
-		SportDeerApi.init();
-		SportDeer api = SportDeerApi.getApi();
-
-		Response<com.zygimantus.sportdeerclient.SportDeerAccessToken> response;
-		try {
-			response = api.getAccessToken(sportDeerRefreshToken).execute();
-
-			Response<SportDeerLeagues> response1;
-			response1 = api.getLeagues(response.body().getNewAccessToken(), page).execute();
-			List list = response1.body().getDocs();
-
-			grid.setItems(list);
-
-			return response1.body().getPagination().getTotal();
-
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
-		return 0;
-	}
-
-	private Pagination createPagination(long total, int page, int limit) {
-		final PaginationResource paginationResource = PaginationResource.newBuilder().setTotal(total).setPage(page)
-				.setLimit(limit).build();
-		final Pagination pagination = new Pagination(paginationResource);
-		// TODO make constant in SportDeerClient
-		pagination.setItemsPerPage(30);
-		return pagination;
 	}
 
 	@Override
@@ -135,24 +70,26 @@ public final class SportDeerView extends ApiView {
 				Response<SportDeerCountries> response1;
 				response1 = api.getCountries(response.body().getNewAccessToken()).execute();
 				list = response1.body().getDocs();
+				currentTotal = response1.body().getPagination().getTotal();
+				limit = response1.body().getPagination().getLimit();
 				break;
 			case SPORTDEER_FIXTURES:
 				Response<SportDeerFixtures> response2;
-				response2 = api.getFixtures(null, null, response.body().getNewAccessToken(), 1).execute();
+				response2 = api.getFixtures(null, null, response.body().getNewAccessToken(), page).execute();
 				list = response2.body().getDocs();
+				currentTotal = response2.body().getPagination().getTotal();
+				limit = response2.body().getPagination().getLimit();
 				break;
 			case SPORTDEER_LEAGUES:
 				Response<SportDeerLeagues> response3;
-				response3 = api.getLeagues(response.body().getNewAccessToken(), 1).execute();
+				response3 = api.getLeagues(response.body().getNewAccessToken(), page).execute();
 				list = response3.body().getDocs();
+				currentTotal = response3.body().getPagination().getTotal();
+				limit = response3.body().getPagination().getLimit();
 				break;
 			default:
 				break;
 			}
-
-			// grid.setItems(list);
-
-			// return response1.body().getPagination().getTotal();
 
 			return list;
 
