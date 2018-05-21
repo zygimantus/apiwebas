@@ -280,6 +280,9 @@
 	<profiles>
 		<profile>
 			<id>webapp</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>			
 			<properties>
 				<packaging.type>war</packaging.type>
 			</properties>
@@ -315,7 +318,7 @@
 		<profile>
 			<id>javaapp</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 			<properties>
 				<packaging.type>jar</packaging.type>
