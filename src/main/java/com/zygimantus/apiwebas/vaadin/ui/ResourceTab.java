@@ -1,10 +1,7 @@
 package com.zygimantus.apiwebas.vaadin.ui;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.vaadin.addon.pagination.Pagination;
-import com.vaadin.addon.pagination.PaginationResource;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.VerticalLayout;
 import com.zygimantus.apiwebas.vaadin.model.Resource;
@@ -18,7 +15,7 @@ public class ResourceTab extends VerticalLayout {
 
 	private static final long serialVersionUID = 1L;
 	private final Resource resource;
-	private Grid grid;
+	private Grid<?> grid;
 
 	public ResourceTab(Resource resource) {
 		this.resource = resource;

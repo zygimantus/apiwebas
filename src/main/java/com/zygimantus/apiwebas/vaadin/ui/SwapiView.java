@@ -2,7 +2,6 @@ package com.zygimantus.apiwebas.vaadin.ui;
 
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.spring.annotation.SpringView;
-import com.vaadin.ui.Component;
 import com.vaadin.ui.TabSheet;
 import com.zygimantus.apiwebas.vaadin.api.SwApiConsumer;
 import com.zygimantus.apiwebas.vaadin.model.Api;

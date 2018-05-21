@@ -86,7 +86,7 @@ public abstract class ApiView extends VerticalLayout implements View {
 
 	protected abstract List<?> getResourceData(Resource resource);
 
-	protected void save(List list, Resource resource) {
+	protected void save(List<?> list, Resource resource) {
 		try {
 			SessionFactory sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
 

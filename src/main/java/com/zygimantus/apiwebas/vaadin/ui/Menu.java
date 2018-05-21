@@ -18,7 +18,9 @@ import java.util.Properties;
  */
 public final class Menu extends MenuBar {
 
-    public Menu() {
+	private static final long serialVersionUID = 1L;
+
+	public Menu() {
         setWidth("100%");
         addItem("Home", (MenuItem selectedItem) -> {
             UI.getCurrent().getNavigator().navigateTo(SwapiView.VIEW_NAME);
