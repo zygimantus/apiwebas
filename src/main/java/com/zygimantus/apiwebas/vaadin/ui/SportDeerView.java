@@ -90,6 +90,8 @@ public final class SportDeerView extends ApiView {
 			default:
 				break;
 			}
+			
+			save(list, resource);
 
 			return list;
 
