@@ -77,7 +77,8 @@ public final class MangaEdenView extends ApiView {
 
     private class MovieDbForm extends AbstractForm<MangaDetails> {
 
-        private TextField alias;
+		private static final long serialVersionUID = 1L;
+		private TextField alias;
 
         public MovieDbForm() {
             super(MangaDetails.class);

@@ -67,7 +67,7 @@ public final class RestCountriesView extends ApiView {
             ResponseEntity<BaseCountry[]> responseEntity
                     = restTemplate.getForEntity(url, BaseCountry[].class);
 
-            List list = Arrays.asList(responseEntity.getBody());
+            List<BaseCountry> list = Arrays.asList(responseEntity.getBody());
 
             grid.setItems(list);
         });
@@ -87,7 +87,7 @@ public final class RestCountriesView extends ApiView {
         ResponseEntity<BaseCountry[]> responseEntity
                 = restTemplate.getForEntity(ALL_COUNTRIES_URL, BaseCountry[].class);
 
-        List list = Arrays.asList(responseEntity.getBody());
+        List<BaseCountry> list = Arrays.asList(responseEntity.getBody());
 
         grid.setItems(list);
 
