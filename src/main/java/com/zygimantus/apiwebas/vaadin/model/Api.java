@@ -55,6 +55,12 @@ public enum Api {
 					Resource.SPORTDEER_LEAGUES };
 		}
 	},
+	GAMESDB("TheGamesDB", "theGamesDB") {
+		@Override
+		public Resource[] getResources() {
+			return new Resource[] { Resource.GAMESDB_PLATFROMSLIST, Resource.GAMESDB_GAMESLIST };
+		}
+	},
 	MANGAEDEN("MangaEden", "mangaEden") {
 		@Override
 		public Resource[] getResources() {

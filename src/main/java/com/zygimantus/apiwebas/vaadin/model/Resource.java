@@ -7,6 +7,9 @@ import com.swapi.models.Vehicle;
 import com.zygimantus.sportdeerclient.SportDeerDocCountries;
 import com.zygimantus.sportdeerclient.SportDeerDocFixtures;
 import com.zygimantus.sportdeerclient.SportDeerDocLeagues;
+import com.zygimantus.thegamesdb.model.GamesListGame;
+import com.zygimantus.thegamesdb.model.PlatformListPlatform;
+
 import lombok.Getter;
 import net.faintedge.mangaedenclient.Manga;
 
@@ -27,6 +30,8 @@ public enum Resource {
     SPORTDEER_COUNTRIES(Api.SPORTDEER, SportDeerDocCountries.class, false, ""),
     SPORTDEER_FIXTURES(Api.SPORTDEER, SportDeerDocFixtures.class, true, ""),
     SPORTDEER_LEAGUES(Api.SPORTDEER, SportDeerDocLeagues.class, true, ""),
+    GAMESDB_PLATFROMSLIST(Api.GAMESDB, PlatformListPlatform.class, false, ""),
+    GAMESDB_GAMESLIST(Api.GAMESDB, GamesListGame.class, false, ""),
     MANGAEDEN(Api.MANGAEDEN, Manga.class, false, "");
 //    MARVEL_CHARACTERS(Api.MARVEL, CharacterDto.class);
 
