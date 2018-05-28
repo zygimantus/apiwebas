@@ -26,7 +26,7 @@ public final class Menu extends MenuBar {
             UI.getCurrent().getNavigator().navigateTo(SwapiView.VIEW_NAME);
         });
         //
-        MenuItem mainItem = addItem("Apis", null);
+        MenuItem mainItem = addItem("APIs", null);
 
         for (Api api : Api.values()) {
             mainItem.addItem(api.getName(), (MenuItem selectedItem) -> {

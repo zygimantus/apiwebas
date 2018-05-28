@@ -1,12 +1,5 @@
 package com.zygimantus.apiwebas.vaadin.ui;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,19 +10,15 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 
 import com.vaadin.addon.pagination.Pagination;
 import com.vaadin.addon.pagination.PaginationResource;
 import com.vaadin.navigator.View;
-import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.zygimantus.apiwebas.vaadin.model.Apiwebas;
-import com.zygimantus.apiwebas.vaadin.model.BaseCountry;
-import com.zygimantus.apiwebas.vaadin.model.RegionalBloc;
 import com.zygimantus.apiwebas.vaadin.model.Resource;
 import com.zygimantus.apiwebas.vaadin.repo.ApiwebasRepository;
 
@@ -71,7 +60,7 @@ public abstract class ApiView extends VerticalLayout implements View {
 
 				List<?> list = getResourceData(rt.getResource());
 
-				HashMap config = rt.getResource().getConfig();
+				HashMap<?, ?> config = rt.getResource().getConfig();
 
 				if (config != null) {
 					TextField tf = (TextField) config.get("textField");

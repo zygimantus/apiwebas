@@ -57,7 +57,7 @@ public final class TheGamesDBView extends ApiView {
 				list = api.getGamesList(searchToken, null, null).execute().body().getGamesListGames();
 				break;
 			case GAMESDB_PLATFROMSLIST:
-				list = api.getPlatformsList().execute().body().getPlatforms().getPlatformListPlatforms();
+				list = api.getPlatformsList().execute().body().getPlatforms().getListOfPlatforms();
 				break;
 			default:
 				break;
