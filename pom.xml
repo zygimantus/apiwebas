@@ -24,7 +24,6 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<vaadin.version>8.1.7</vaadin.version>
-		<war.plugin.version>3.1.0</war.plugin.version>
 		<maven.test.skip>true</maven.test.skip>
 		<start-class>com.zygimantus.apiwebas.vaadin.SampleVaadinApplication</start-class>
 	</properties>
@@ -134,11 +133,6 @@
 			<artifactId>vaadin-spring-boot-starter</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 		</dependency>
@@ -188,11 +182,6 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<groupId>com.heroku.sdk</groupId>
-				<artifactId>heroku-maven-plugin</artifactId>
-				<version>2.0.4</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -281,13 +270,42 @@
 			</plugin>
 		</plugins>
 	</build>
-
 	<profiles>
+		<profile>
+			<id>heroku</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>spring.profiles.active</name>
+					<value>h2</value>
+				</property>
+			</activation>
+			<properties>
+				<packaging.type>jar</packaging.type>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>com.h2database</groupId>
+					<artifactId>h2</artifactId>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.heroku.sdk</groupId>
+						<artifactId>heroku-maven-plugin</artifactId>
+						<configuration>
+							<appName>myapp-prod</appName>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 		<profile>
 			<id>webapp</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>			
+				<activeByDefault>false</activeByDefault>
+			</activation>
 			<properties>
 				<packaging.type>war</packaging.type>
 			</properties>
@@ -312,7 +330,6 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-war-plugin</artifactId>
-						<version>${war.plugin.version}</version>
 						<configuration>
 							<failOnMissingWebXml>false</failOnMissingWebXml>
 						</configuration>
@@ -321,14 +338,36 @@
 			</build>
 		</profile>
 		<profile>
-			<id>javaapp</id>
+			<id>mysql</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
+				<property>
+					<name>spring.profiles.active</name>
+					<value>mysql</value>
+				</property>
 			</activation>
-			<properties>
-				<packaging.type>jar</packaging.type>
-			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>mysql</groupId>
+					<artifactId>mysql-connector-java</artifactId>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>hsqldb</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<property>
+					<name>spring.profiles.active</name>
+					<value>hsqldb</value>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>org.hsqldb</groupId>
+					<artifactId>hsqldb</artifactId>
+				</dependency>
+			</dependencies>
 		</profile>
 	</profiles>
-
 </project>
