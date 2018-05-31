@@ -130,6 +130,10 @@
 		</dependency>
 		<dependency>
 			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-client-compiled</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-spring-boot-starter</artifactId>
 		</dependency>
 		<dependency>
@@ -238,6 +242,34 @@
 					<artifactId>h2</artifactId>
 				</dependency>
 			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.heroku.sdk</groupId>
+						<artifactId>heroku-maven-plugin</artifactId>
+						<configuration>
+							<appName>apiwebas</appName>
+							<includeTarget>false</includeTarget>
+							<includes>
+								<include>${basedir}/${full-artifact-name}</include>
+							</includes>
+							<jdkVersion>1.8</jdkVersion>
+							<processTypes>
+								<web>java $JAVA_OPTS -jar ${full-artifact-name}
+									--spring.profiles.active=h2</web>
+							</processTypes>
+						</configuration>
+						<executions>
+							<execution>
+								<phase>verify</phase>
+								<goals>
+									<goal>deploy</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
 </project>
