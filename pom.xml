@@ -26,6 +26,7 @@
 		<vaadin.version>8.1.7</vaadin.version>
 		<maven.test.skip>true</maven.test.skip>
 		<start-class>com.zygimantus.apiwebas.vaadin.SampleVaadinApplication</start-class>
+ 		<full-artifact-name>target/${project.artifactId}-${project.version}.jar</full-artifact-name>		
 	</properties>
 
 	<repositories>
