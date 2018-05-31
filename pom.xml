@@ -26,7 +26,6 @@
 		<vaadin.version>8.1.7</vaadin.version>
 		<maven.test.skip>true</maven.test.skip>
 		<start-class>com.zygimantus.apiwebas.vaadin.SampleVaadinApplication</start-class>
- 		<full-artifact-name>target/${project.artifactId}-${project.version}.jar</full-artifact-name>		
 	</properties>
 
 	<repositories>
@@ -128,10 +127,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.vaadin</groupId>
-			<artifactId>vaadin-client-compiled</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.vaadin</groupId>
@@ -243,34 +238,6 @@
 					<artifactId>h2</artifactId>
 				</dependency>
 			</dependencies>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>com.heroku.sdk</groupId>
-						<artifactId>heroku-maven-plugin</artifactId>
-						<configuration>
-							<appName>apiwebas</appName>
-							<includeTarget>false</includeTarget>
-							<includes>
-								<include>${basedir}/${full-artifact-name}</include>
-							</includes>
-							<jdkVersion>1.8</jdkVersion>
-							<processTypes>
-								<web>java $JAVA_OPTS -jar ${full-artifact-name}
-									--spring.profiles.active=h2</web>
-							</processTypes>
-						</configuration>
-						<executions>
-							<execution>
-								<phase>verify</phase>
-								<goals>
-									<goal>deploy</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
 		</profile>
 	</profiles>
 </project>
