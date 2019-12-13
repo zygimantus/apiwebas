@@ -2,10 +2,10 @@ nb-configuration\.xml
 
 src/main/resources/app\.properties
 
-# Created by https://www.gitignore.io/api/maven,eclipse,netbeans
+# Created by https://www.gitignore.io/api/maven,eclipse,netbeans,visualstudiocode
+# Edit at https://www.gitignore.io/?templates=maven,eclipse,netbeans,visualstudiocode
 
 ### Eclipse ###
-
 .metadata
 bin/
 tmp/
@@ -30,6 +30,9 @@ local.properties
 # CDT-specific (C/C++ Development Tooling)
 .cproject
 
+# CDT- autotools
+.autotools
+
 # Java annotation processor (APT)
 .factorypath
 
@@ -51,20 +54,25 @@ local.properties
 # Code Recommenders
 .recommenders/
 
+# Annotation Processing
+.apt_generated/
+
 # Scala IDE specific (Scala & Java development for Eclipse)
 .cache-main
 .scala_dependencies
 .worksheet
 
 ### Eclipse Patch ###
-# Eclipse Core		
+# Eclipse Core
 .project
 
-# JDT-specific (Eclipse Java Development Tools)		
+# JDT-specific (Eclipse Java Development Tools)
 .classpath
 
 # Annotation Processing
 .apt_generated
+
+.sts4-cache/
 
 ### Maven ###
 target/
@@ -76,18 +84,28 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
-
-# Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
-!/.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.jar
+.flattened-pom.xml
 
 ### NetBeans ###
-nbproject/private/
+**/nbproject/private/
+**/nbproject/Makefile-*.mk
+**/nbproject/Package-*.bash
 build/
 nbbuild/
 dist/
 nbdist/
 .nb-gradle/
-nbactions.xml
 
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
-# End of https://www.gitignore.io/api/maven,eclipse,netbeans
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+
+# End of https://www.gitignore.io/api/maven,eclipse,netbeans,visualstudiocode
