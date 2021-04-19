@@ -23,7 +23,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<vaadin.version>8.1.7</vaadin.version>
+		<vaadin.version>19.0.5</vaadin.version>
 		<maven.test.skip>true</maven.test.skip>
 		<start-class>com.zygimantus.apiwebas.vaadin.SampleVaadinApplication</start-class>
 	</properties>
